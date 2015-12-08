@@ -53,5 +53,5 @@ gulp.task('test', function() {
 
 gulp.task('build', function() { return compile(); });
 gulp.task('watch', function() { return watch(); });
-
-gulp.task('default', ['test','watch','watch-sass']);
+gulp.task('watch-all',['watch-sass','watch']);
+gulp.task('default', ['build','sass','test']);
