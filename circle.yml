@@ -2,8 +2,7 @@ machine:
     node:
         version: 0.12
 dependencies:
-    dependencies:
-      override:
+    override:
         - npm install --dev
     cache_directories:
         - sassc
