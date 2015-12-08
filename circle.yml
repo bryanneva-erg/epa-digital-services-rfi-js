@@ -2,8 +2,6 @@ machine:
     node:
         version: 0.12
 dependencies:
-    override:
-        - npm install --dev
     cache_directories:
         - sassc
         - libsass
