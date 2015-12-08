@@ -20,7 +20,8 @@ gulp.task('sass:watch', function() {
 });
 
 function compile(watch) {
-	var bundler = browserify('./assets/js/app.js', { debug: true }).transform(babel)
+	// var bundler = browserify('./assets/js/app.js', { debug: true }).transform(babel)
+	var bundler = browserify('./assets/js/app.js', { debug: true })
 	if(watch) {
 		var bundler = watchify(bundler);
 	}
