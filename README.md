@@ -1,4 +1,3 @@
 # EPA - Digital Services RFI
 
-[![Build
-Status](https://travis-ci.org/bryanneva-erg/epa-digital-services-rfi.svg?branch=master)](https://travis-ci.org/bryanneva-erg/epa-digital-services-rfi)
+[![Circle CI](https://circleci.com/gh/Eastern-Research-Group/epa-digital-services-rfi-js/tree/master.svg?style=svg)](https://circleci.com/gh/Eastern-Research-Group/epa-digital-services-rfi-js/tree/master)
