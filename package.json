@@ -2,20 +2,20 @@
   "name": "epa-digital-services-rfi",
   "version": "1.0.0",
   "description": "EPA Digital Service RFI open source example",
-  "main": "index.js",
+  "main": "assets/js/app.js",
   "scripts": {
-    "test": "gulp"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bryanneva-erg/epa-digital-services-rfi.git"
+    "url": "git+https://github.com/bryanneva-erg/epa-digital-services-rfi-js.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bryanneva-erg/epa-digital-services-rfi/issues"
+    "url": "https://github.com/bryanneva-erg/epa-digital-services-rfi-js/issues"
   },
-  "homepage": "https://github.com/bryanneva-erg/epa-digital-services-rfi#readme",
+  "homepage": "https://github.com/bryanneva-erg/epa-digital-services-rfi-js#readme",
   "devDependencies": {
     "browserify": "^12.0.1",
     "gulp": "^3.9.0",

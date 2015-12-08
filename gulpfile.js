@@ -20,7 +20,10 @@ gulp.task('watch-sass', function() {
 });
 
 function compile(watch) {
-	var bundler = watchify(browserify('./assets/js/app.js', { debug: true }).transform(babel));
+	var bundler = browserify('./assets/js/app.js', { debug: true }).transform(babel)
+	if(watch) {
+		var bundler = watchify(bundler);
+	}
 
 	function rebundle() {
 		bundler.bundle()
@@ -39,7 +42,7 @@ function compile(watch) {
 		});
 	}
 
-	rebundle();
+	return rebundle();
 }
 
 function watch() {
@@ -51,7 +54,7 @@ gulp.task('test', function() {
 		.pipe(jasmine());
 });
 
-gulp.task('build', function() { return compile(); });
+gulp.task('build', function() { return compile(false); });
 gulp.task('watch', function() { return watch(); });
 gulp.task('watch-all',['watch-sass','watch']);
-gulp.task('default', ['build','sass','test']);
+gulp.task('default', ['sass','build','test']);
