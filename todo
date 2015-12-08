@@ -1,0 +1,7 @@
+Set up SCSS
+Set up asset compilation system
+    Publish index.js into /public/index.html
+    Publish SCSS files into /public/assets/css/styles.css
+    Publish JS into /public/assets/js/scripts.js
+Add in 18F style sheet dependencies
+Fill in style gaps with foundation framework
