@@ -15,7 +15,7 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('public/assets/css'));
 });
 
-gulp.task('watch-sass', function() {
+gulp.task('sass:watch', function() {
 	return gulp.watch('assets/scss/*.scss', ['sass']);
 });
 
@@ -54,7 +54,7 @@ gulp.task('test', function() {
 		.pipe(jasmine());
 });
 
-gulp.task('build', function() { return compile(false); });
-gulp.task('watch', function() { return watch(); });
-gulp.task('watch-all',['watch-sass','watch']);
-gulp.task('default', ['sass','build','test']);
+gulp.task('browserify', function() { return compile(false); });
+gulp.task('browserify:watch', function() { return watch(); });
+gulp.task('watch',['sass:watch','browserify:watch']);
+gulp.task('default', ['sass','browserify','test']);
