@@ -1,4 +1,4 @@
-var mathjs = require('mathjs');
+var math = require('mathjs');
 
 var DataSource = (function() {
 	'use strict';
@@ -6,7 +6,7 @@ var DataSource = (function() {
 	// var _url = 'http://ofmpub.epa.gov/echo/ecatt_ems_rest_services.get_ems';
 	// var _url = '_sampledata/ecatt_ems_rest_services.get_ems.json';
 
-	function get(url) {
+	function get(url, year, callback) {
 
 		$.ajax({
 			url: url,
@@ -21,7 +21,6 @@ var DataSource = (function() {
 			},
 		})
 		.done(function(data) {
-			console.log("success");
 
 			var total_annual_emission = 0;
 			$.each(data.Results.TopFacs,function(indx,val) {
@@ -29,16 +28,16 @@ var DataSource = (function() {
 					alert(this.UnitOfMeasure)
 				}
 
-				total_annual_emission += this.AnnualEmission;
+				total_annual_emission = math.eval(total_annual_emission + parseInt(this.AnnualEmission));
 			});
 
-			console.log(total_annual_emission);
+			// console.log(total_annual_emission);
+			callback(year,total_annual_emission);
 		})
 		.fail(function() {
 			console.log("error");
 		})
 		.always(function() {
-			console.log("complete");
 		});
 		
 		
@@ -52,10 +51,14 @@ var DataSource = (function() {
 $(document).ready(function() {
 
 	var this_year = new Date().getFullYear();
-	
+	var data_sum = 0;
 	for (var i = this_year - 1; i >= this_year - 6; i --) {
-		console.log(i);
-		DataSource.get('/_sampledata/ecatt_ems_rest_services.get_ems.so2.' + i + '.json');
+		DataSource.get('/_sampledata/ecatt_ems_rest_services.get_ems.so2.' + i + '.json', i, useReturnData);
+	};
+
+	function useReturnData(year,data){
+	    data_sum = data;
+	    console.log(year,data_sum);
 	};
 
     $('#container').highcharts({

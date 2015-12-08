@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var mathjs = require('mathjs');
+var math = require('mathjs');
 
 var DataSource = (function () {
 	'use strict'
@@ -8,7 +8,7 @@ var DataSource = (function () {
 	// var _url = '_sampledata/ecatt_ems_rest_services.get_ems.json';
 
 	;
-	function get(url) {
+	function get(url, year, callback) {
 
 		$.ajax({
 			url: url,
@@ -22,7 +22,6 @@ var DataSource = (function () {
 				qcolumns: 10
 			}
 		}).done(function (data) {
-			console.log("success");
 
 			var total_annual_emission = 0;
 			$.each(data.Results.TopFacs, function (indx, val) {
@@ -30,15 +29,14 @@ var DataSource = (function () {
 					alert(this.UnitOfMeasure);
 				}
 
-				total_annual_emission += this.AnnualEmission;
+				total_annual_emission = math.eval(total_annual_emission + parseInt(this.AnnualEmission));
 			});
 
-			console.log(total_annual_emission);
+			// console.log(total_annual_emission);
+			callback(year, total_annual_emission);
 		}).fail(function () {
 			console.log("error");
-		}).always(function () {
-			console.log("complete");
-		});
+		}).always(function () {});
 	}
 
 	return {
@@ -49,10 +47,14 @@ var DataSource = (function () {
 $(document).ready(function () {
 
 	var this_year = new Date().getFullYear();
-
+	var data_sum = 0;
 	for (var i = this_year - 1; i >= this_year - 6; i--) {
-		console.log(i);
-		DataSource.get('/_sampledata/ecatt_ems_rest_services.get_ems.so2.' + i + '.json');
+		DataSource.get('/_sampledata/ecatt_ems_rest_services.get_ems.so2.' + i + '.json', i, useReturnData);
+	};
+
+	function useReturnData(year, data) {
+		data_sum = data;
+		console.log(year, data_sum);
 	};
 
 	$('#container').highcharts({
