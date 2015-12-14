@@ -1,0 +1,19 @@
+@import 'components/LineGraph.scss';
+@import 'vendor/leaflet/leaflet.css';
+
+#line-graph-container {
+    width:20%;
+    float:left;
+}
+
+#map {
+    width:70%;
+}
+
+div[id^='map'] {
+    float:right;
+    height:300px;
+    width:100%;
+    background-color:#ccc;
+    border:1px solid #000;
+}
