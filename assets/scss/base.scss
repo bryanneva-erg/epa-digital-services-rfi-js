@@ -1,3 +1,15 @@
-h1 {
-	
+@import 'line-chart.scss';
+// @import 'vendor/nv.d3.scss';
+@import 'vendor/leaflet.scss';
+
+#line-graph-container {
+    width:20%;
+    float:left;
+}
+
+#map {
+    float:right;
+    height:300px;
+    width:70%;
+    background-color:#000;
 }

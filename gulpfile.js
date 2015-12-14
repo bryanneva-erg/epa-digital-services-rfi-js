@@ -1,60 +1,16 @@
-var gulp       = require('gulp');
-var sass       = require('gulp-sass');
-var source     = require('vinyl-source-stream');
-var buffer     = require('vinyl-buffer');
-var browserify = require('browserify');
-var babel      = require('babelify');
-var sourcemaps = require('gulp-sourcemaps');
-var watchify   = require('watchify');
-var jasmine    = require('gulp-jasmine');
+/*
+  gulpfile.js
+  ===========
+  Rather than manage one giant configuration file responsible
+  for creating multiple tasks, each task has been broken out into
+  its own file in gulp/tasks. Any files in that directory get
+  automatically required below.
+  To add a new task, simply add a new task file that directory.
+  gulp/tasks/default.js specifies the default set of tasks to run
+  when you run `gulp`.
+*/
 
-// Compile Our Sass
-gulp.task('sass', function() {
-    return gulp.src('assets/scss/base.scss')
-    	.pipe(sass())
-        .pipe(gulp.dest('public/assets/css'));
-});
+var requireDir = require('require-dir');
 
-gulp.task('sass:watch', function() {
-	return gulp.watch('assets/scss/*.scss', ['sass']);
-});
-
-function compile(watch) {
-	var bundler = browserify('./assets/js/app.js', { debug: true }).transform(babel)
-	if(watch) {
-		var bundler = watchify(bundler);
-	}
-
-	function rebundle() {
-		bundler.bundle()
-			.on('error', function(err) { console.error(err); this.emit('end'); })
-			.pipe(source('build.js'))
-			.pipe(buffer())
-			.pipe(sourcemaps.init({ loadMaps: true }))
-			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest('./public/assets/js/'));
-	}
-
-	if (watch) {
-		bundler.on('update', function() {
-			console.log('-> bundling...');
-			rebundle();
-		});
-	}
-
-	return rebundle();
-}
-
-function watch() {
-	return compile(true);
-};
-
-gulp.task('test', function() {
-	return gulp.src('spec/test.js')
-		.pipe(jasmine());
-});
-
-gulp.task('browserify', function() { return compile(false); });
-gulp.task('browserify:watch', function() { return watch(); });
-gulp.task('watch',['sass:watch','browserify:watch']);
-gulp.task('default', ['sass','browserify','test']);
+// Require all tasks in gulp/tasks, including subfolders
+requireDir('./gulp/tasks', { recurse: true });
