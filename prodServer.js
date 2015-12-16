@@ -14,7 +14,7 @@ var isProduction = process.env.NODE_ENV === 'production';
 var port = isProduction ? process.env.PORT : 3000;
 // var publicPath = path.resolve(__dirname, 'public');
 
-app.listen(port, 'localhost', function(err) {
+app.listen(port, function(err) {
   if (err) {
     console.log(err);
     return;
