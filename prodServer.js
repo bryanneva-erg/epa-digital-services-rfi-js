@@ -19,6 +19,6 @@ app.listen(port, 'localhost', function(err) {
     console.log(err);
     return;
   }
-
-  console.log('Listening at http://localhost:3000');
+  console.log(isProduction, port)
+  console.log('Listening at http://localhost:' + port);
 });
