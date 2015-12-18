@@ -12,9 +12,13 @@ export default class USMap extends Component {
   render() {
     const position = [this.props.lat, this.props.lng];
     
-    const monitoring_stations = this.props.monitoring_stations.map(function(item, i) {
+    const points = this.props.points.map(function(coords, i) {
         return(
-            <Circle center={item} radius="5000" color="red" key={i} itemNumber={i} />
+            <Circle center={coords} 
+                    radius={5000} 
+                    fillColor="red" 
+                    key={i} 
+                    itemNumber={i} />
         );
     });
 
@@ -27,17 +31,14 @@ export default class USMap extends Component {
           url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}'
           id={id}
           accessToken={accessToken}
-        />
-        
+        />        
 
-        <Marker position={position}>
+        <Marker position={this.props.center} fillColor="red">
           <Popup>
             <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
           </Popup>
         </Marker>
-        <LayerGroup>
-            {monitoring_stations}
-        </LayerGroup>
+        <LayerGroup>{points}</LayerGroup>
         
       </Map>
     );
