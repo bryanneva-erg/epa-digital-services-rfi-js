@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import d3 from 'd3';
 
 const margin = {top:20,right:20,bottom:20,left:50};
 const fullWidth = 450;
