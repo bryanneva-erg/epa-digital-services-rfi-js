@@ -4,13 +4,32 @@ export class TextInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            val: 'Foo'
+            val: ''
         };
+    }
+
+    _handleTextInput(e) {
+        e.preventDefault();
+
+        this.setState({val: e.target.value});
+    }
+
+    _handleSubmit(e) {
+        e.preventDefault();
+
+        console.log("Voila!");
     }
 
     render() {
         return (
-            <div>{this.props.label} <input type="text" name="" value={this.state.val} placeholder="" /></div>
+            <form className="TextInput" onSubmit={ this._handleSubmit.bind(this) }>                
+                {this.props.label}&nbsp;
+                <input type="text" 
+                       name="" 
+                       value={this.state.val} 
+                       placeholder="" 
+                       onChange={ this._handleTextInput.bind(this) } />
+            </form>
         );
     }
 }
