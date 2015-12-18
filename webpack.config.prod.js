@@ -6,6 +6,10 @@ module.exports = {
   entry: [
     './src/index'
   ],
+  // entry: {
+  //   javascript: "./src/index.js",
+  //   html: "./src/index.html",
+  // },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -49,6 +53,10 @@ module.exports = {
     { 
         test: /\.json$/, 
         loader: 'json-loader'
+    },
+    {
+      test: /\.html$/,
+      loader: "file?name=[name].[ext]",
     }]
   }
 };

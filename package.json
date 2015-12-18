@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A new Webpack boilerplate with hot reloading React components, and error handling on module and component level.",
   "scripts": {
+    "postinstall": "webpack --config ./webpack.config.prod.js --progress --colors",
     "clean": "rimraf dist",
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
@@ -42,6 +43,8 @@
     "eslint": "^1.10.3",
     "eslint-plugin-babel": "^3.0.0",
     "eslint-plugin-react": "^3.11.3",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^1.7.0",
     "node-sass": "^3.4.2",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",

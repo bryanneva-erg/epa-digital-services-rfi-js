@@ -7,12 +7,21 @@ var app = express();
 var compiler = webpack(config);
 var static_path = path.join(__dirname,'dist');
 
-app.use(express.static(static_path))
-    .get('/', function(req, res) {
-        res.sendFile(path.join(__dirname, 'index.html'), {
-            root: static_path
-        });
-    });
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}));
+
+// app.use(express.static(static_path))
+//     .get('/', function(req, res) {
+//         res.sendFile('index.html', {
+//             root: static_path
+//         });
+//     });
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 var isProduction = process.env.NODE_ENV === 'production';
 var port = isProduction ? process.env.PORT : 3000;
