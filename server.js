@@ -21,7 +21,7 @@ if (process.env.NODE_ENV == 'development') {
   })
 
   app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.prod.html'));
   });
 
   app.listen(3000, 'localhost', function(err) {
