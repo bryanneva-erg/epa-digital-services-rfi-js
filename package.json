@@ -1,7 +1,7 @@
 {
   "name": "epa-digital-services-rfi",
   "version": "1.0.0",
-  "description": "",
+  "description": "NOTE: Webpack related devDependencies can get moved back into dependencies after a build process has been added",
   "scripts": {
     "postinstall": "webpack --config ./webpack.config.prod.js --progress --colors",
     "clean": "rimraf dist",
@@ -29,7 +29,7 @@
     "react-transform"
   ],
   "author": "Eastern Research Group <bryan.neva@erg.com> (http://github.com/Eastern-Research-Group)",
-  "license": "",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Eastern-Research-Group/epa-digital-services-rfi-js/issues"
   },
@@ -52,22 +52,31 @@
     "babel-plugin-react-transform": "^2.0.0-beta1",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
+    "cors-anywhere": "^0.2.5",
     "css-loader": "^0.23.0",
     "d3": "^3.5.10",
     "express": "^4.13.3",
     "file-loader": "^0.8.5",
+    "flux": "^2.1.1",
+    "http-proxy": "^1.12.0",
     "jasmine": "^2.4.1",
+    "jquery": "^2.1.4",
     "json-loader": "^0.5.4",
+    "keymirror": "^0.1.1",
     "leaflet": "^0.7.7",
     "node-sass": "^3.4.2",
+    "object-assign": "^4.0.1",
     "react": "^0.14.3",
     "react-d3": "^0.4.0",
     "react-d3-components": "^0.6.0",
     "react-dom": "^0.14.3",
     "react-leaflet": "^0.9.0",
+    "reqwest": "^2.0.5",
     "rimraf": "^2.4.3",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
+    "superagent": "^1.6.1",
+    "superagent-jsonp": "0.0.6",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9"
   }

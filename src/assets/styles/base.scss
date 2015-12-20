@@ -7,13 +7,22 @@
 }
 
 #map {
-    width:70%;
+    width:40%;
+    // height:40%;
+    min-height:430px;
+    // min-height:530px;
 }
 
 div[id^='map'] {
-    float:right;
-    height:300px;
-    width:100%;
+    float:left;
+    height:400px;
+    width:99%;
+    padding-top:2.5px;
+    padding-left:2.5px;
     background-color:#ccc;
     border:1px solid #000;
+}
+
+.facilityList--editing{
+    display:none;
 }
