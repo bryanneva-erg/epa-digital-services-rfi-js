@@ -1,4 +1,5 @@
 import EchoServerActionCreators from '../actions/EchoServerActionCreators';
+import $ from 'jquery';
 
 class APIUtils {
     
@@ -9,6 +10,23 @@ class APIUtils {
         let url_data = {
             p_id: frsId
         }      
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            data: url_data,
+        })
+        .done(function() {
+            console.log("success");
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+        
 
 
         const facility = {
