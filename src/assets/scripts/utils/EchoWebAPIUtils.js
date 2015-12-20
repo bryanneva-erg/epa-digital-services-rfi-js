@@ -1,6 +1,7 @@
 import EchoServerActionCreators from '../actions/EchoServerActionCreators';
-import reqwest from 'reqwest';
-import $ from 'jquery';
+// import http from 'http';
+
+var app = express();
 
 class APIUtils {
     
@@ -8,31 +9,10 @@ class APIUtils {
         const data = frsId;
         // const url = 'http://jsonplaceholder.typicode.com';
         const url = 'http://ofmpub.epa.gov/echo/dfr_rest_services.get_dfr';
-        
-        $.ajax({
-            url: url,
-            type: 'GET',
-            data: {p_id: frsId},
-        })
-        .done(function() {
-            console.log("success");
-        })
-        .fail(function() {
-            console.log("error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
-        
-        // reqwest({
-        //     url: url,
-        //     type: 'jsonp',
-        //     jsonpCallback: 'foo',
-        //     success: function(resp) {
-        //         let json = JSON.parse(resp);
-        //         console.log(json);
-        //     }
-        // })
+        let url_data = {
+            p_id: frsId
+        }      
+
 
         const facility = {
                 name: Math.random().toString(36).substring(7),
