@@ -1,11 +1,11 @@
-var keyMirror = require('key-mirror');
+// import keyMirror from 'fbjs/lib/keyMirror'
 
-var keywords = {
-    NEW_FACILITY: null,
-    SAVE_FACILITY: null,
-    REMOVE_FACILITY: null
+const AppConstants = {
+    NEW_FACILITY:'NEW_FACILITY',
+    SAVE_FACILITY:'SAVE_FACILITY',
+    REMOVE_FACILITY:'REMOVE_FACILITY'
 }
 
-const AppConstants = keyMirror(keywords);
+// const AppConstants = keywords;
 
 export default AppConstants;

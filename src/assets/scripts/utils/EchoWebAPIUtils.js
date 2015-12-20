@@ -1,7 +1,4 @@
 import EchoServerActionCreators from '../actions/EchoServerActionCreators';
-// import http from 'http';
-
-var app = express();
 
 class APIUtils {
     
