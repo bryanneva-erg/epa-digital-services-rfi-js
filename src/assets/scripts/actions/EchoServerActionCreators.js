@@ -5,11 +5,13 @@ import EchoWebAPIUtils from '../utils/EchoWebAPIUtils';
 class ActionCreators {
 
     findFacilityByFrs(frs){
-        AppDispatcher.dispatch({
-            type: AppConstants.NEW_FACILITY,
-        });
-
         EchoWebAPIUtils.findFacilityByFRS(frs);
+    }
+
+    newFacility(){
+        AppDispatcher.dispatch({
+            type: AppConstants.NEW_FACILITY            
+        });
     }
 
     saveFacility(facility){
@@ -19,26 +21,12 @@ class ActionCreators {
         });
     }
 
-    newFoo(data) {
+    removeFacility(data) {
         AppDispatcher.dispatch({
-            type: AppConstants.NEW_FOO,
-            foo: data
-        });    
-    }
-
-    saveFoo(data) {
-        AppDispatcher.dispatch({
-            type: AppConstants.SAVE_FOO,
-            foo: data
-        });    
-    }    
-
-    removeFoo(data) {
-        AppDispatcher.dispatch({
-            type: AppConstants.REMOVE_FOO,
+            type: AppConstants.REMOVE_FACILITY,
             index: data
         });    
-    }    
+    }        
 }
 
 const EchoServerActionCreators = new ActionCreators();

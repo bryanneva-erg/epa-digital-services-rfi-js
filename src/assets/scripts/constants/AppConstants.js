@@ -1,4 +1,4 @@
-// import keyMirror from 'fbjs/lib/keyMirror'
+// import keyMirror from 'keyMirror'
 
 const AppConstants = {
     NEW_FACILITY:'NEW_FACILITY',

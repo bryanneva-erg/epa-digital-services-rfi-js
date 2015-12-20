@@ -1,42 +1,30 @@
 import EchoServerActionCreators from '../actions/EchoServerActionCreators';
-import $ from 'jquery';
+import request from 'superagent';
+import { APIUrls } from './APIUrls';
 
 class APIUtils {
     
-    findFacilityByFRS(frsId){
-        const data = frsId;
-        // const url = 'http://jsonplaceholder.typicode.com';
-        const url = 'https://ofmpub.epa.gov/echo/dfr_rest_services.get_dfr';
-        let url_data = {
-            p_id: frsId
-        }      
+    findFacilityByFRS(frsId){        
 
-        $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'json',
-            data: url_data,
-        })
-        .done(function() {
-            console.log("success");
-        })
-        .fail(function() {
-            console.log("error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
+        EchoServerActionCreators.newFacility();
         
+        request.get(APIUrls.CORS_PREFIX.url + APIUrls.ECHO_PREFIX.url + APIUrls.DFR.url)
+                .query({[APIUrls.DFR.id]: frsId})
+                .end(function(err, resp) {
+                    let json = JSON.parse(resp.text);
+                    callback(json.Results.MapOutput.MapData[0]);                    
+                });
 
+        function callback(data){
+            const facility = {
+                    name: data.NAME,
+                    frs: data.PUV,
+                    lat: data.LAT,
+                    lng: data.LON
+                }
 
-        const facility = {
-                name: Math.random().toString(36).substring(7),
-                frs: frsId,
-                lat: Math.random().toString().substring(3,5),
-                lng: Math.random().toString().substring(3,5)
-            }
-        
-        EchoServerActionCreators.saveFacility(facility);
+            EchoServerActionCreators.saveFacility(facility);
+        }
     }
 
     newFoo(data){
