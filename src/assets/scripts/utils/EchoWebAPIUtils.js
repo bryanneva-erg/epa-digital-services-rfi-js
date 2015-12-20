@@ -6,7 +6,7 @@ class APIUtils {
     findFacilityByFRS(frsId){
         const data = frsId;
         // const url = 'http://jsonplaceholder.typicode.com';
-        const url = 'http://ofmpub.epa.gov/echo/dfr_rest_services.get_dfr';
+        const url = 'https://ofmpub.epa.gov/echo/dfr_rest_services.get_dfr';
         let url_data = {
             p_id: frsId
         }      
