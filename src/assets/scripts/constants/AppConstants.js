@@ -1,4 +1,4 @@
-import keyMirror from 'keyMirror';
+import keyMirror from 'key-mirror';
 
 var keywords = {
     NEW_FACILITY: null,
