@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TextInput } from '../input/TextInput';
 import LatLng from '../leaflet/LatLng';
 import EchoServerActionCreators from '../../actions/EchoServerActionCreators';
+import FacilityActionCreators from '../../actions/FacilityActionCreators';
 import FacilityStore from '../../stores/FacilityStore';
 
 function getStateFromStores(){
@@ -60,7 +61,7 @@ export class FacilityContainer extends Component {
     }
 
     _handleRemove(index) {
-        EchoServerActionCreators.removeFacility(index);
+        FacilityActionCreators.removeFacility(index);
     }
 
     _handleNewFacility(data) {
@@ -68,8 +69,6 @@ export class FacilityContainer extends Component {
     }
 
     render() {
-                
-        
         
         const facility_list = this.state.facilities.list.map(function(item, i) {
             return(

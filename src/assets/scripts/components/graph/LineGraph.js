@@ -31,10 +31,10 @@ export class LineGraph extends Component {
 
         svg.select(".overpayline")
                 .duration(ANIM_SPEED)
-                .attr("d",line(data));
-        svg.select(".baseline")
-                .duration(ANIM_SPEED)
-                .attr("d",baseline(data))
+                .attr("d",d3.svg.line(data));
+        // svg.select(".baseline")
+        //         .duration(ANIM_SPEED)
+        //         .attr("d",baseline(data))
 
         svg.select(".x.axis")
                 .duration(ANIM_SPEED)
