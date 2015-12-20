@@ -13,7 +13,7 @@ export default class LatLng extends Component {
     }
 
     componentWillReceiveProps() {
-        console.log(this.props);
+        // console.log(this.props);
     }
 
     _handleLatChange(e) {
@@ -33,8 +33,6 @@ export default class LatLng extends Component {
 
         this.setState({lat: 41.096, lng:-100.327});
     }
-
-    
 
     render() {
         

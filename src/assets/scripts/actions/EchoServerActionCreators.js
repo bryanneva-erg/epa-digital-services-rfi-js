@@ -1,9 +1,25 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import AppConstants from '../constants/AppConstants';
+import EchoWebAPIUtils from '../utils/EchoWebAPIUtils';
 
 class ActionCreators {
+
+    findFacilityByFrs(frs){
+        AppDispatcher.dispatch({
+            type: AppConstants.NEW_FACILITY,
+        });
+
+        EchoWebAPIUtils.findFacilityByFRS(frs);
+    }
+
+    saveFacility(facility){
+        AppDispatcher.dispatch({
+            type: AppConstants.SAVE_FACILITY,
+            facility: facility
+        });
+    }
+
     newFoo(data) {
-        console.log(data)
         AppDispatcher.dispatch({
             type: AppConstants.NEW_FOO,
             foo: data
@@ -11,7 +27,6 @@ class ActionCreators {
     }
 
     saveFoo(data) {
-        console.log(data);
         AppDispatcher.dispatch({
             type: AppConstants.SAVE_FOO,
             foo: data
@@ -21,7 +36,7 @@ class ActionCreators {
     removeFoo(data) {
         AppDispatcher.dispatch({
             type: AppConstants.REMOVE_FOO,
-            foo: data
+            index: data
         });    
     }    
 }

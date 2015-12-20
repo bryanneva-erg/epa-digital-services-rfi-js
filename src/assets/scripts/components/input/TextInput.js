@@ -10,14 +10,13 @@ export class TextInput extends Component {
 
     _handleTextInput(e) {
         e.preventDefault();
-
         this.setState({val: e.target.value});
     }
 
     _handleSubmit(e) {
         e.preventDefault();
-
-        console.log("Voila!");
+        this.props.onSubmit(this.state.val);
+        this.setState({val: ''});
     }
 
     render() {

@@ -1,9 +1,9 @@
 import keyMirror from 'keyMirror';
 
 var keywords = {
-    NEW_FOO: null,
-    SAVE_FOO: null,
-    REMOVE_FOO: null
+    NEW_FACILITY: null,
+    SAVE_FACILITY: null,
+    REMOVE_FACILITY: null
 }
 
 const AppConstants = keyMirror(keywords);
