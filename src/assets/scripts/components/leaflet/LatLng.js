@@ -7,9 +7,13 @@ export default class LatLng extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            lat: 39.7,
-            lng: -105.1
+            lat: this.props.lat,
+            lng: this.props.lng
         };
+    }
+
+    componentWillReceiveProps() {
+        // console.log(this.props);
     }
 
     _handleLatChange(e) {
@@ -34,12 +38,9 @@ export default class LatLng extends Component {
         
         return (
             <div>
-                <form className="latLngForm" onSubmit={this._handleSubmit.bind(this)}>
-                    Lat: <input type="text" name="lat" value={this.state.lat} onChange={this._handleLatChange.bind(this)} placeholder="Lat" /> &ndash; 
-                    Lng: <input type="text" name="lng" value={this.state.lng} onChange={this._handleLngChange.bind(this)} placeholder="Lng" />&nbsp;
-                    <input type="submit" value="Post" />
-                </form>
-                <USMap lat={this.state.lat} lng={this.state.lng} center={[this.state.lat,this.state.lng]} points={MONITORING_STATIONS} />
+                Lat: {this.props.lat} &ndash; Lng: {this.props.lng}
+                
+                <USMap lat={this.props.lat} lng={this.props.lng} center={[this.props.lat,this.props.lng]} points={MONITORING_STATIONS} />
             </div>
         );
     }
