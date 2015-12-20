@@ -1,4 +1,4 @@
-import keyMirror from 'key-mirror';
+var keyMirror = require('key-mirror');
 
 var keywords = {
     NEW_FACILITY: null,
