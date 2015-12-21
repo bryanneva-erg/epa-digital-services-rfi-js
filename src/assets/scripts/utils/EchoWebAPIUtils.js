@@ -8,17 +8,12 @@ import math from 'mathjs';
 class APIUtils {
     
     findFacilityByFRS(frsId){        
-
         FacilityActionCreators.newFacility();
-        // console.log(APIUrls.CORS_PREFIX.url + APIUrls.ECHO_PREFIX.url + APIUrls.DFR.url + "?p_id=" + frsId);
         request.get(APIUrls.CORS_PREFIX.url + APIUrls.ECHO_PREFIX.url + APIUrls.DFR.url)
                 .query({[APIUrls.DFR.id]: frsId})
                 .end(function(err, resp) {
-                    let json = JSON.parse(resp.text);                    
-
-                    callback(json.Results.MapOutput.MapData);
-                    emissions_callback(json.Results.Permits[0])
-                    console.log(json.Results.Permits[0]);
+                    let json = JSON.parse(resp.text);
+                    callback(json.Results.MapOutput.MapData, json.Results.Permits);
                 });
 
         function callback(facility_data, permits){
@@ -26,14 +21,23 @@ class APIUtils {
                 return chr.PUV == frsId;
             });
             
+            let relevant_permit = _.find(permits, function(chr) {
+                return chr.SourceID == frsId;
+            });
+
+            console.log(relevant_permit.FacilityState, relevant_permit.FacilityCity, relevant_permit.FacilityZip);            
+
             const facility = {
                     name: selected_facility.NAME,
                     frs: selected_facility.PUV,
                     lat: selected_facility.LAT,
                     lng: selected_facility.LON,
+                    city: relevant_permit.FacilityCity,
+                    state: relevant_permit.FacilityState,
+                    zip: relevant_permit.FacilityZip
                 }
 
-            FacilityActionCreators.saveFacility(facility, permits);
+            FacilityActionCreators.saveFacility(facility);
         }
     }
 
@@ -88,7 +92,7 @@ class APIUtils {
         }
     }
 
-    getSO2EmissionsByYear(state, year, callback){
+    getSO2EmissionsByYear(state, year){
         console.log('Fetching data');
         AmbientEmissionActionCreators.newAmbientEmission()
         const pollutant = 'Sulfur dioxide';

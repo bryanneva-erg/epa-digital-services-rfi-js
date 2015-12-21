@@ -3,6 +3,7 @@ import { TextInput } from '../input/TextInput';
 import EchoServerActionCreators from '../../actions/EchoServerActionCreators';
 import AmbientEmissionActionCreators from '../../actions/AmbientEmissionActionCreators';
 import AmbientEmissionStore from '../../stores/AmbientEmissionStore';
+import FacilityStore from '../../stores/FacilityStore';
 import { LineGraph } from './LineGraph';
 import { SAMPLE_DATA } from '../../../data/SAMPLE_DATA';
 import _ from 'lodash';
@@ -10,7 +11,8 @@ import _ from 'lodash';
 function getStateFromStores(){
     
     return {
-        ambientemissions: AmbientEmissionStore.getList()
+        ambientemissions: AmbientEmissionStore.getList(),
+        selectedfacility: FacilityStore.getSelectedFacility()
     };
 }
 
@@ -19,16 +21,19 @@ export class GraphContainer extends Component {
         super(props);
         this._onChange = this._onChange.bind(this);
         this.state = {
-            ambientemissions: AmbientEmissionStore.getList()
+            ambientemissions: AmbientEmissionStore.getList(),
+            selectedfacility: FacilityStore.getSelectedFacility()
         };
     }
 
     componentDidMount(){
         AmbientEmissionStore.addChangeListener(this._onChange);
+        FacilityStore.addChangeListener(this._onChange);
     }
 
     componentWillUnmount(){
         AmbientEmissionStore.removeChangeListener(this._onChange);
+        FacilityStore.removeChangeListener(this._onChange);
     }
 
     _onChange(e){
@@ -46,7 +51,7 @@ export class GraphContainer extends Component {
     _handleGetSo2Data(){
         
         const params = {
-            state: 'AK'
+            state: this.state.selectedfacility[0].state
         }
 
         EchoServerActionCreators.getSO2EmissionsRecursive(2005,2014,params);

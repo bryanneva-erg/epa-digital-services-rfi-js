@@ -10,11 +10,17 @@ class ActionCreators {
         });
     }
 
-    saveFacility(facility, permits){
+    saveFacility(facility){
         AppDispatcher.dispatch({
             type: AppConstants.SAVE_FACILITY,
-            facility: facility,
-            permits: permits
+            facility: facility
+        });
+    }
+
+    selectFacility(facility){
+        AppDispatcher.dispatch({
+            type: AppConstants.SELECT_FACILITY,
+            facility: facility
         });
     }
 

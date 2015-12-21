@@ -1,11 +1,13 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import AppConstants from '../constants/AppConstants';
 import { EventEmitter } from 'events';
+import _ from 'lodash';
 
 const CHANGE_EVENT = 'change';
 
 let _store = {
     list: [],
+    selectedFacility: {},
     editing: false,
 };
 
@@ -21,6 +23,10 @@ class FacilityStoreClass extends EventEmitter {
 
     getList() {
         return _store;
+    }
+
+    getSelectedFacility() {
+        return _store.selectedFacility;
     }
 }
 
@@ -38,6 +44,10 @@ AppDispatcher.register((payload) => {
         case AppConstants.SAVE_FACILITY:
             _store.list.push(action.facility);
             _store.editing = false;
+            FacilityStore.emit(CHANGE_EVENT);
+            break;
+        case AppConstants.SELECT_FACILITY:
+            _store.selectedFacility = action.facility
             FacilityStore.emit(CHANGE_EVENT);
             break;
         case AppConstants.REMOVE_FACILITY:
