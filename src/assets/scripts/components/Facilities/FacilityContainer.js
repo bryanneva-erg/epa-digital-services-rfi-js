@@ -80,7 +80,7 @@ export class FacilityContainer extends Component {
         return (
             <div>
                 <div className="facilityList">
-                    Facility List (Try: 110000753319, 110017805730, 110004060417):
+                    Facility List (Try: 110000753319, 110017805730, 110004060417, 110010681707):
                     &nbsp;<span>{isEditing}</span>
                     <ul>{facility_list}</ul>
                 </div>
