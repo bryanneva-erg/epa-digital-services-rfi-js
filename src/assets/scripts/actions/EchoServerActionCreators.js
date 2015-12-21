@@ -1,32 +1,21 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import AppConstants from '../constants/AppConstants';
 import EchoWebAPIUtils from '../utils/EchoWebAPIUtils';
+import _ from 'lodash';
 
 class ActionCreators {
 
     findFacilityByFrs(frs){
         EchoWebAPIUtils.findFacilityByFRS(frs);
     }
-
-    newFacility(){
-        AppDispatcher.dispatch({
-            type: AppConstants.NEW_FACILITY            
-        });
+    
+    getSO2EmissionsRecursive(start,end,params){
+        EchoWebAPIUtils.getSO2EmissionsRecursive(start,end,params);
     }
 
-    saveFacility(facility){
-        AppDispatcher.dispatch({
-            type: AppConstants.SAVE_FACILITY,
-            facility: facility
-        });
+    getSO2EmissionsByYear(state,year){
+        EchoWebAPIUtils.getSO2EmissionsByYear(state,year);
     }
-
-    removeFacility(data) {
-        AppDispatcher.dispatch({
-            type: AppConstants.REMOVE_FACILITY,
-            index: data
-        });    
-    }        
 }
 
 const EchoServerActionCreators = new ActionCreators();

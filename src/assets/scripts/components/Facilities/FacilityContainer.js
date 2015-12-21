@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TextInput } from '../input/TextInput';
 import LatLng from '../leaflet/LatLng';
 import EchoServerActionCreators from '../../actions/EchoServerActionCreators';
+import FacilityActionCreators from '../../actions/FacilityActionCreators';
 import FacilityStore from '../../stores/FacilityStore';
 
 function getStateFromStores(){
@@ -18,12 +19,6 @@ export class FacilityContainer extends Component {
         this.state = {
             lat: 39.7,
             lng: -105.1,
-            origin: {
-                name: "Original Location (Colorado)",
-                frs: 0,
-                lat: "39.7",
-                lng: "-105.1"
-            },
             facilities: FacilityStore.getList()
         };
     }
@@ -40,12 +35,12 @@ export class FacilityContainer extends Component {
         this.setState(getStateFromStores());
     }
 
-    _handleResetMap() {
-        this.setState({
-            lat: this.state.origin.lat,
-            lng: this.state.origin.lng
-        })
-    }
+    // _handleResetMap() {
+    //     this.setState({
+    //         lat: this.state.origin.lat,
+    //         lng: this.state.origin.lng
+    //     });
+    // }
 
     _handleOnClick(index) {
         
@@ -57,10 +52,12 @@ export class FacilityContainer extends Component {
             lat: selected_facility[0].lat,
             lng: selected_facility[0].lng
         });
+
+        FacilityActionCreators.selectFacility(selected_facility);
     }
 
     _handleRemove(index) {
-        EchoServerActionCreators.removeFacility(index);
+        FacilityActionCreators.removeFacility(index);
     }
 
     _handleNewFacility(data) {
@@ -68,8 +65,6 @@ export class FacilityContainer extends Component {
     }
 
     render() {
-                
-        
         
         const facility_list = this.state.facilities.list.map(function(item, i) {
             return(
@@ -87,12 +82,7 @@ export class FacilityContainer extends Component {
                 <div className="facilityList">
                     Facility List (Try: 110000753319, 110017805730, 110004060417):
                     &nbsp;<span>{isEditing}</span>
-                    <ul>
-                        <li>
-                            <a href="#" onClick={this._handleResetMap.bind(this)}>{this.state.origin.name}</a>
-                        </li>
-                        {facility_list}
-                    </ul>
+                    <ul>{facility_list}</ul>
                 </div>
                 
                 <TextInput label="Facility Name" onSubmit={ this._handleNewFacility.bind(this) } />
