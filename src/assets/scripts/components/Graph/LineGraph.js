@@ -19,7 +19,6 @@ const ANIM_SPEED = 250;
 export class LineGraph extends Component {
 
     shouldComponentUpdate({data}) {
-
         xScale.domain(d3.extent(data.reduce(function(a,b) { 
                         return a.concat(b.year)},[])));
         yScale.domain(d3.extent(data.reduce(function(a,b) { 
@@ -43,6 +42,22 @@ export class LineGraph extends Component {
         svg.select(".y.axis")
                 .duration(ANIM_SPEED)
                 .call(yAxis)
+
+        var lineGen = d3.svg.line()
+            .x(function(d) {
+                return xScale(d.year);
+            })
+            .y(function(d) {
+                return yScale(d.cumulative_so2);
+            })
+            .interpolate("basis");
+        
+        svg.select('.line')
+            .duration(ANIM_SPEED)
+            .attr('d',lineGen(data))
+            .attr('stroke', 'green')
+            .attr('stroke-width', 2)
+            .attr('fill', 'none');
 
         return false;
     }
@@ -80,8 +95,8 @@ export class LineGraph extends Component {
             })
             .interpolate("basis");
         
-        
         svg.append('svg:path')
+            .attr('class','line')
             .attr('d', lineGen(data))
             .attr('stroke', 'green')
             .attr('stroke-width', 2)
@@ -91,9 +106,7 @@ export class LineGraph extends Component {
 
     render() {
         return (
-          <svg ref="chart">
-            Hello, world! I am a CommentBox.
-          </svg>
+          <svg ref="chart"></svg>
         );    
     }
 }

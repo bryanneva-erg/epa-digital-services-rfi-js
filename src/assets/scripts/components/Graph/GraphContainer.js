@@ -6,6 +6,7 @@ import AmbientEmissionStore from '../../stores/AmbientEmissionStore';
 import FacilityStore from '../../stores/FacilityStore';
 import { LineGraph } from './LineGraph';
 import { SAMPLE_DATA } from '../../../data/SAMPLE_DATA';
+import { AMBIENT_SO2_CACHE } from '../../../data/AMBIENT_SO2_CACHE';
 import _ from 'lodash';
 
 function getStateFromStores(){
@@ -67,13 +68,21 @@ export class GraphContainer extends Component {
 
         const isEditing = this.state.ambientemissions.editing ? '(Adding...)' : '';
 
+        const parsed_data = [];
+        _.forEach(AMBIENT_SO2_CACHE[this.state.selectedfacility[0].state],function(n,index) {
+            parsed_data.push({
+                year: index,
+                cumulative_so2: n.emissions
+            });
+        });
+
         return (
             <div>
-                <a href="#" onClick={this._handleGetSo2Data.bind(this)}>Get SO2 Data</a>
+                <a href="#" onClick={this._handleGetSo2Data.bind(this)}>Get SO2 Data</a>&nbsp;<span>{isEditing}</span>
                 <ul>
                     {ambientemissions_list}
                 </ul>
-                <div id="line-graph-container"><LineGraph data={ SAMPLE_DATA } /></div>
+                <div id="line-graph-container"><LineGraph data={ parsed_data } /></div>
             </div>
         );
     }

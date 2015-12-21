@@ -17,7 +17,7 @@ const origin = {
 
 FacilityActionCreators.newFacility();
 FacilityActionCreators.saveFacility(origin);
-FacilityActionCreators.selectFacility(origin);
+FacilityActionCreators.selectFacility([origin]);
 
 export class App extends Component {
   render() {
