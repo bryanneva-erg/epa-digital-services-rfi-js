@@ -57,22 +57,25 @@
     "express": "^4.13.3",
     "file-loader": "^0.8.5",
     "flux": "^2.1.1",
+    "foundation-sites": "^6.1.0",
     "jasmine": "^2.4.1",
     "jquery": "^2.1.4",
     "json-loader": "^0.5.4",
     "leaflet": "^0.7.7",
     "lodash": "^3.10.1",
+    "material-ui": "^0.13.4",
     "mathjs": "^2.5.0",
     "node-sass": "^3.4.2",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-leaflet": "^0.9.0",
+    "react-tap-event-plugin": "^0.2.1",
     "rimraf": "^2.4.3",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "superagent": "^1.6.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.9",
-    "uswds": "git+https://git@github.com/18F/web-design-standards.git#v0.9.x"
+    "uswds": "git+https://git@github.com/18F/web-design-standards.git#v0.9.x",
+    "webpack": "^1.12.9"
   }
 }

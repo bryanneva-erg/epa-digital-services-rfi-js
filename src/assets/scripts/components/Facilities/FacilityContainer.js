@@ -1,33 +1,39 @@
 import React, { Component } from 'react';
 import { TextInput } from '../input/TextInput';
-import LatLng from '../leaflet/LatLng';
 import EchoServerActionCreators from '../../actions/EchoServerActionCreators';
-import FacilityActionCreators from '../../actions/FacilityActionCreators';
+import AmbientEmissionActionCreators from '../../actions/AmbientEmissionActionCreators';
+import AmbientEmissionStore from '../../stores/AmbientEmissionStore';
 import FacilityStore from '../../stores/FacilityStore';
+import { LineGraph } from '../Graph/LineGraph';
+import { SAMPLE_DATA } from '../../../data/SAMPLE_DATA';
+import { AMBIENT_SO2_CACHE } from '../../../data/AMBIENT_SO2_CACHE';
+import _ from 'lodash';
 
 function getStateFromStores(){
     
     return {
-        facilities: FacilityStore.getList()
+        ambientemissions: AmbientEmissionStore.getList(),
+        selectedfacility: FacilityStore.getSelectedFacility()
     };
 }
 
-export class FacilityContainer extends Component {
+export class FacilityInfo extends Component {
     constructor(props) {
         super(props);
         this._onChange = this._onChange.bind(this);
         this.state = {
-            lat: 39.7,
-            lng: -105.1,
-            facilities: FacilityStore.getList()
+            ambientemissions: AmbientEmissionStore.getList(),
+            selectedfacility: FacilityStore.getSelectedFacility()
         };
     }
 
     componentDidMount(){
+        AmbientEmissionStore.addChangeListener(this._onChange);
         FacilityStore.addChangeListener(this._onChange);
     }
 
     componentWillUnmount(){
+        AmbientEmissionStore.removeChangeListener(this._onChange);
         FacilityStore.removeChangeListener(this._onChange);
     }
 
@@ -35,59 +41,49 @@ export class FacilityContainer extends Component {
         this.setState(getStateFromStores());
     }
 
-    // _handleResetMap() {
-    //     this.setState({
-    //         lat: this.state.origin.lat,
-    //         lng: this.state.origin.lng
-    //     });
-    // }
-
     _handleOnClick(index) {
         
-        var selected_facility = this.state.facilities.list.filter(function(item, i) {
-            return index === i;
-        });
-
-        this.setState({
-            lat: selected_facility[0].lat,
-            lng: selected_facility[0].lng
-        });
-
-        FacilityActionCreators.selectFacility(selected_facility);
     }
 
     _handleRemove(index) {
-        FacilityActionCreators.removeFacility(index);
+
     }
 
-    _handleNewFacility(data) {
-        EchoServerActionCreators.findFacilityByFrs(data);
+    _handleGetSo2Data(){
+        
+        const params = {
+            state: this.state.selectedfacility[0].state
+        }
+
+        EchoServerActionCreators.getSO2EmissionsRecursive(2005,2014,params);
+
     }
 
     render() {
-        
-        const facility_list = this.state.facilities.list.map(function(item, i) {
-            return(
-                    <li key={i}>
-                        <a href="#" onClick={ this._handleOnClick.bind(this, i) }>{item.name} (FRS: {item.frs})</a>&nbsp;
-                        <a href='#' onClick={ this._handleRemove.bind(this, i) }>(X)</a>
-                    </li>
+        const ambientemissions_list = this.state.ambientemissions.list.map(function(item, i) {
+            return (
+                    <li key={i}>{item.state} {item.year}: {item.emissions} {item.unit} of {item.pollutant}</li>
                 );
         }.bind(this));
 
-        const isEditing = this.state.facilities.editing ? '(Adding...)' : '';
+        const isEditing = this.state.ambientemissions.editing ? '(Adding...)' : '';
+
+        const parsed_data = [];
+        _.forEach(AMBIENT_SO2_CACHE[this.state.selectedfacility[0].state],function(n,index) {
+            parsed_data.push({
+                year: index,
+                cumulative_so2: n.emissions
+            });
+        });
 
         return (
             <div>
-                <div className="facilityList">
-                    Facility List (Try: 110000753319, 110017805730, 110004060417, 110010681707):
-                    &nbsp;<span>{isEditing}</span>
-                    <ul>{facility_list}</ul>
-                </div>
+                <span className="facilityinfo__header">{ this.state.selectedfacility[0].name }</span><br />
+                <span className="facilityinfo__desc"><label>Location:</label> {this.state.selectedfacility[0].city}, {this.state.selectedfacility[0].state}</span><br />
+                <span className="facilityinfo__desc"><label>ID:</label> {this.state.selectedfacility[0].frs}</span>
                 
-                <TextInput label="Facility Name" onSubmit={ this._handleNewFacility.bind(this) } />
-
-                <div id="map"><LatLng lat={this.state.lat} lng={this.state.lng} /></div>
+                
+                <div className="facilityinfo__graph"><LineGraph data={ parsed_data } /></div>
             </div>
         );
     }
