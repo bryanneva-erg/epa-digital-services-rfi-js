@@ -1,0 +1,65 @@
+@import '../../vendor/18f/_scss/lib/bourbon/bourbon';
+@import '../../vendor/18f/_scss/lib/neat/neat';
+@import '../variables';
+
+#data-map__container {
+    
+    @include outer-container(100%);
+
+    .data-map__spacer--top {
+        height:48px;
+        background-color: $primary-alt-dark;
+    }
+
+    #data-map__map {
+        @include span-columns(6);
+        margin-right:0;
+    }
+
+    #data-map__facility-info {
+        @include span-columns(3);
+        margin-right:0;
+        max-height:$map-height;
+    }
+
+    #data-map__monitoring-stations {
+
+        .data-map__monitoring-stations--body {
+
+            @include span-columns(3);
+            
+            background-color:$primary-alt-lightest;
+            border:1em solid #ffffff;
+            height: $map-height;
+
+            h2 {
+                padding-left: 1.5em;
+            }
+
+            .monitoring-stations__list {
+
+                padding-top:1em;
+                padding-right:3em;
+                
+                .monitoring-stations__list--top {
+                    border-top:1px solid $primary-alt-darkest;        
+                }
+
+                li {
+                    padding-top:1em;
+                    padding-bottom:1em;
+                    list-style-type:none;
+                    border-bottom:1px solid $primary-alt-darkest;
+
+                    
+                }
+
+
+                
+                
+            }
+
+            
+        }
+    }
+}

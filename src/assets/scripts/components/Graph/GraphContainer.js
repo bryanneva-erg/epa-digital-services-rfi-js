@@ -77,7 +77,8 @@ export class GraphContainer extends Component {
         });
 
         return (
-            <div>
+            <div className="usa-width-one-fourth">
+                <h4 className="usa-heading-alt">{ this.state.selectedfacility[0].name }</h4>
                 <a href="#" onClick={this._handleGetSo2Data.bind(this)}>Get SO2 Data</a>&nbsp;<span>{isEditing}</span>
                 <ul>
                     {ambientemissions_list}

@@ -1,0 +1,33 @@
+@import '../../vendor/18f/_scss/lib/bourbon/bourbon';
+@import '../../vendor/18f/_scss/lib/neat/neat';
+@import '../variables';
+
+header {
+ 
+    background-color: $primary-alt-dark;
+ 
+    #header__container {
+ 
+        @include outer-container(100%);
+        
+        #header__button-container {
+            @include span-columns(12);
+            padding-top:2em;
+            padding-left:1em;
+
+            .header__button {
+                margin-left: 1em;
+                background-color: $primary-alt-dark;
+                // border: 1px solid $primary-alt-light
+            }
+        }
+
+        // #header__tabs {
+        //     @include span-columns(3);
+        // }
+
+        // #header__spacer {
+        //     @include span-columns(3);
+        // }
+    }    
+}

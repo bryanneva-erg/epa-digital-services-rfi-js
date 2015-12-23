@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import d3 from 'd3';
 
-const margin = {top:20,right:20,bottom:20,left:50};
+const margin = {top:20,right:40,bottom:20,left:40};
 const fullWidth = 450;
-const fullHeight = 350;
+const fullHeight = 200;
 const width = fullWidth - margin.left - margin.right;
 const height = fullHeight - margin.top - margin.bottom;
 const xScale = d3.scale.linear().range([margin.left, width - margin.right]),

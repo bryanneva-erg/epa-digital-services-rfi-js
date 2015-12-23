@@ -1,0 +1,54 @@
+@import '../../vendor/18f/_scss/lib/bourbon/bourbon';
+@import '../../vendor/18f/_scss/lib/neat/neat';
+@import '../variables';
+
+.facilityinfo__desc-container {
+    
+    padding-left:2em;
+    padding-top:1em;
+    
+    .facilityinfo__header {
+        font-weight:700;
+        font-size:30px;
+        line-height: 1.3em;
+        color: $body-text;
+    }
+
+    .facilityinfo__desc {
+        font-weight: 400;
+        font-size: 17px;
+        color: $body-text;
+        line-height:2em;
+
+        label {
+            font-weight:bold;
+        }
+    }    
+}
+
+
+.facilityinfo__graph {
+    width:100%;
+    padding-left:1em;
+}
+
+.facilityinfo__resources {
+
+    padding-left:2em;
+
+    .facilityinfo__resources-header{
+        width:90%;
+        border-bottom:1px solid $body-text;
+        padding-bottom:0;
+        margin-bottom:0;
+    }
+
+    ul {
+        padding-top:0;
+        padding-left:1em;
+        margin-top:0;
+        li {
+            line-height: 1.2em;
+        }
+    }
+}

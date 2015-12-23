@@ -1,27 +1,43 @@
 @import 'components/LineGraph.scss';
+@import 'components/FacilityContainer.scss';
 @import 'vendor/leaflet/leaflet.css';
-@import '../vendor/18f/_scss/all.scss';
+// @import '../vendor/18f/_scss/all.scss';
+@import '../vendor/18f/_scss/lib/bourbon/bourbon';
+@import '../vendor/18f/_scss/lib/neat/neat';
+@import '../vendor/18f/_scss/lib/normalize';
+@import './variables';
 
-#line-graph-container {
-    width:20%;
-    float:left;
+
+body {
+    font-family: 'Roboto', sans-serif;
 }
 
-#map {
-    width:40%;
-    // height:40%;
-    min-height:430px;
-    // min-height:530px;
+#ambient-emissions__container {
+
+    background-color: $primary-alt-darkest;
+
+    @include outer-container(100%);
+
+    #ambient-emissions__graph-container {
+        @include span-columns(12)
+
+        .ambient-emissions__graph-bounding-box {
+            width:50em;
+        }
+    }
+}
+
+footer {
+    background-color: $primary-alt-darkest;
+
+    @include outer-container(100%);
+    p {
+        @include span-columns(12);
+    }
 }
 
 div[id^='map'] {
-    float:left;
-    height:400px;
-    width:99%;
-    padding-top:2.5px;
-    padding-left:2.5px;
-    background-color:#ccc;
-    border:1px solid #000;
+    min-height:$map-height;
 }
 
 .facilityList--editing{

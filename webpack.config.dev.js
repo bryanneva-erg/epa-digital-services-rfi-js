@@ -17,30 +17,11 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'src')
-    },
-    // SASS
-    {
-        test: /\.scss$/,
-        loader: 'style-loader!css-loader!sass-loader'
-    },
-    // CSS
-    {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
-    },
-    // Images
-    {
-        test: /\.(png|jpg)$/, 
-        loader: 'url-loader?limit=8192'
-    },
-    // JSON
-    { 
-        test: /\.json$/, 
-        loader: 'json-loader'
-    }]
+    loaders: [
+    { test: /\.js$/, loaders: ['babel'], include: path.join(__dirname, 'src')},    
+    { test: /\.scss$/, exclude: /node_modules/, loader: 'style-loader!css-loader!sass-loader'},
+    { test: /\.css$/, loader: 'style-loader!css-loader'},
+    { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
+    { test: /\.json$/, loader: 'json-loader'}]
   }
 };
