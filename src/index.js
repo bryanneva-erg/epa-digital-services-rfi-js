@@ -11,7 +11,9 @@ import { FacilityList } from './FacilityList';
 render((
     <Router>
         <Route path="/" component={Splash} />
-        <Route path="facility" component={App} />
+        <Route path="facility" component={App}>
+            <Route path=":id" component={App} />
+        </Route>
         <Route path="list" component={FacilityList} />
     </Router>
 ), document.getElementById('root'));
