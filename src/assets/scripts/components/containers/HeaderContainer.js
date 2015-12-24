@@ -5,9 +5,10 @@ import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 import '../../../styles/containers/HeaderContainer.scss';
+import '../../../styles/components/Buttons.scss';
 
 // Components
-import { RaisedButton } from 'material-ui';
+//import { RaisedButton } from 'material-ui';
 
 
 export class HeaderContainer extends Component {
@@ -16,13 +17,8 @@ export class HeaderContainer extends Component {
         <header>
             <div id="header__container">
                 <div id="header__button-container">
-                    <span className="header__button">
-                        <RaisedButton label="Home" default={true} />
-                    </span>
-
-                    <span className="header__button">
-                        <RaisedButton label="Facility List" default={true} />
-                    </span>
+                    <button className="usa-button-outline-inverse" type="button">Home</button>
+                    <button className="usa-button-outline-inverse" type="button">Facility List</button>
                 </div>
             </div>
         </header>        
