@@ -5,18 +5,16 @@
 @import '../vendor/18f/_scss/lib/bourbon/bourbon';
 @import '../vendor/18f/_scss/lib/neat/neat';
 @import '../vendor/18f/_scss/lib/normalize';
-@import 'components/Buttons';
 @import './variables';
-
+@import 'components/Buttons';
 
 body {
-    font-family: 'Roboto', sans-serif;
+	background: $body-background;
 }
 
 #ambient-emissions__container {
-
     background-color: $primary-alt-darkest;
-
+		
     @include outer-container(100%);
 
     #ambient-emissions__graph-container {
@@ -43,4 +41,67 @@ div[id^='map'] {
 
 .facilityList--editing{
     display:none;
+}
+
+.body-container{
+		max-width: $section-width;
+		margin: 0 auto;
+}
+
+#home-splash{
+	color: $white;
+	text-align: center;
+	padding: 8rem 5rem;
+	h1{
+		font-size: 52px;
+	}
+	section{
+		position: relative;
+		div{
+			width: 50%;
+			float: left;
+			text-align: center;
+			padding-bottom: 6rem;
+			margin-top: 4rem;
+		}
+		div:first-child{
+			border-right: 1px solid $primary-darkest;
+			div{
+				width: 340px;
+				margin: 0 auto;
+				float: none;
+			}
+			input{
+				float: left;
+				color: $body-text;
+				padding: 1.5rem 1rem;
+				border: 0;
+				margin: 0.5em 0 0.5em 0.5em;
+			}
+			a{
+				display: block;
+				float: left;
+			}
+			label{
+				float: left;
+				width: 0;
+				visibility: hidden;
+			}
+		}
+		span{
+			display: block;
+			width: 40px;
+			height: 40px;
+			background-color: $primary-darkest;
+			border-radius: 20px;
+			position: absolute;
+			top: 128px;
+			left: 50%;
+			text-align: center;
+			padding-top: 1rem;
+			margin-left: -20px;
+			font-weight: 700;
+			font-style: italic;
+		}
+	}
 }
