@@ -7,6 +7,7 @@ injectTapEventPlugin();
 import '../../../styles/containers/HeaderContainer.scss';
 
 // Components
+import { Router, Route, Link } from 'react-router';
 import { RaisedButton } from 'material-ui';
 
 
@@ -17,11 +18,11 @@ export class HeaderContainer extends Component {
             <div id="header__container">
                 <div id="header__button-container">
                     <span className="header__button">
-                        <RaisedButton label="Home" default={true} />
+                        <Link to="/"><RaisedButton label="Home" default={true} /></Link>
                     </span>
 
                     <span className="header__button">
-                        <RaisedButton label="Facility List" default={true} />
+                        <Link to="/list"><RaisedButton label="Facility List" default={true} /></Link>
                     </span>
                 </div>
             </div>
