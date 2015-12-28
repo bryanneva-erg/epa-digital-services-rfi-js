@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import LatLng from '../leaflet/LatLng';
 import FacilityMap from './FacilityMap';
 import EchoServerActionCreators from '../../actions/EchoServerActionCreators';
 import FacilityActionCreators from '../../actions/FacilityActionCreators';
@@ -8,7 +7,8 @@ import FacilityStore from '../../stores/FacilityStore';
 function getStateFromStores(){
     
     return {
-        facilities: FacilityStore.getList()
+        facilities: FacilityStore.getList(),
+        selectedFacility: FacilityStore.getSelectedFacility()
     };
 }
 
@@ -19,8 +19,11 @@ export class MapContainer extends Component {
         this.state = {
             lat: 39.7,
             lng: -105.1,
-            facilities: FacilityStore.getList()
+            facilities: FacilityStore.getList(),
+            selectedFacility: FacilityStore.getSelectedFacility()
         };
+
+        // console.log(this.state.selectedFacility);
     }
 
     componentDidMount(){
@@ -35,34 +38,31 @@ export class MapContainer extends Component {
         this.setState(getStateFromStores());
     }
 
-    _handleOnClick(index) {
+    // _handleOnClick(index) {
         
-        var selected_facility = this.state.facilities.list.filter(function(item, i) {
-            return index === i;
+    //     var selected_facility = this.state.facilities.list.filter(function(item, i) {
+    //         return index === i;
+    //     });
+
+    //     this.setState({
+    //         lat: selected_facility[0].lat,
+    //         lng: selected_facility[0].lng
+    //     });
+
+    //     FacilityActionCreators.selectFacility(selected_facility);
+    // }
+
+    render() {        
+
+        const facilities = []
+        _.forEach(this.state.selectedFacility, function(n, index) {
+            facilities.push({lat:n.lat,lng:n.lng});
         });
 
-        this.setState({
-            lat: selected_facility[0].lat,
-            lng: selected_facility[0].lng
-        });
-
-        FacilityActionCreators.selectFacility(selected_facility);
-    }
-
-    _handleRemove(index) {
-        FacilityActionCreators.removeFacility(index);
-    }
-
-    _handleNewFacility(data) {
-        EchoServerActionCreators.findFacilityByFrs(data);
-    }
-
-    render() {
-        
         return (
             <div className="usa-width-one-half" id="map">
-                <FacilityMap lat={this.state.lat} lng={this.state.lng} />
+                <FacilityMap lat={this.state.selectedFacility[0].lat} lng={this.state.selectedFacility[0].lng} facilities={ facilities }/>
             </div>
-        );
+        );    
     }
 }

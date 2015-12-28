@@ -8,7 +8,7 @@ import math from 'mathjs';
 
 class APIUtils {
     
-    findFacilityByFRS(frsId){        
+    findFacilityByFRS(frsId){
         
         FacilityActionCreators.newFacility();
 
@@ -28,7 +28,7 @@ class APIUtils {
                 return chr.SourceID == frsId;
             });
 
-            console.log(relevant_permit.FacilityState, relevant_permit.FacilityCity, relevant_permit.FacilityZip);            
+            // console.log(relevant_permit.FacilityState, relevant_permit.FacilityCity, relevant_permit.FacilityZip);            
 
             const facility = {
                     name: selected_facility.NAME,

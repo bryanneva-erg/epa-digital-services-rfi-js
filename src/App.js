@@ -18,29 +18,12 @@ import EchoServerActionCreators from './assets/scripts/actions/EchoServerActionC
 import FacilityStore from './assets/scripts/stores/FacilityStore';
 import AmbientEmissionStore from './assets/scripts/stores/AmbientEmissionStore';
 
-const origin = {
-    name: "Colorado",
-    frs: 0,
-    lat: "39.7",
-    lng: "-105.1",
-    state: 'CO',
-    city: 'Denver',
-    zip: '80123'
-}
-
-FacilityActionCreators.newFacility();
-FacilityActionCreators.saveFacility(origin);
-FacilityActionCreators.selectFacility([origin]);
-
-EchoServerActionCreators.findFacilityByFrs(110000753319);
 EchoServerActionCreators.findFacilityByFrs(110017805730);
+EchoServerActionCreators.getFacilityEmissions(110017805730);
+
 EchoServerActionCreators.findFacilityByFrs(110004060417);
 EchoServerActionCreators.findFacilityByFrs(110010681707);
-
-// EchoServerActionCreators.getFacilityEmissions(110000753319);
-
-
-
+EchoServerActionCreators.findFacilityByFrs(110000753319);
 
 function getStateFromStores(){
     
@@ -75,18 +58,12 @@ export class App extends Component {
     }    
 
     render() {       
-        const parsed_data = [];
-            _.forEach(AMBIENT_SO2_CACHE[this.state.selectedfacility[0].state],function(n,index) {
-                parsed_data.push({
-                    year: index,
-                    cumulative_so2: n.emissions
-                });
-            });
+        const parsed_data = [];       
 
         return (
             <div id="app__container">
                 
-                <HeaderContainer history={ this.props.history }/>
+                <HeaderContainer />
                 <DataMapContainer />
                 
                 <div id="ambient-emissions__container">

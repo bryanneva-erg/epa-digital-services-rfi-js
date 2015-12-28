@@ -64,8 +64,13 @@ export class FacilityInfo extends Component {
     }
 
     render() {
+        const available_facility = this.state.selectedfacility[0] !== undefined;
+        const facility_name = available_facility ? this.state.selectedfacility[0].name : '';
+        const facility_location = available_facility ? this.state.selectedfacility[0].city + ", " + this.state.selectedfacility[0].state : ''; 
+        const facility_id = available_facility ? this.state.selectedfacility[0].frs : '';
 
         const isEditing = this.state.ambientemissions.editing ? '(Adding...)' : '';
+        
         const parsed_data = [];
         let cumulative_so2 = 0;
         let raw_data;
@@ -90,7 +95,7 @@ export class FacilityInfo extends Component {
         } else if (ghg !== undefined) {
             preferred_source = 'GHG';
         } else {
-            console.error('No SO2 data for this location');
+            // console.error('No SO2 data for this location');
         }
 
         const source_data = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
@@ -98,26 +103,21 @@ export class FacilityInfo extends Component {
         });
 
         if(preferred_source !== false) {
-            console.log(source_data);
             _.forEach(this.state.facilityemissions.years[0], function(n, index) {
                 raw_data = source_data["Year" + (index + 1)];
                 if(raw_data !== undefined && raw_data !== null){
                     cumulative_so2 = parseInt(raw_data.replace(/,/g,""));
                     parsed_data.push({year: n, cumulative_so2: cumulative_so2 });
                 }
-            });        
-        }
+            });
+        }        
         
-
-        //////////////////////
-        
-
         return (
             <div>
                 <div className="facilityinfo__desc-container">
-                    <span className="facilityinfo__header">{ this.state.selectedfacility[0].name }</span><br />
-                    <span className="facilityinfo__desc"><label>Location:</label> {this.state.selectedfacility[0].city}, {this.state.selectedfacility[0].state}</span><br />
-                    <span className="facilityinfo__desc"><label>ID:</label> {this.state.selectedfacility[0].frs}</span>
+                    <span className="facilityinfo__header">{ facility_name }</span><br />
+                    <span className="facilityinfo__desc"><label>Location:</label> { facility_location }</span><br />
+                    <span className="facilityinfo__desc"><label>ID:</label> { facility_id }</span>
                 </div>
                 
                 <div className="facilityinfo__graph">
