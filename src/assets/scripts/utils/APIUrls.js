@@ -12,5 +12,9 @@ export const APIUrls = {
     },
     'ECATT': {
         url: 'ecatt_ems_rest_services.get_ems'        
+    },
+    'CAAPR': {
+        url: 'caa_poll_rpt_rest_services.get_caapr',
+        id: 'p_id'
     }
 }

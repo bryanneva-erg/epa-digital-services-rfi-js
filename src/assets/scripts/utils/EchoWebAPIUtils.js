@@ -1,5 +1,6 @@
 import FacilityActionCreators from '../actions/FacilityActionCreators';
 import AmbientEmissionActionCreators from '../actions/AmbientEmissionActionCreators';
+import FacilityEmissionActionCreators from '../actions/FacilityEmissionActionCreators';
 import request from 'superagent';
 import { APIUrls } from './APIUrls';
 import _ from 'lodash';
@@ -8,7 +9,9 @@ import math from 'mathjs';
 class APIUtils {
     
     findFacilityByFRS(frsId){        
+        
         FacilityActionCreators.newFacility();
+
         request.get(APIUrls.CORS_PREFIX.url + APIUrls.ECHO_PREFIX.url + APIUrls.DFR.url)
                 .query({[APIUrls.DFR.id]: frsId})
                 .end(function(err, resp) {
@@ -41,96 +44,37 @@ class APIUtils {
         }
     }
 
-    getSO2EmissionsRecursive(index,end,params){
-        
-        console.log('Getting:', index, '-- Progress:', index, '/', end);
+    getFacilityEmissions(frsId) {
 
-        const pollutant = 'Sulfur dioxide';
-        request.get(APIUrls.CORS_PREFIX.url + APIUrls.ECHO_PREFIX.url + APIUrls.ECATT.url)
-                .query({ dataout: 'TopFacEmissions',
-                         responseset: '100',
-                         p_year: index,
-                         p_st: params.state,
-                         p_pname: pollutant })
+        FacilityEmissionActionCreators.newFacilityEmission();
+
+        request.get(APIUrls.CORS_PREFIX.url + APIUrls.ECHO_PREFIX.url + APIUrls.CAAPR.url)
+                .query({[APIUrls.DFR.id]: frsId})
                 .end(function(err, resp) {
-                    
-                    console.log('Done', index);
-                    
                     let json = JSON.parse(resp.text);
-                    
-                    callback(json.Results.TopFacEmissions);
-
-                    if(index !== end){
-                        this.getSO2EmissionsRecursive(++index,end,params);
-                    } 
-
-                }.bind(this));
-
-        let callback = function(data) {
-            let total_annual_emissions = 0;
-            let unit = 'Pounds';
-            _.forEach(data,function(n, key) {
-                if(n.UnitOfMeasure !== 'Pounds'){
-                    console.log('Warning: Non-standard unit of measure --', n.UnitOfMeasure);
-                }
-
-                total_annual_emissions = math.eval(total_annual_emissions + parseInt(n.AnnualEmission));
-
-            });
-
-            const ambient_emission = {
-                year: index,
-                emissions: total_annual_emissions,
-                state: params.state,
-                pollutant: pollutant,
-                unit: unit
-            }
-            
-            console.log('Saving data for year', index);
-            
-            AmbientEmissionActionCreators.saveAmbientEmission(ambient_emission);
-        }
-    }
-
-    getSO2EmissionsByYear(state, year){
-        console.log('Fetching data');
-        AmbientEmissionActionCreators.newAmbientEmission()
-        const pollutant = 'Sulfur dioxide';
-
-        request.get(APIUrls.CORS_PREFIX.url + APIUrls.ECHO_PREFIX.url + 'ecatt_ems_rest_services.get_ems')
-                .query({dataout: 'TopFacEmissions',
-                        responseset: '100',
-                        p_year: year,
-                        p_st: state,
-                        p_pname: pollutant})
-                .end(function(err,resp) {
-                    let json = JSON.parse(resp.text);
-                    callback(json.Results.TopFacEmissions);
+                    if(json.Results.Message === "Success"){
+                        callback(json.Results);    
+                    } else {
+                        console.log('CAAPR: Server reports error', json.Results);
+                    }
                 });
 
         function callback(data) {
-            let total_annual_emissions = 0;
-            let unit = 'Pounds';
-            _.forEach(data,function(n, key) {
-                if(n.UnitOfMeasure !== 'Pounds'){
-                    console.log(n.UnitOfMeasure);
-                }
+            const triYears = [data.TRI_year_01,
+                             data.TRI_year_02,
+                             data.TRI_year_03,
+                             data.TRI_year_04,
+                             data.TRI_year_05,
+                             data.TRI_year_06,
+                             data.TRI_year_07,
+                             data.TRI_year_08,
+                             data.TRI_year_09,
+                             data.TRI_year_10];
 
-                total_annual_emissions = math.eval(total_annual_emissions + parseInt(n.AnnualEmission));
+            const report = data.CAAPollRpt;
 
-            });
-
-            const ambient_emission = {
-                year: year,
-                emissions: total_annual_emissions,
-                state: state,
-                pollutant: pollutant,
-                unit: unit
-            }
-            console.log('Data received for year', year);
-            AmbientEmissionActionCreators.saveAmbientEmission(ambient_emission);
+            FacilityEmissionActionCreators.saveFacilityEmission(report.Pollutants,triYears);
         }
-
     }
 }
 
