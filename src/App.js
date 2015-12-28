@@ -2,15 +2,13 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import './assets/styles/base.scss';
-// let YourTheme = require('./assets/styles/theme/your-theme.js');
-// let ThemeManager = new Styles.ThemeManager().getCurrentTheme();
-// ThemeManager.setTheme(YourTheme);
 
 // Components
 import { HeaderContainer } from './assets/scripts/components/containers/HeaderContainer';
 import { DataMapContainer } from './assets/scripts/components/containers/DataMapContainer';
 import { LineGraph } from './assets/scripts/components/Graph/LineGraph';
 import { AMBIENT_SO2_CACHE } from './assets/data/AMBIENT_SO2_CACHE';
+// import * from './assets/data/'
 
 // Components -- Material-UI
 import { Tabs, Tab, LeftNav, MenuItem } from 'material-ui';

@@ -20,7 +20,6 @@ export class DataMapContainer extends Component {
         };        
     }
     _onActive(index, e){
-        console.log(e);
         this.setState({activetab: index})
     }
 
@@ -44,8 +43,6 @@ export class DataMapContainer extends Component {
         if(selected_nox) {
             nox_active = 'tab--active';
         }
-
-        console.log(so2_active)
 
         return (
             <div id="data-map__container">

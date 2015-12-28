@@ -30,12 +30,13 @@ class APIUtils {
 
             // console.log(relevant_permit.FacilityState, relevant_permit.FacilityCity, relevant_permit.FacilityZip);            
 
+            
             const facility = {
-                    name: selected_facility.NAME,
+                    name: selected_facility.NAME.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
                     frs: selected_facility.PUV,
                     lat: selected_facility.LAT,
                     lng: selected_facility.LON,
-                    city: relevant_permit.FacilityCity,
+                    city: relevant_permit.FacilityCity.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}),
                     state: relevant_permit.FacilityState,
                     zip: relevant_permit.FacilityZip
                 }
