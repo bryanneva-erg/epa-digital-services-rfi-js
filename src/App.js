@@ -75,12 +75,11 @@ export class App extends Component {
                         </div>
                     </div>
                 </div>
+                <footer>
+                    <p>Footer goes here...</p>
+                </footer>
             </div>
             
-            <footer>
-                <p>Footer goes here...</p>
-            </footer>
-        </div>
             
         );
     }

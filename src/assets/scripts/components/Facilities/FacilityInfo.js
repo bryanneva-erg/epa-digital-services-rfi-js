@@ -68,7 +68,7 @@ export class FacilityInfo extends Component {
         const facility_name = available_facility ? this.state.selectedfacility[0].name : '';
         const facility_location = available_facility ? this.state.selectedfacility[0].city + ", " + this.state.selectedfacility[0].state : ''; 
         const facility_id = available_facility ? this.state.selectedfacility[0].frs : '';
-
+        
         const isEditing = this.state.ambientemissions.editing ? '(Adding...)' : '';
         
         const parsed_data = [];
@@ -76,17 +76,20 @@ export class FacilityInfo extends Component {
         let raw_data;
         let preferred_source = false;
 
-        const camd = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
-            return chr.Program === 'CAMD';
-        });
+        const camd = undefined,
+              nei = undefined,
+              ghg = undefined;
+        // const camd = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
+        //     return chr.Program === 'CAMD';
+        // });
 
-        const nei = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
-            return chr.Program === 'NEI';
-        });
+        // const nei = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
+        //     return chr.Program === 'NEI';
+        // });
 
-        const ghg = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
-            return chr.Program === 'GHG';
-        });
+        // const ghg = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
+        //     return chr.Program === 'GHG';
+        // });
         
         if(camd !== undefined) {
             preferred_source = 'CAMD';
@@ -98,9 +101,9 @@ export class FacilityInfo extends Component {
             // console.error('No SO2 data for this location');
         }
 
-        const source_data = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
-            return chr.Program === preferred_source;
-        });
+        // const source_data = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
+        //     return chr.Program === preferred_source;
+        // });
 
         if(preferred_source !== false) {
             _.forEach(this.state.facilityemissions.years[0], function(n, index) {
