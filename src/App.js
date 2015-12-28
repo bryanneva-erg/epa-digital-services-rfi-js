@@ -1,26 +1,25 @@
 // Libraries
 import React, { Component } from 'react';
 import _ from 'lodash';
-
 import './assets/styles/base.scss';
 
 // Components
-import { FacilityContainer } from './assets/scripts/components/Facilities/FacilityContainer';
-import { MapContainer } from './assets/scripts/components/Map/MapContainer';
 import { HeaderContainer } from './assets/scripts/components/containers/HeaderContainer';
 import { DataMapContainer } from './assets/scripts/components/containers/DataMapContainer';
-import { Tabs, Tab } from 'material-ui';
-import { FacilityInfo } from './assets/scripts/components/Facilities/FacilityInfo';
 import { LineGraph } from './assets/scripts/components/Graph/LineGraph';
 import { AMBIENT_SO2_CACHE } from './assets/data/AMBIENT_SO2_CACHE';
 
+// Components -- Material-UI
+import { Tabs, Tab, LeftNav, MenuItem } from 'material-ui';
+
 // Flux
 import FacilityActionCreators from './assets/scripts/actions/FacilityActionCreators';
+import EchoServerActionCreators from './assets/scripts/actions/EchoServerActionCreators';
 import FacilityStore from './assets/scripts/stores/FacilityStore';
 import AmbientEmissionStore from './assets/scripts/stores/AmbientEmissionStore';
 
 const origin = {
-    name: "Original Location (Colorado)",
+    name: "Colorado",
     frs: 0,
     lat: "39.7",
     lng: "-105.1",
@@ -32,6 +31,16 @@ const origin = {
 FacilityActionCreators.newFacility();
 FacilityActionCreators.saveFacility(origin);
 FacilityActionCreators.selectFacility([origin]);
+
+EchoServerActionCreators.findFacilityByFrs(110000753319);
+EchoServerActionCreators.findFacilityByFrs(110017805730);
+EchoServerActionCreators.findFacilityByFrs(110004060417);
+EchoServerActionCreators.findFacilityByFrs(110010681707);
+
+// EchoServerActionCreators.getFacilityEmissions(110000753319);
+
+
+
 
 function getStateFromStores(){
     
@@ -63,17 +72,16 @@ export class App extends Component {
 
     _onChange(e){
         this.setState(getStateFromStores());
-    }
+    }    
 
-  render() {
-
-    const parsed_data = [];
-        _.forEach(AMBIENT_SO2_CACHE[this.state.selectedfacility[0].state],function(n,index) {
-            parsed_data.push({
-                year: index,
-                cumulative_so2: n.emissions
+    render() {       
+        const parsed_data = [];
+            _.forEach(AMBIENT_SO2_CACHE[this.state.selectedfacility[0].state],function(n,index) {
+                parsed_data.push({
+                    year: index,
+                    cumulative_so2: n.emissions
+                });
             });
-        });
 
     return (
         <div id="app__container">
@@ -89,13 +97,12 @@ export class App extends Component {
                     </div>
                 </div>
             </div>
-
+            
             <footer>
                 <p>Footer goes here...</p>
             </footer>
-            
         </div>
-        
-    );
-  }
+            
+        );
+    }
 }

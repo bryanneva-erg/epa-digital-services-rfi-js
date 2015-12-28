@@ -21,6 +21,7 @@ export class HeaderContainer extends Component {
                 </div>
             </div>
         </header>        
-    );
-  }
+        );
+    }
 }
+
