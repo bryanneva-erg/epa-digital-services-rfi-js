@@ -26,10 +26,10 @@
             height: $map-height;
             padding: 1rem 2rem;
 						
-						h3{
-								margin-top: 1.7rem;
-								line-height: 1.6;
-						}
+			h3{
+				margin-top: 1.7rem;
+				line-height: 1.6;
+			}
 
             .monitoring-stations__list {
                 padding-top:1em;
@@ -37,25 +37,30 @@
                 .monitoring-stations__list--top {
                     border-top:1px solid $primary-alt-light;        
                 }
-								ul{
-									margin: 0;
-									display: block;
-								}
+				ul{
+					margin: 0;
+					display: block;
+				}
                 li {
-                                    display: block;
-                                    width: 100%;
-                                    padding: 0.7rem 0;
-                                    border-bottom:1px solid $primary-alt-light;
-                                    margin: 0;
-                                    font-weight: 700;
+                    display: block;
+                    width: 100%;
+                    padding: 0.7rem 0;
+                    border-bottom:1px solid $primary-alt-light;
+                    margin: 0;
+                    font-weight: 700;
                 }
-                                li:before{
-                                    content: "";
-                                }
-                                li:after{
-                                    margin-bottom: 0;
-                                }
+                li:before{
+                    content: "";
+                }
+                li:after{
+                    margin-bottom: 0;
+                }
             }
         }
     }
+}
+
+.tab--active {
+    color:#000000 !important;
+    background-color:#FFFFFF;
 }
