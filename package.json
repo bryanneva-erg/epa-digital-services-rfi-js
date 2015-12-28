@@ -2,6 +2,9 @@
   "name": "epa-digital-services-rfi",
   "version": "1.0.0",
   "description": "NOTE: Webpack related devDependencies can get moved back into dependencies after a build process has been added (TEST DATA)",
+  "engines": {
+    "node": "0.12"
+  },
   "scripts": {
     "postinstall": "webpack --config ./webpack.config.prod.js --progress --colors",
     "clean": "rimraf dist",

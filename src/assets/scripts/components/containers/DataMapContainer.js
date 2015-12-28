@@ -23,13 +23,13 @@ export class DataMapContainer extends Component {
             <div id="data-map__facility-info">
                 <Tabs contentContainerStyle={{'backgroundColor':'#FFFFFF',height:'400px'}} tabItemContainerStyle={{'backgroundColor':'#046b99'}}>
                     <Tab label="SO2">
-                        <FacilityInfo />
+                        <FacilityInfo type="SO2" />
                     </Tab>
                     <Tab label="CO2">
-                        <FacilityInfo />
+                        <FacilityInfo type="CO2" />
                     </Tab>
                     <Tab label="NOx">
-                        <FacilityInfo />
+                        <FacilityInfo type="NOx" />
                     </Tab>
                 </Tabs>
             </div>
