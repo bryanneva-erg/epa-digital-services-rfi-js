@@ -103,15 +103,15 @@ export class FacilityList extends Component {
 
         return (
             <div id="facility-list">
-                
-                <div className="body-container">
-                    
+                <header>
+                    <div id="header__container">
+                        <div id="header__button-container">
+                            <Link to="/"><button className="usa-button-outline-inverse" type="button">Home</button></Link>
+                        </div>
+                    </div>
+                </header>
+                <div className="body__container">
                     <h1>Choose Facilities to Start</h1>
-                    
-                    <ul className="top-buttons">
-                        <li><Link to="/"><button type="button" className="usa-button-outline-inverse">Home</button></Link></li>
-                    </ul>
-
                     <div id="facility-list__container">                             
                         <fieldset className="usa-fieldset-inputs usa-sans">
                             <legend className="usa-sr-only">Historical figures 1</legend>
@@ -127,13 +127,10 @@ export class FacilityList extends Component {
                             </ul>
                         </fieldset>
                                     
-                        <a href="#" className="facility-list__startbtn" onClick={this._onSubmit.bind(this)}>
-                            <button className="usa-button-primary-alt" type="button">Start</button>
-                        </a>
+                        <Link to="/facility" className="facility-list__startbtn"><button className="usa-button-primary-alt" type="button">Start</button></Link>
+                                    
                     </div>
-
                 </div>
-
             </div>
         );
     }

@@ -113,7 +113,7 @@ export class FacilityInfo extends Component {
         }        
         
         return (
-            <div>
+            <div className="facilityinfo__container">
                 <div className="facilityinfo__desc-container">
                     <span className="facilityinfo__header">{ facility_name }</span><br />
                     <span className="facilityinfo__desc"><label>Location:</label> { facility_location }</span><br />
@@ -125,7 +125,7 @@ export class FacilityInfo extends Component {
                 </div>
 
                 <div className="facilityinfo__resources">
-                    <div className="facilityinfo__resources-header">RESOURCES</div>
+                    <h6 className="facilityinfo__resources-header usa-heading-alt">Resources</h6>
                     <ul>
                         <li><a href="#">Item 1</a></li>
                         <li><a href="#">Item 2</a></li>
