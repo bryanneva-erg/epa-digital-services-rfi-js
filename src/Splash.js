@@ -7,7 +7,6 @@ import './assets/styles/base.scss';
 import { Router, Route, Link } from 'react-router';
 
 // Flux
-
 export class Splash extends Component {
     render() {
         return (
