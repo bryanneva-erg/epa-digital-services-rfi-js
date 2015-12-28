@@ -24,6 +24,13 @@ class ActionCreators {
         });
     }
 
+    unselectFacility(facility){
+        AppDispatcher.dispatch({
+            type: AppConstants.UNSELECT_FACILITY,
+            facility: facility
+        });
+    }
+
     removeFacility(data) {
         AppDispatcher.dispatch({
             type: AppConstants.REMOVE_FACILITY,

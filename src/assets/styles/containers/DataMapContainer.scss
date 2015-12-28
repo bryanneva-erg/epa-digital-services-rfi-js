@@ -42,19 +42,19 @@
 									display: block;
 								}
                 li {
-									display: block;
-									width: 100%;
-									padding: 0.7rem 0;
-									border-bottom:1px solid $primary-alt-light;
-									margin: 0;
-									font-weight: 700;
+                                    display: block;
+                                    width: 100%;
+                                    padding: 0.7rem 0;
+                                    border-bottom:1px solid $primary-alt-light;
+                                    margin: 0;
+                                    font-weight: 700;
                 }
-								li:before{
-									content: "";
-								}
-								li:after{
-									margin-bottom: 0;
-								}
+                                li:before{
+                                    content: "";
+                                }
+                                li:after{
+                                    margin-bottom: 0;
+                                }
             }
         }
     }
