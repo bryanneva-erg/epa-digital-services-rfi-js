@@ -29,7 +29,7 @@ export class DataMapContainer extends Component {
                     </Tab>
                     <Tab label="NOₓ">
                         <FacilityInfo />
-                    </Tab>										
+                    </Tab>                                      
                 </Tabs>
             </div>
 						<div id="data-map__monitoring-stations">
