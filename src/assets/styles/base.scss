@@ -7,9 +7,11 @@
 @import '../vendor/18f/_scss/lib/normalize';
 @import './variables';
 @import 'components/Buttons';
+@import 'components/Forms';
 
 body {
 	background: $body-background;
+	position: relative;
 }
 
 #ambient-emissions__container {
@@ -103,5 +105,48 @@ div[id^='map'] {
 			font-weight: 700;
 			font-style: italic;
 		}
+	}
+}
+#facility-list{
+	color: $white;
+	padding: 7rem 5rem;
+	h1{
+		text-align: center;
+	}
+	li{
+		margin-bottom: 0.75rem;
+	}
+	li:before{
+		content: "";
+	}
+	#facility-list__container{
+		width: 700px;
+		margin: 4rem auto;
+		position: relative;
+		left: 100px;
+		fieldset{
+			border: 0;
+			margin-bottom: 2rem;
+		}
+		ul{
+			width: 50%;
+			float: left;
+		}
+		.facility-list__startbtn{
+			display: block;
+			width: 100px;
+			margin: 0 auto;
+			position: relative;
+			left: -100px;
+		}
+	}
+}
+.top-buttons{
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	list-style-type: none;
+	li:before{
+		content: "";
 	}
 }
