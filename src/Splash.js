@@ -11,7 +11,7 @@ export class Splash extends Component {
     render() {
         return (
             <div id="home-splash">
-								<div className="body-container">
+								<div className="body__container">
 									<h1>airMonitr</h1>
 									<p className="usa-font-lead">airMonitr combines EPA Air Markets Program data with EPA Air Trends data to allow users to analyze trends in facility monitoring data side-by-side with ambient air monitoring data.</p>
 									

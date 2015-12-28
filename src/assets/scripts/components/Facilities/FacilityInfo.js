@@ -113,11 +113,11 @@ export class FacilityInfo extends Component {
         
 
         return (
-            <div>
+            <div className="facilityinfo__container">
                 <div className="facilityinfo__desc-container">
-                    <span className="facilityinfo__header">{ this.state.selectedfacility[0].name }</span><br />
-                    <span className="facilityinfo__desc"><label>Location:</label> {this.state.selectedfacility[0].city}, {this.state.selectedfacility[0].state}</span><br />
-                    <span className="facilityinfo__desc"><label>ID:</label> {this.state.selectedfacility[0].frs}</span>
+                    <h1 className="facilityinfo__header">{ this.state.selectedfacility[0].name }</h1>
+                    <p className="facilityinfo__desc"><label>Location:</label> {this.state.selectedfacility[0].city}, {this.state.selectedfacility[0].state}</p>
+                    <p className="facilityinfo__desc"><label>ID:</label> {this.state.selectedfacility[0].frs}</p>
                 </div>
                 
                 <div className="facilityinfo__graph">
@@ -125,7 +125,7 @@ export class FacilityInfo extends Component {
                 </div>
 
                 <div className="facilityinfo__resources">
-                    <div className="facilityinfo__resources-header">RESOURCES</div>
+                    <h6 className="facilityinfo__resources-header usa-heading-alt">Resources</h6>
                     <ul>
                         <li><a href="#">Item 1</a></li>
                         <li><a href="#">Item 2</a></li>

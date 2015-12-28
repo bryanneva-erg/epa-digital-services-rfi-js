@@ -16,37 +16,35 @@ export class DataMapContainer extends Component {
     return (
         <div id="data-map__container">
             <div id="data-map__map">
-                <div className="data-map__spacer--top"></div>
                 <MapContainer />
             </div>
             
             <div id="data-map__facility-info">
-                <Tabs contentContainerStyle={{'backgroundColor':'#FFFFFF',height:'400px'}} tabItemContainerStyle={{'backgroundColor':'#046b99'}}>
-                    <Tab label="SO2">
-                        <FacilityInfo type="SO2" />
+                <Tabs contentContainerStyle={{'backgroundColor':'#FFFFFF'}} tabItemContainerStyle={{'backgroundColor':'#112e51'}}>
+                    <Tab label="SO₂">
+                        <FacilityInfo />
                     </Tab>
-                    <Tab label="CO2">
-                        <FacilityInfo type="CO2" />
+                    <Tab label="CO₂">
+                        <FacilityInfo />
                     </Tab>
-                    <Tab label="NOx">
-                        <FacilityInfo type="NOx" />
-                    </Tab>
+                    <Tab label="NOₓ">
+                        <FacilityInfo />
+                    </Tab>                                      
                 </Tabs>
             </div>
-
-            <div id="data-map__monitoring-stations">
-                <div className="data-map__spacer--top"></div>
-                <div className="data-map__monitoring-stations--body">
-                    <h2>Monitoring Stations</h2>
-                    <div className="monitoring-stations__list">
-                        <ul>
-                            <li className="monitoring-stations__list--top">Station A</li>
-                            <li>Station B</li>
-                            <li>Station C</li>
-                        </ul>
-                    </div>
-                </div>                
-            </div>
+						<div id="data-map__monitoring-stations">
+								<div className="data-map__spacer--top"></div>
+								<div className="data-map__monitoring-stations--body">
+										<h3>Monitoring Stations</h3>
+										<div className="monitoring-stations__list">
+												<ul>
+														<li className="monitoring-stations__list--top">Station A</li>
+														<li>Station B</li>
+														<li>Station C</li>
+												</ul>
+										</div>
+								</div>                
+						</div>
         </div>        
     );
   }

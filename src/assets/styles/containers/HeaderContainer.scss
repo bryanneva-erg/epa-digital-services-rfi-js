@@ -4,22 +4,15 @@
 
 header {
  
-    background-color: $primary-alt-dark;
+    background-color: $primary;
  
     #header__container {
- 
+ 				
         @include outer-container(100%);
         
         #header__button-container {
             @include span-columns(12);
-            padding-top:2em;
-            padding-left:1em;
-
-            .header__button {
-                margin-left: 1em;
-                background-color: $primary-alt-dark;
-                // border: 1px solid $primary-alt-light
-            }
+            padding: 3rem;
         }
 
         // #header__tabs {
