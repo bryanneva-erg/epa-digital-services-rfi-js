@@ -5,61 +5,57 @@
 #data-map__container {
     
     @include outer-container(100%);
-
-    .data-map__spacer--top {
-        height:48px;
-        background-color: $primary-alt-dark;
-    }
-
+		max-height: $map-height;
+		background-color: $white;
     #data-map__map {
         @include span-columns(6);
         margin-right:0;
     }
 
     #data-map__facility-info {
-        @include span-columns(3);
+        @include span-columns(4);
         margin-right:0;
-        max-height:$map-height;
+				margin-top: -48px;
     }
 
     #data-map__monitoring-stations {
-
+ 				@include span-columns(2.55);
         .data-map__monitoring-stations--body {
-
-            @include span-columns(3);
-            
             background-color:$primary-alt-lightest;
             border:1em solid #ffffff;
             height: $map-height;
-
-            h2 {
-                padding-left: 1.5em;
-            }
+            padding: 1rem 2rem;
+						
+						h3{
+								margin-top: 1.7rem;
+								line-height: 1.6;
+						}
 
             .monitoring-stations__list {
-
                 padding-top:1em;
-                padding-right:3em;
                 
                 .monitoring-stations__list--top {
-                    border-top:1px solid $primary-alt-darkest;        
+                    border-top:1px solid $primary-alt-light;        
                 }
-
+								ul{
+									margin: 0;
+									display: block;
+								}
                 li {
-                    padding-top:1em;
-                    padding-bottom:1em;
-                    list-style-type:none;
-                    border-bottom:1px solid $primary-alt-darkest;
-
-                    
+									display: block;
+									width: 100%;
+									padding: 0.7rem 0;
+									border-bottom:1px solid $primary-alt-light;
+									margin: 0;
+									font-weight: 700;
                 }
-
-
-                
-                
+								li:before{
+									content: "";
+								}
+								li:after{
+									margin-bottom: 0;
+								}
             }
-
-            
         }
     }
 }

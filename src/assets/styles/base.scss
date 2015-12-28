@@ -10,13 +10,13 @@
 @import 'components/Forms';
 
 body {
-	background: $body-background;
+	background: $primary;
 	position: relative;
 }
 
 #ambient-emissions__container {
-    background-color: $primary-alt-darkest;
-		
+    background-color: $primary-darkest;
+		color: $white;
     @include outer-container(100%);
 
     #ambient-emissions__graph-container {
@@ -45,7 +45,7 @@ div[id^='map'] {
     display:none;
 }
 
-.body-container{
+.body__container{
 		max-width: $section-width;
 		margin: 0 auto;
 }
@@ -109,7 +109,6 @@ div[id^='map'] {
 }
 #facility-list{
 	color: $white;
-	padding: 7rem 5rem;
 	h1{
 		text-align: center;
 	}
@@ -139,14 +138,5 @@ div[id^='map'] {
 			position: relative;
 			left: -100px;
 		}
-	}
-}
-.top-buttons{
-	position: absolute;
-	top: 1rem;
-	left: 1rem;
-	list-style-type: none;
-	li:before{
-		content: "";
 	}
 }

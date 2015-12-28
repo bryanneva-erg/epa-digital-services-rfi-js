@@ -8,8 +8,7 @@ import '../../../styles/containers/HeaderContainer.scss';
 import '../../../styles/components/Buttons.scss';
 
 // Components
-//import { RaisedButton } from 'material-ui';
-
+import { Router, Route, Link } from 'react-router';
 
 export class HeaderContainer extends Component {
   render() {
@@ -17,8 +16,8 @@ export class HeaderContainer extends Component {
         <header>
             <div id="header__container">
                 <div id="header__button-container">
-                    <button className="usa-button-outline-inverse" type="button">Home</button>
-                    <button className="usa-button-outline-inverse" type="button">Facility List</button>
+                    <Link to="/"><button className="usa-button-outline-inverse" type="button">Home</button></Link>
+                    <Link to="/list"><button className="usa-button-outline-inverse" type="button">Facility List</button></Link>
                 </div>
             </div>
         </header>        

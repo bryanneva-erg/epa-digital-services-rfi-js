@@ -82,8 +82,6 @@ export class App extends Component {
             <DataMapContainer />
             
             <div id="ambient-emissions__container">
-
-            
                 <div id="ambient-emissions__graph-container">
                     <h2>Ambient x Facility Emissions Graph</h2>
                     <div className="ambient-emissions__graph-bounding-box">
@@ -93,7 +91,7 @@ export class App extends Component {
             </div>
 
             <footer>
-                <p>&nbsp;</p>
+                <p>Footer goes here...</p>
             </footer>
             
         </div>
