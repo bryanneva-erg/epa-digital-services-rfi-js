@@ -8,6 +8,10 @@ class ActionCreators {
     findFacilityByFrs(frs){
         EchoWebAPIUtils.findFacilityByFRS(frs);
     }
+
+    getFacilityEmissions(frs){
+        EchoWebAPIUtils.getFacilityEmissions(frs);
+    }
     
     getSO2EmissionsRecursive(start,end,params){
         EchoWebAPIUtils.getSO2EmissionsRecursive(start,end,params);

@@ -34,5 +34,29 @@ export const AMBIENT_SO2_CACHE = {
         2012: { pollutant: 'Sulfur dioxide', emissions: 14820, unit: 'Pounds'},
         2013: { pollutant: 'Sulfur dioxide', emissions: 14638, unit: 'Pounds'},
         2014: { pollutant: 'Sulfur dioxide', emissions: 9840, unit: 'Pounds'}  
+    },
+    'PA': {
+        2005: { pollutant: 'Sulfur dioxide', emissions: 9849, unit: 'Pounds'},
+        2006: { pollutant: 'Sulfur dioxide', emissions: 13463, unit: 'Pounds'},
+        2007: { pollutant: 'Sulfur dioxide', emissions: 15830, unit: 'Pounds'},
+        2008: { pollutant: 'Sulfur dioxide', emissions: 10471, unit: 'Pounds'},
+        2009: { pollutant: 'Sulfur dioxide', emissions: 8720, unit: 'Pounds'},
+        2010: { pollutant: 'Sulfur dioxide', emissions: 8424, unit: 'Pounds'},
+        2011: { pollutant: 'Sulfur dioxide', emissions: 6074, unit: 'Pounds'},
+        2012: { pollutant: 'Sulfur dioxide', emissions: 10610, unit: 'Pounds'},
+        2013: { pollutant: 'Sulfur dioxide', emissions: 9767, unit: 'Pounds'},
+        2014: { pollutant: 'Sulfur dioxide', emissions: 9584, unit: 'Pounds'}  
+    },
+    'NC': {
+        2005: { pollutant: 'Sulfur dioxide', emissions: 12494, unit: 'Pounds'},
+        2006: { pollutant: 'Sulfur dioxide', emissions: 10803, unit: 'Pounds'},
+        2007: { pollutant: 'Sulfur dioxide', emissions: 10937, unit: 'Pounds'},
+        2008: { pollutant: 'Sulfur dioxide', emissions: 10936, unit: 'Pounds'},
+        2009: { pollutant: 'Sulfur dioxide', emissions: 8789, unit: 'Pounds'},
+        2010: { pollutant: 'Sulfur dioxide', emissions: 7160, unit: 'Pounds'},
+        2011: { pollutant: 'Sulfur dioxide', emissions: 9710, unit: 'Pounds'},
+        2012: { pollutant: 'Sulfur dioxide', emissions: 9779, unit: 'Pounds'},
+        2013: { pollutant: 'Sulfur dioxide', emissions: 11645, unit: 'Pounds'},
+        2014: { pollutant: 'Sulfur dioxide', emissions: 10752, unit: 'Pounds'}  
     }
 }
