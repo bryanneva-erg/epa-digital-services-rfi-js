@@ -6,6 +6,10 @@ import { APIUrls } from './APIUrls';
 import _ from 'lodash';
 import math from 'mathjs';
 
+let cache = {
+    '': []
+};
+
 class APIUtils {
     
     findFacilityByFRS(frsId){
@@ -76,6 +80,20 @@ class APIUtils {
 
             FacilityEmissionActionCreators.saveFacilityEmission(report.Pollutants,triYears);
         }
+    }
+
+    fetchOptions(query) {
+        return new Promise(function(resolve, reject) {
+            var result = cache[query], url;
+
+            if(result !== undefined) {
+                resolve(results);
+            } else {
+                console.warn('Echo API Util -- fetchOptions:', query)
+
+                resolve(query);
+            }
+        });
     }
 }
 
