@@ -83,11 +83,13 @@ export class LineGraphBig extends Component {
             .attr("class", "x axis")
             .attr('stroke','white')
             .attr('fill','white')
+            .attr('stroke','white')
             .attr("transform", "translate(0," + (height - margin.bottom) + ")")
             .call(xAxis);
         svg.append("svg:g")
             .attr("class", "y axis")
             .attr('fill','white')
+            .attr('stroke','white')
             .attr("transform", "translate(" + (margin.left) + ",0)")
             .call(yAxis);
         

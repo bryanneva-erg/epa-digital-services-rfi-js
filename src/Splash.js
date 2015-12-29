@@ -139,8 +139,8 @@ export class Splash extends Component {
 							</div>
 						</div>
 						<div>
-							<h3>Do you have facility list?</h3>
-							<Link to="/list"><button className="usa-button-primary-alt" type="button">Upload</button></Link>
+							<h3>Select from facility list</h3>
+							<Link to="/list"><button className="usa-button-primary-alt" type="button">Choose</button></Link>
 						</div>
 						<span>OR</span>
 					</section>
