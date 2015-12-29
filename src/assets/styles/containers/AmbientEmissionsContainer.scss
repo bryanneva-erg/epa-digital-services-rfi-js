@@ -5,7 +5,7 @@
 #ambient-emissions__container {
     background-color: $primary-darkest;
     color: $white;
-    padding: 0 3rem;
+    padding: 2rem 3rem 3rem;
     @include outer-container(100%);
 
     #ambient-emissions__graph-container {

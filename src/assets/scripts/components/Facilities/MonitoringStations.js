@@ -41,7 +41,7 @@ export class MonitoringStations extends Component {
 
     render() {
         
-        const station_list = this.state.monitoringstations.list.splice(0,7).map(function(item,index) {
+        const station_list = this.state.monitoringstations.list.slice(0,7).map(function(item,index) {
             let firstClass = index === 0 ? 'monitoring-stations__list--top' : '';
             let trend = 0;
             let prevData = 0;
@@ -52,11 +52,11 @@ export class MonitoringStations extends Component {
                 });
             }
             
-            let trend_direction = 'N/C';
+            let trend_direction = '--';
             if(trend > 0){
-                trend_direction = 'Up';
+                trend_direction = <div className="icon__up"></div>;
             } else if (trend < 0) {
-                trend_direction = 'Down';
+                trend_direction = <div className="icon__down"></div>;
             }
 
             return (

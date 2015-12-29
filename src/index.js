@@ -6,8 +6,6 @@ import { App } from './App';
 import { Splash } from './Splash';
 import { FacilityList } from './FacilityList';
 
-// render(<App />, document.getElementById('root'));
-
 render((
     <Router>
         <Route path="/" component={Splash} />

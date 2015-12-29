@@ -10,6 +10,10 @@ export const APIUrls = {
         url: 'dfr_rest_services.get_dfr',
         id: 'p_id'
     },
+    'FACILITY':{
+        url: 'air_rest_services.get_facilities?output=json&passthrough=Y',
+        lookup: 'p_sfs'
+    },
     'ECATT': {
         url: 'ecatt_ems_rest_services.get_ems'        
     },
