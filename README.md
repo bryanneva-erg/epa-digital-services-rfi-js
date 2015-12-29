@@ -1,7 +1,7 @@
 # EPA - Digital Services RFI - ERG Response - airMonitr
-[![Circle CI](https://circleci.com/gh/Eastern-Research-Group/epa-digital-services-rfi-js/tree/master.svg?style=svg)](https://circleci.com/gh/Eastern-Research-Group/epa-digital-services-rfi-js/tree/master)
 
-https://epa-ds-rfi.herokuapp.com
+## Prototype
+The publicly accessible prototype is hosted at https://epa-ds-rfi.herokuapp.com/
 
 Description
 
@@ -31,7 +31,7 @@ ERG team is well-versed in a broad, modern web framework and stack, agile develo
 |Data Set and API |	[EPA Enforcement Compliance History Online (ECHO) Air Facility System (AFS) and Clean Air Markets Division Business System (CAMDBS) API](http://echo.epa.gov/resources/echo-data/about-the-data#sources), JSON|
 |Data Visualization |	[D3.js (Charts)](http://d3js.org/), [Leaflet.js (Map)](http://leafletjs.com/)|
 |Full Stack PaaS	| [Heroku PaaS platform for deployment](https://www.heroku.com/), GitHub (Repository), [CircleCI (continuous rapid build, integration and deployment)](https://circleci.com/)|
-|Prototype airMonitr | https://epa-ds-rfi.herokuapp.com/
+|Prototype airMonitr | https://epa-ds-rfi.herokuapp.com/|
 
 ## Troubleshooting
 
