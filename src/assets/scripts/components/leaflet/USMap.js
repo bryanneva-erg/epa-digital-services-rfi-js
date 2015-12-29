@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, TileLayer,Marker,Popup,LayerGroup,Circle } from 'react-leaflet';
+import { Map, TileLayer,Marker,Popup,LayerGroup,CircleMarker } from 'react-leaflet';
 import MonitoringStationActionCreators from '../../actions/MonitoringStationActionCreators';
 import FacilityActionCreators from '../../actions/FacilityActionCreators';
 
@@ -59,9 +59,7 @@ export default class USMap extends Component {
         if(this.props.points.length > 0){
             points = this.props.points.map(function(coords, i) {
                 return (
-                    <Circle center={[coords.Latitude,coords.Longitude]}
-                    radius={500} 
-                    fillColor="red" 
+                    <CircleMarker center={[coords.Latitude,coords.Longitude]}
                     key={i} 
                     itemNumber={i}>
                         <Popup>
@@ -73,7 +71,7 @@ export default class USMap extends Component {
                                 [{coords.Latitude}, {coords.Longitude}]
                             </span>
                         </Popup>
-                    </Circle>
+                    </CircleMarker>
                 );
             });
         }
