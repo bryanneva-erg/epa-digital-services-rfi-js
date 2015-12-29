@@ -15,12 +15,12 @@ import { Tabs, Tab, LeftNav, MenuItem } from 'material-ui';
 import EchoServerActionCreators from './assets/scripts/actions/EchoServerActionCreators';
 import FacilityStore from './assets/scripts/stores/FacilityStore';
 
-EchoServerActionCreators.findFacilityByFrs(110017805730);
-EchoServerActionCreators.getFacilityEmissions(110017805730);
+// EchoServerActionCreators.findFacilityByFrs(110017805730);
+// EchoServerActionCreators.getFacilityEmissions(110017805730);
 
-EchoServerActionCreators.findFacilityByFrs(110004060417);
-EchoServerActionCreators.findFacilityByFrs(110010681707);
-EchoServerActionCreators.findFacilityByFrs(110000753319);
+// EchoServerActionCreators.findFacilityByFrs(110004060417);
+// EchoServerActionCreators.findFacilityByFrs(110010681707);
+// EchoServerActionCreators.findFacilityByFrs(110000753319);
 
 function getStateFromStores(){
     

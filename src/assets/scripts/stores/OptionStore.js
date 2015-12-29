@@ -33,8 +33,13 @@ AppDispatcher.register((payload) => {
 
     switch(action.type) {
         case AppConstants.GET_OPTIONS_SUCCESS:
-            console.warn('OptionStore -- Action Received:',action.options);
-            _store.list.push(action.options)
+            if(action.options !== undefined){
+                _store.list = action.options;    
+            }
+            OptionStore.emit(CHANGE_EVENT);
+            break;
+        case AppConstants.CLEAR_OPTIONS:
+            _store.list = [];
             OptionStore.emit(CHANGE_EVENT);
             break;
     }

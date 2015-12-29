@@ -91,7 +91,15 @@ class APIUtils {
             } else {
                 console.warn('Echo API Util -- fetchOptions:', query)
 
-                resolve(query);
+                request.get(APIUrls.CORS_PREFIX.url + APIUrls.ECHO_PREFIX.url + APIUrls.FACILITY.url)
+                        .query({[APIUrls.FACILITY.lookup]: query})
+                        .end(function(err, resp) {
+                            let json = JSON.parse(resp.text);
+                            resolve(json.Results.Facilities);
+                        });
+
+                
+
             }
         });
     }

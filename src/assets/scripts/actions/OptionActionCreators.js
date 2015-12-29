@@ -5,13 +5,20 @@ import EchoWebAPIUtils from '../utils/EchoWebAPIUtils';
 class ActionCreators {
 
     getOptions(inputValue){
-        console.warn('ActionCreators -- getOptions:', inputValue);
+        
+        if(inputValue === '') return this.clearOptions();
+
         EchoWebAPIUtils.fetchOptions(inputValue).then(function(data) {
-            console.warn('ActionCreators -- Resolve Promise:', data)
             AppDispatcher.dispatch({
                 type: AppConstants.GET_OPTIONS_SUCCESS,
                 options:data
             });
+        });
+    }
+
+    clearOptions(){
+        AppDispatcher.dispatch({
+            type: AppConstants.CLEAR_OPTIONS
         });
     }
 }
