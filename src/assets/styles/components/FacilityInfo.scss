@@ -9,11 +9,8 @@
 	background-color: $white;
 }
 .facilityinfo__desc-container {
-    .facilityinfo__header {
-        font-weight:700;
-        font-size:30px;
-        line-height: 1.3em;
-        color: $body-text;
+    h2.facilityinfo__header {
+			margin-top: 1.5rem;
     }
     .facilityinfo__desc {
         font-weight: 400;

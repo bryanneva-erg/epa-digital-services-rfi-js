@@ -29,19 +29,19 @@ export class DataMapContainer extends Component {
         const selected_co2 = this.state.activetab === 2;
         const selected_nox = this.state.activetab === 3;
 
-        let so2_active = '';
-        let co2_active = '';
-        let nox_active = '';
+        let so2_active = 'tab';
+        let co2_active = 'tab';
+        let nox_active = 'tab';
         if(selected_so2) {
-            so2_active = 'tab--active';
+            so2_active = 'tab tab--active';
         }
 
         if(selected_co2) {
-            co2_active = 'tab--active';
+            co2_active = 'tab tab--active';
         }
 
         if(selected_nox) {
-            nox_active = 'tab--active';
+            nox_active = 'tab tab--active';
         }
 
         return (
@@ -51,8 +51,8 @@ export class DataMapContainer extends Component {
                 </div>
 
                 <div id="data-map__facility-info">
-                    <Tabs className="tabs__container" contentContainerStyle={{'backgroundColor':'#FFFFFF'}} tabItemContainerStyle={{'backgroundColor':'#112e51'}}>
-                        <Tab label="SO₂" onActive={this._onActive.bind(this,1)} selected={ selected_so2 } data-id="1" className={ so2_active }>
+                    <Tabs inkBarStyle={{'display': 'none'}} className="tabs__container" contentContainerStyle={{'backgroundColor':'#FFFFFF'}} tabItemContainerStyle={{'backgroundColor':'#112e51'}}>
+                        <Tab label="SO₂" onActive={this._onActive.bind(this,1)} selected={ selected_so2 } data-id="1" className={so2_active}>
                             <FacilityInfo />
                         </Tab>
                         <Tab label="CO₂" onActive={this._onActive.bind(this,2)} selected={ selected_co2 } data-id="2" className={ co2_active }>
