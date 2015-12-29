@@ -58,11 +58,20 @@ export class App extends Component {
                 <DataMapContainer />
                 <AmbientEmissionsContainer id="ambient-emissions__container" />
                 
-                <footer>
-                    <p>Footer goes here...</p>
+                <footer> 
+									<p>
+										<a href="http://www.erg.com" target="_blank"><img src={require("./assets/images/erg-logo.png")} alt="ERG Logo" /></a>
+									</p>
+									<ul className="social-icons">
+										<li><a href="https://www.facebook.com/EasternResearchGroup" target="_blank">Facebook</a></li>
+										<li><a href="https://twitter.com/ERGupdate" target="_blank">Twitter</a></li>
+										<li><a href="https://github.com/Eastern-Research-Group" target="_blank">GitHub</a></li>
+									</ul>
+									<p>airMonitr is a working prototype, submitted by Eastern Research Group, Inc. in response to the U.S. Environmental Protection Agency's EDS Request for Information.</p>
+									
+                 
                 </footer>
             </div>
-            
             
         );
     }

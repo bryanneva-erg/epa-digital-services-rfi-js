@@ -15,12 +15,37 @@ body {
 }
 
 footer {
-    background-color: $primary-alt-darkest;
-
+    background-color: $primary;
+		padding: 5rem 3rem;
+		font-size: 1.2rem;
     @include outer-container(100%);
     p {
         @include span-columns(12);
+				text-align: center;
+				color: $primary-alt-light;
+				float: none;
     }
+		.social-icons{
+			display: block;
+			width: 130px;
+			margin: 4rem auto 0;
+			background: url(../images/social-icons.png) top left no-repeat;
+			background-size: 130px auto;
+			li{
+				display: inline-block;
+				width: 33%;
+				height: 40px;
+				margin: 0;
+				a{
+					display: block;
+					text-indent: -999em;
+					height: 100%;
+				}
+			}
+			li:before{
+				content:"";
+			}
+		}
 }
 
 div[id^='map'] {
