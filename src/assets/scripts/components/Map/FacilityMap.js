@@ -35,14 +35,13 @@ export default class FacilityMap extends Component {
     }
 
     render() {
-        // console.log(this.props.bounds);
-        // [27.78869,-81.871226]
-        // <USMap lat={this.props.lat} lng={this.props.lng} center={[this.props.lat,this.props.lng]} points={MONITORING_STATIONS} />
-        // <USMap boundsOptions={this.props.bounds} points={MONITORING_STATIONS} />
-
         return (
             <div>
-                <USMap lat={this.props.lat} lng={this.props.lng} center={[this.props.lat,this.props.lng]} facilities={this.props.facilities} points={MONITORING_STATIONS} />
+                <USMap lat={this.props.lat} 
+                       lng={this.props.lng} 
+                       center={[this.props.lat,this.props.lng]} 
+                       facilities={this.props.facilities} 
+                       points={this.props.monitoring_stations} />
             </div>
         );
     }

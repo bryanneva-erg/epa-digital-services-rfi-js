@@ -3,12 +3,15 @@ import FacilityMap from './FacilityMap';
 import EchoServerActionCreators from '../../actions/EchoServerActionCreators';
 import FacilityActionCreators from '../../actions/FacilityActionCreators';
 import FacilityStore from '../../stores/FacilityStore';
+import MonitoringStationStore from '../../stores/MonitoringStationStore';
+import _ from 'lodash';
 
 function getStateFromStores(){
     
     return {
         facilities: FacilityStore.getList(),
-        selectedFacility: FacilityStore.getSelectedFacility()
+        selectedFacility: FacilityStore.getSelectedFacility(),
+        monitoringStations: MonitoringStationStore.get()
     };
 }
 
@@ -20,18 +23,23 @@ export class MapContainer extends Component {
             lat: 39.7,
             lng: -105.1,
             facilities: FacilityStore.getList(),
-            selectedFacility: FacilityStore.getSelectedFacility()
+            selectedFacility: FacilityStore.getSelectedFacility(),
+            monitoringStations: MonitoringStationStore.get()
         };
 
-        // console.log(this.state.selectedFacility);
+        if(_.size(this.state.selectedFacility) === 0 && _.size(this.state.facilities.list) > 0){
+            FacilityActionCreators.selectFacility(this.state.facilities.list[0]);
+        }
     }
 
     componentDidMount(){
         FacilityStore.addChangeListener(this._onChange);
+        MonitoringStationStore.addChangeListener(this._onChange);
     }
 
     componentWillUnmount(){
         FacilityStore.removeChangeListener(this._onChange);
+        MonitoringStationStore.removeChangeListener(this._onChange);
     }
 
     _onChange(e){
@@ -56,12 +64,18 @@ export class MapContainer extends Component {
 
         const facilities = []
         _.forEach(this.state.selectedFacility, function(n, index) {
-            facilities.push({lat:n.lat,lng:n.lng});
+            facilities.push({lat:n.lat,lng:n.lng,data:n});
         });
 
+        const lat = this.state.selectedFacility[0] !== undefined ? this.state.selectedFacility[0].lat : 39.50;
+        const lng = this.state.selectedFacility[0] !== undefined ? this.state.selectedFacility[0].lng : -98.35;
+        
         return (
             <div className="usa-width-one-half" id="map">
-                <FacilityMap lat={this.state.selectedFacility[0].lat} lng={this.state.selectedFacility[0].lng} facilities={ facilities }/>
+                <FacilityMap lat={ lat } 
+                             lng={ lng } 
+                             facilities={ facilities } 
+                             monitoring_stations={ this.state.monitoringStations.list } />
             </div>
         );    
     }

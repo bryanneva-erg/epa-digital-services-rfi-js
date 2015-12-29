@@ -1,0 +1,24 @@
+@import '../../vendor/18f/_scss/lib/bourbon/bourbon';
+@import '../../vendor/18f/_scss/lib/neat/neat';
+@import '../variables';
+
+#ambient-emissions__container {
+    background-color: $primary-darkest;
+    color: $white;
+    @include outer-container(100%);
+
+    #ambient-emissions__graph-container {
+        // background-color: $primary-darkest;
+        // @include outer-container(70%);
+        @include span-columns(6)
+        @include shift(2)
+
+        .ambient-emissions__graph-bounding-box {
+            width:50em;
+        }
+    }
+}
+
+.x.axis {
+    color:white;
+}
