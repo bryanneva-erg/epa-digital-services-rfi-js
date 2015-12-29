@@ -9,8 +9,8 @@ import { LineGraph } from '../Graph/LineGraph';
 
 // Flux
 import EchoServerActionCreators from '../../actions/EchoServerActionCreators';
-import AmbientEmissionActionCreators from '../../actions/AmbientEmissionActionCreators';
-import AmbientEmissionStore from '../../stores/AmbientEmissionStore';
+// import AmbientEmissionActionCreators from '../../actions/AmbientEmissionActionCreators';
+// import AmbientEmissionStore from '../../stores/AmbientEmissionStore';
 import FacilityStore from '../../stores/FacilityStore';
 import FacilityEmissionStore from '../../stores/FacilityEmissionStore';
 
@@ -22,9 +22,10 @@ import { AMBIENT_SO2_CACHE } from '../../../data/AMBIENT_SO2_CACHE';
 function getStateFromStores(){
     
     return {
-        ambientemissions: AmbientEmissionStore.getList(),
+        // ambientemissions: AmbientEmissionStore.getList(),
         selectedfacility: FacilityStore.getSelectedFacility(),
-        facilityemissions: FacilityEmissionStore.get()
+        facilityemissions: FacilityEmissionStore.get(),
+        focusedfacility: FacilityStore.getFocusedFacility()
     };
 }
 
@@ -33,20 +34,21 @@ export class FacilityInfo extends Component {
         super(props);
         this._onChange = this._onChange.bind(this);
         this.state = {
-            ambientemissions: AmbientEmissionStore.getList(),
+            // ambientemissions: AmbientEmissionStore.getList(),
             selectedfacility: FacilityStore.getSelectedFacility(),
-            facilityemissions: FacilityEmissionStore.get()
+            facilityemissions: FacilityEmissionStore.get(),
+            focusedfacility: FacilityStore.getFocusedFacility()
         };
     }
 
     componentDidMount(){
-        AmbientEmissionStore.addChangeListener(this._onChange);
+        // AmbientEmissionStore.addChangeListener(this._onChange);
         FacilityStore.addChangeListener(this._onChange);
         FacilityEmissionStore.addChangeListener(this._onChange);
     }
 
     componentWillUnmount(){
-        AmbientEmissionStore.removeChangeListener(this._onChange);
+        // AmbientEmissionStore.removeChangeListener(this._onChange);
         FacilityStore.removeChangeListener(this._onChange);
         FacilityEmissionStore.removeChangeListener(this._onChange);
     }
@@ -69,27 +71,24 @@ export class FacilityInfo extends Component {
         const facility_location = available_facility ? this.state.selectedfacility[0].city + ", " + this.state.selectedfacility[0].state : ''; 
         const facility_id = available_facility ? this.state.selectedfacility[0].frs : '';
         
-        const isEditing = this.state.ambientemissions.editing ? '(Adding...)' : '';
+        // const isEditing = this.state.ambientemissions.editing ? '(Adding...)' : '';
         
         const parsed_data = [];
         let cumulative_so2 = 0;
         let raw_data;
         let preferred_source = false;
 
-        const camd = undefined,
-              nei = undefined,
-              ghg = undefined;
-        // const camd = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
-        //     return chr.Program === 'CAMD';
-        // });
+        const camd = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
+            return chr.Program === 'CAMD';
+        });
 
-        // const nei = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
-        //     return chr.Program === 'NEI';
-        // });
+        const nei = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
+            return chr.Program === 'NEI';
+        });
 
-        // const ghg = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
-        //     return chr.Program === 'GHG';
-        // });
+        const ghg = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
+            return chr.Program === 'GHG';
+        });
         
         if(camd !== undefined) {
             preferred_source = 'CAMD';
@@ -101,9 +100,9 @@ export class FacilityInfo extends Component {
             // console.error('No SO2 data for this location');
         }
 
-        // const source_data = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
-        //     return chr.Program === preferred_source;
-        // });
+        const source_data = _.find(this.state.facilityemissions[this.props.type][0], function(chr) {
+            return chr.Program === preferred_source;
+        });
 
         if(preferred_source !== false) {
             _.forEach(this.state.facilityemissions.years[0], function(n, index) {
@@ -113,7 +112,7 @@ export class FacilityInfo extends Component {
                     parsed_data.push({year: n, cumulative_so2: cumulative_so2 });
                 }
             });
-        }        
+        }
         
         return (
             <div className="facilityinfo__container">

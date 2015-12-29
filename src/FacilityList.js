@@ -26,7 +26,11 @@ export class FacilityList extends Component {
         this.state = {
             facilities: FacilityStore.getList(),
             selectedFacility: FacilityStore.getSelectedFacility()
-        };        
+        };
+
+        if(_.size(this.state.selectedFacility) === 0 && _.size(this.state.facilities.list) > 0){
+            FacilityActionCreators.selectFacility(this.state.facilities.list[0]);
+        }    
     }
 
     componentDidMount(){
@@ -42,7 +46,7 @@ export class FacilityList extends Component {
     }
 
     _onCheck(key, e) {
-        let selected_facility = _.find(this.state.selectedfacility, function(chr) {
+        let selected_facility = _.find(this.state.selectedFacility, function(chr) {
                 return chr.frs === e.target.value;
             });
 
@@ -63,7 +67,7 @@ export class FacilityList extends Component {
         e.preventDefault();
 
         let url = '';
-        _.forEach(this.state.selectedfacility,function(n,key) {
+        _.forEach(this.state.selectedFacility,function(n,key) {
             if(url === ''){
                 url = n.frs;
             } else {
@@ -126,8 +130,11 @@ export class FacilityList extends Component {
                                 { menuItems.slice(Math.ceil(menuItems.length / 2)) }
                             </ul>
                         </fieldset>
-                                    
-                        <Link to="/facility" className="facility-list__startbtn"><button className="usa-button-primary-alt" type="button">Start</button></Link>
+                        
+                        <a href="#" onClick={this._onSubmit.bind(this)} className="facility-list__startbtn">
+                            <button className="usa-button-primary-alt" type="button">Start</button>
+                        </a>
+                        
                                     
                     </div>
                 </div>

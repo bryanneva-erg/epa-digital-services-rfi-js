@@ -1,5 +1,7 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import AppConstants from '../constants/AppConstants';
+import MonitoringStationActionCreators from '../actions/MonitoringStationActionCreators';
+import FacilityActionCreators from '../actions/FacilityActionCreators';
 import { EventEmitter } from 'events';
 import _ from 'lodash';
 
@@ -8,6 +10,7 @@ const CHANGE_EVENT = 'change';
 let _store = {
     list: [],
     selectedFacility: [],
+    focusedFacility: {},
     editing: false,
 };
 
@@ -28,6 +31,10 @@ class FacilityStoreClass extends EventEmitter {
     getSelectedFacility() {
         return _store.selectedFacility;
     }
+
+    getFocusedFacility() {
+        return _store.focusedFacility;
+    }
 }
 
 const FacilityStore = new FacilityStoreClass();
@@ -43,17 +50,15 @@ AppDispatcher.register((payload) => {
             break;
         case AppConstants.SAVE_FACILITY:
             _store.list.push(action.facility);
-            
-            if(_.size(_store.selectedFacility) === 0){
-                _store.selectedFacility.push(action.facility);
-            }
-
             _store.editing = false;
             FacilityStore.emit(CHANGE_EVENT);
             break;
         case AppConstants.SELECT_FACILITY:
             _store.selectedFacility.push(action.facility);
             FacilityStore.emit(CHANGE_EVENT);
+            break;
+        case AppConstants.FOCUS_FACILITY:
+            _store.focusedFacility = _store.selectedFacility[action.index];
             break;
         case AppConstants.UNSELECT_FACILITY:
             _store.selectedFacility = _store.selectedFacility.filter((item,index) => {

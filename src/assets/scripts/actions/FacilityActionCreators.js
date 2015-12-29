@@ -1,6 +1,7 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import AppConstants from '../constants/AppConstants';
 import EchoWebAPIUtils from '../utils/EchoWebAPIUtils';
+import MonitoringStationActionCreators from './MonitoringStationActionCreators';
 
 class ActionCreators {
 
@@ -21,6 +22,15 @@ class ActionCreators {
         AppDispatcher.dispatch({
             type: AppConstants.SELECT_FACILITY,
             facility: facility
+        });
+
+        MonitoringStationActionCreators.getAroundPoint(facility);
+    }
+
+    focusFacility(index) {
+        AppDispatcher.dispatch({
+            type: AppConstants.FOCUS_FACILITY,
+            index: index
         });
     }
 

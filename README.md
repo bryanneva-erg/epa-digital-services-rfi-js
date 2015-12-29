@@ -1,7 +1,7 @@
-# EPA - Digital Services RFI - ERG Response
+# EPA - Digital Services RFI - ERG Response - airMonitr 
+[![Circle CI](https://circleci.com/gh/Eastern-Research-Group/epa-digital-services-rfi-js/tree/master.svg?style=svg)](https://circleci.com/gh/Eastern-Research-Group/epa-digital-services-rfi-js/tree/master)
 
-Link to tests
-[![react-transform channel on Discord](https://img.shields.io/badge/discord-react--transform%40reactiflux-61DAFB.svg?style=flat-square)](http://www.reactiflux.com)
+https://epa-ds-rfi.herokuapp.com
 
 Description
 
@@ -29,5 +29,4 @@ Description
 
 ## License
 
-CC0 (public domain)
-domain)
+

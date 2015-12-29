@@ -14,21 +14,6 @@ body {
 	position: relative;
 }
 
-#ambient-emissions__container {
-    background-color: $primary-darkest;
-		color: $white;
-		padding: 0 3rem;
-    @include outer-container(100%);
-
-    #ambient-emissions__graph-container {
-        @include span-columns(12)
-
-        .ambient-emissions__graph-bounding-box {
-            width: 100%;
-        }
-    }
-}
-
 footer {
     background-color: $primary-alt-darkest;
 

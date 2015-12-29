@@ -31,7 +31,7 @@
     "babel",
     "react-transform"
   ],
-  "author": "Eastern Research Group <bryan.neva@erg.com> (http://github.com/Eastern-Research-Group)",
+  "author": "Eastern Research Group (http://github.com/Eastern-Research-Group)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Eastern-Research-Group/epa-digital-services-rfi-js/issues"
