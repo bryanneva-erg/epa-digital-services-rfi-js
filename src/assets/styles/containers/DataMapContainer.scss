@@ -59,8 +59,13 @@
         }
     }
 }
-
-.tab--active {
+.tabs__container{
+	.tab{
+		border-right: 1px solid $primary;
+		color: $white !important;
+	}
+	.tab--active {
     color:#000000 !important;
     background-color:#FFFFFF;
+	}
 }

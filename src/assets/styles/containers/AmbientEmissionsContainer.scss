@@ -5,6 +5,7 @@
 #ambient-emissions__container {
     background-color: $primary-darkest;
     color: $white;
+    padding: 0 3rem;
     @include outer-container(100%);
 
     #ambient-emissions__graph-container {
@@ -14,7 +15,7 @@
         @include shift(2)
 
         .ambient-emissions__graph-bounding-box {
-            width:50em;
+            width:100%;
         }
     }
 }
