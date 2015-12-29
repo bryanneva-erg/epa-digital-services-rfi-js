@@ -7,6 +7,7 @@
     @include outer-container(100%);
 		max-height: $map-height;
 		background-color: $white;
+		font-family: $primary-font;
     #data-map__map {
         @include span-columns(6);
         margin-right:0;
@@ -20,16 +21,16 @@
 
     #data-map__monitoring-stations {
  				@include span-columns(2.55);
+				height: 460px;
+				overflow: auto;
         .data-map__monitoring-stations--body {
             background-color:$primary-alt-lightest;
             border:1em solid #ffffff;
-            height: $map-height;
             padding: 1rem 2rem;
-						
-			h3{
-				margin-top: 1.7rem;
-				line-height: 1.6;
-			}
+						min-height: 460px;
+						h3{
+							margin-top: 0.5rem;
+						}
 
             .monitoring-stations__list {
                 padding-top:1em;
@@ -37,10 +38,10 @@
                 .monitoring-stations__list--top {
                     border-top:1px solid $primary-alt-light;        
                 }
-				ul{
-					margin: 0;
-					display: block;
-				}
+								ul{
+									margin: 0;
+									display: block;
+								}
                 li {
                     display: block;
                     width: 100%;
@@ -63,6 +64,8 @@
 	.tab{
 		border-right: 1px solid $primary;
 		color: $white !important;
+		font-family: $primary-font !important;
+		font-size: 1.8rem !important;
 	}
 	.tab--active {
     color:#000000 !important;
