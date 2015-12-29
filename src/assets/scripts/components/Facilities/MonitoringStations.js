@@ -52,11 +52,11 @@ export class MonitoringStations extends Component {
                 });
             }
             
-            let trend_direction = 'N/C';
+            let trend_direction = '--';
             if(trend > 0){
-                trend_direction = 'Up';
+                trend_direction = <div className="icon__up"></div>;
             } else if (trend < 0) {
-                trend_direction = 'Down';
+                trend_direction = <div className="icon__down"></div>;
             }
 
             return (

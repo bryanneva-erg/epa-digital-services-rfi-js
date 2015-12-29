@@ -1,5 +1,5 @@
 # EPA - Digital Services RFI - ERG Response - airMonitr 
-[![Circle CI](https://circleci.com/gh/Eastern-Research-Group/epa-digital-services-rfi-js/tree/master.svg?style=svg)](https://circleci.com/gh/Eastern-Research-Group/epa-digital-services-rfi-js/tree/master)
+[![Circle CI](https://circleci.com/gh/Eastern-Research-Group/epa-digital-services-rfi-js.svg?style=svg)](https://circleci.com/gh/Eastern-Research-Group/epa-digital-services-rfi-js)
 
 https://epa-ds-rfi.herokuapp.com
 
