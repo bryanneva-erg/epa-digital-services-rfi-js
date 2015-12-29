@@ -26,11 +26,11 @@ ERG team is well-versed in a broad, modern web framework and stack, agile develo
 
 |Category	|Technology Stack|
 |---------|-----------------|
-|Frontend |	U.S. Web Design Standards (GSA/18F), jQuery, SuperAgent.js, ReactJS, Flux, Babel, ECMAScript 6 (ES 6), Webpack Module Bundler|
-|Backend	| Node.js, Express
-|Data Set and API |	EPA Enforcement Compliance History Online (ECHO) Air Facility System (AFS) and Clean Air Markets Division Business System (CAMDBS) API, JSON|
-|Data Visualization |	D3.js (Charts), Leaflet.js (Map)|
-|Full Stack PaaS	| Heroku PaaS platform for deployment, GitHub (Repository), CircleCI (continuous rapid build, integration and deployment)
+|Frontend |	[U.S. GSA Web Design Standards (GSA/18F)](https://playbook.cio.gov/designstandards/), jQuery, [SuperAgent.js](https://github.com/visionmedia/superagent), [ReactJS](http://facebook.github.io/react/), Flux, [Babel](https://babeljs.io/), ECMAScript 6 (ES 6), [Webpack Module Bundler](http://webpack.github.io/)|
+|Backend	| [Node.js](https://nodejs.org/en/), [Express](http://expressjs.com/)
+|Data Set and API |	[EPA Enforcement Compliance History Online (ECHO) Air Facility System (AFS) and Clean Air Markets Division Business System (CAMDBS) API](http://echo.epa.gov/resources/echo-data/about-the-data#sources), JSON|
+|Data Visualization |	[D3.js (Charts)](http://d3js.org/), [Leaflet.js (Map)](http://leafletjs.com/)|
+|Full Stack PaaS	| [Heroku PaaS platform for deployment](https://www.heroku.com/), GitHub (Repository), [CircleCI (continuous rapid build, integration and deployment)](https://circleci.com/)
 
 ## Troubleshooting
 
