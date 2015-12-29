@@ -34,6 +34,11 @@ div[id^='map'] {
 .body__container{
 		max-width: $section-width;
 		margin: 0 auto;
+		p{
+			display: block;
+			max-width: 800px;
+			margin: 0 auto;
+		}
 }
 
 #home-splash{
@@ -83,7 +88,7 @@ div[id^='map'] {
 			background-color: $primary-darkest;
 			border-radius: 20px;
 			position: absolute;
-			top: 128px;
+			top: 120px;
 			left: 50%;
 			text-align: center;
 			padding-top: 1rem;
