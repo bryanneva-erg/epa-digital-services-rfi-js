@@ -21,7 +21,7 @@ class ActionCreators {
         });
 
         let NOx = _.filter(report, function(n) {
-            return n.Pollutant === "Nitrous oxide";
+            return n.Pollutant === "Nitrogen oxides";
         });
 
         console.warn(report)
