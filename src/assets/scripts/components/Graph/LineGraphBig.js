@@ -3,8 +3,8 @@ import d3 from 'd3';
 
 // const margin = {top:20,right:40,bottom:20,left:40};
 const margin = {top:20,right:60,bottom:20,left:150};
-const fullWidth = 900;
-const fullHeight = 200;
+const fullWidth = 1000;
+const fullHeight = 250;
 const width = fullWidth - margin.left - margin.right;
 const height = fullHeight - margin.top - margin.bottom;
 const xScale = d3.scale.linear().range([margin.left, width - margin.right]),
@@ -73,14 +73,14 @@ export class LineGraphBig extends Component {
         svg.select('.line')
             .duration(ANIM_SPEED)
             .attr('d',lineGen(data))
-            .attr('stroke', 'red')
+            .attr('stroke', '#0071bc')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
         svg.select('.line2')
             .duration(ANIM_SPEED)
             .attr('d',lineGen2(data2))
-            .attr('stroke', 'blue')
+            .attr('stroke', '#e31c3d')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
@@ -150,7 +150,7 @@ export class LineGraphBig extends Component {
         svg.append('svg:path')
             .attr('class','line')
             .attr('d', lineGen(data))
-            .attr('stroke', 'red')
+            .attr('stroke', '#0071bc')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
@@ -167,7 +167,7 @@ export class LineGraphBig extends Component {
         svg.append('svg:path')
             .attr('class','line2')
             .attr('d', lineGen2(data2))
-            .attr('stroke', 'blue')
+            .attr('stroke', '#e31c3d')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
