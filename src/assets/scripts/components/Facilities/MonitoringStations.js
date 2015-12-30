@@ -9,12 +9,13 @@ import '../../../styles/containers/MonitoringStations.scss';
 // Flux
 import MonitoringStationStore from '../../stores/MonitoringStationStore';
 import MonitoringStationActionCreators from '../../actions/MonitoringStationActionCreators';
-
+import AmbientEmissionStore from '../../stores/AmbientEmissionStore';
 
 function getStateFromStores(){
     
     return {
-        monitoringstations: MonitoringStationStore.get()
+        monitoringstations: MonitoringStationStore.get(),
+        selectedemission: AmbientEmissionStore.getSelected()
     };
 }
 
@@ -23,35 +24,60 @@ export class MonitoringStations extends Component {
         super(props);
         this._onChange = this._onChange.bind(this);
         this.state = {
-            monitoringstations: MonitoringStationStore.get()
+            monitoringstations: MonitoringStationStore.get(),
+            selectedemission: AmbientEmissionStore.getSelected()
         };
     }
 
     componentDidMount(){
         MonitoringStationStore.addChangeListener(this._onChange);
+        AmbientEmissionStore.addChangeListener(this._onChange);
     }
 
     componentWillUnmount(){
         MonitoringStationStore.removeChangeListener(this._onChange);
+        AmbientEmissionStore.addChangeListener(this._onChange);
     }
 
     _onChange(e){
         this.setState(getStateFromStores());
     }
 
+    _getEmissionName(emission_acronym) {
+        switch(emission_acronym){
+            case 'SO2':
+                return "Sulfur dioxide";
+            case 'CO2':
+                return "Carbon dioxide"
+            case 'NOx':
+                return "Nitrous oxide";
+        }
+    }
+
     render() {
         
-        const station_list = this.state.monitoringstations.list.slice(0,7).map(function(item,index) {
+        let numFacilities = 0;
+        const station_list = this.state.monitoringstations.list.map(function(item,index) {
+            let classes = '';
             let firstClass = index === 0 ? 'monitoring-stations__list--top' : '';
+            let focusedClass = '';
             let trend = 0;
             let prevData = 0;
-            if (item.data.length > 0) {
-                _.forEach(item.data, function(n) {
-                    prevData = parseFloat(n['Pollutant Concentration'])
-                    trend = prevData - trend;
-                });
-            }
+
+            if (item.data.length < 1) return false;
             
+            _.forEach(item.data, function(n) {
+
+                if(n['Pollutant'] !== this._getEmissionName(this.state.selectedemission)) return false;
+                
+                prevData = parseFloat(n['Pollutant Concentration'])
+                trend = prevData - trend;
+            }.bind(this));
+            
+
+            numFacilities++
+            if(numFacilities > 7) return false;
+
             let trend_direction = <div className="icon__nc"></div>;
             if(trend > 0){
                 trend_direction = <div className="icon__up"></div>;
@@ -59,9 +85,22 @@ export class MonitoringStations extends Component {
                 trend_direction = <div className="icon__down"></div>;
             }
 
+            if(this.state.monitoringstations.focusedStation['County Name'] === item['County Name']
+                && this.state.monitoringstations.focusedStation['State Code'] === item['State Code']
+                && this.state.monitoringstations.focusedStation['County Code'] === item['County Code']
+                && this.state.monitoringstations.focusedStation['Site Number'] === item['Site Number']){
+                focusedClass = "monitoring-stations__list--focused";
+            }
+
+            if(firstClass !== '' || focusedClass !== ''){
+                classes = firstClass + " " + focusedClass;    
+            }
+            const county_name = item['County Name'].length > 6 ? item['County Name'].substr(0,6) : item['County Name'];
+            const station_name = county_name + "-" + item['State Code'] + "-" + item['County Code'] + "-" + item['Site Number']
+
             return (
-                <li key={index} className={firstClass}>
-                    {item['County Name']} &ndash; {item['State Code']}-{item['County Code']}-{item['Site Number']}
+                <li key={index} className={classes}>
+                    <span className="station-list__label">{station_name}</span>
                     <span className="station-list__trend">{ trend_direction }</span>
                 </li>
             );

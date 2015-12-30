@@ -17,8 +17,14 @@ export default class USMap extends Component {
         // MonitoringStationActionCreators.getWithinBounds(e.target.getBounds());
     }
 
-    _onClick(index, e) {
-        FacilityActionCreators.focusFacility(index);
+    _onClickFacility(index, e) {
+        const selected_facility = this.props.facility[index];
+        FacilityActionCreators.focusFacility(selected_facility);
+    }
+
+    _onClickStation(index,e) {
+        const selected_station = this.props.points[index]
+        MonitoringStationActionCreators.focusMonitoringStation(selected_station);
     }
 
     render() {
@@ -42,7 +48,8 @@ export default class USMap extends Component {
                     <Marker position={ facility_position } 
                             fillColor="red" 
                             key={i} 
-                            itemNumber={i} onClick={this._onClick.bind(this, i)}>
+                            itemNumber={i} 
+                            onClick={this._onClickFacility.bind(this, i)}>
                         <Popup>
                             <span>
                                 {coords.data.name}<br />
@@ -60,10 +67,12 @@ export default class USMap extends Component {
             points = this.props.points.map(function(coords, i) {
                 return (
                     <CircleMarker center={[coords.Latitude,coords.Longitude]}
-                    key={i} 
-                    itemNumber={i}>
+                                  key={i} 
+                                  itemNumber={i}
+                                  onClick={this._onClickStation.bind(this,i)}>
                         <Popup>
                             <span>
+                                Station: {coords['County Name']} &ndash; {coords['State Code']}-{coords['County Code']}-{coords['Site Number']}<br />
                                 Address: {coords.Address}<br />
                                 Location: {coords['CBSA Name']}<br />
                                 County: {coords['County Name']}<br />
@@ -73,7 +82,7 @@ export default class USMap extends Component {
                         </Popup>
                     </CircleMarker>
                 );
-            });
+            }.bind(this));
         }
 
         const tileLayer = <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

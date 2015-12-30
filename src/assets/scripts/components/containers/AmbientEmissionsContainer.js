@@ -80,7 +80,7 @@ export class AmbientEmissionsContainer extends Component {
                     monitoringStationUnits = n["Units of Measure"];
                     if(n.Year === undefined) return false;
                     if(n['Pollutant'] !== this._getEmissionName(this.state.selectedemission)) {
-                        console.warn(n['Pollutant'])
+                        // console.warn(n['Pollutant'])
                         return false;
                     }
                     let position = false;
@@ -151,7 +151,7 @@ export class AmbientEmissionsContainer extends Component {
             
         });
 
-        console.warn('Monitoring Station Emissions Trend:',monitoring_station_emissions_trend);
+        // console.warn('Monitoring Station Emissions Trend:',monitoring_station_emissions_trend);
         let monitoring_data = [];
         _.forEach(monitoring_station_emissions_trend, function(item, index) {
             let calculated_emissions = item.cumulative_emission;
@@ -161,7 +161,7 @@ export class AmbientEmissionsContainer extends Component {
             monitoring_data.push({
                 year: item.year, 
                 cumulative_emission: calculated_emissions
-            })
+            });
         });
 
         return (

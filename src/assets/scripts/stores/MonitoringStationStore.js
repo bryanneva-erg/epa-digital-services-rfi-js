@@ -8,6 +8,7 @@ const CHANGE_EVENT = 'change';
 let _store = {
     list: [],
     listData: [],
+    focusedStation: false,
     editing: false,
 };
 
@@ -30,6 +31,10 @@ class MonitoringStationStoreClass extends EventEmitter {
             return n.index === index;
         });
     }
+
+    getFocusedStation(){
+        return _store.focusedStation
+    }
 }
 
 const MonitoringStationStore = new MonitoringStationStoreClass();
@@ -43,12 +48,14 @@ AppDispatcher.register((payload) => {
             _.forEach(action.monitoring_stations, function(n, index) {
                 _store.list.push(n);
             });
-            
             MonitoringStationStore.emit(CHANGE_EVENT);
             break;
         case AppConstants.ADD_MONITORINGSTATIONDATA:
-            // console.warn('Adding this data:',action.index,action.data)
             _store.listData.push({index:action.index,data:action.data});
+            MonitoringStationStore.emit(CHANGE_EVENT);
+            break;
+        case AppConstants.FOCUS_MONITORINGSTATION:
+            _store.focusedStation = action.data;        
             MonitoringStationStore.emit(CHANGE_EVENT);
             break;
         default:
