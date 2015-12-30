@@ -47,13 +47,22 @@ export class AmbientEmissionsContainer extends Component {
         this.setState(getStateFromStores());
     }
 
-    _getEmissionName(emission_acronym) {
+    _getEmissionName(emission_acronym, short) {
         switch(emission_acronym){
             case 'SO2':
+                if(short === true){
+                    return 'SO₂'
+                }
                 return "Sulfur dioxide";
             case 'CO2':
+                if(short === true) {
+                    return 'CO₂';
+                }
                 return "Carbon dioxide"
             case 'NOx':
+                if(short === true) {
+                    return 'NOₓ';
+                }
                 return "Nitrous oxide";
         }
     }
@@ -180,11 +189,11 @@ export class AmbientEmissionsContainer extends Component {
                 <div className="ambient-emissions__legend">
                     <div className="ambient-emissions__legend-row">
                         <div className="ambient-emissions__legend-line--blue"></div>
-                        Facility Emissions
+                        Facility {this._getEmissionName(this.state.selectedemission,true)} Emissions
                     </div>
                     <div className="ambient-emissions__legend-row">
                         <div className="ambient-emissions__legend-line--red"></div>
-                        Local Ambient (Average across local Monitoring Stations)
+                        Local Ambient {this._getEmissionName(this.state.selectedemission,true)} (Average across local Monitoring Stations)
                     </div>
                 </div>
 

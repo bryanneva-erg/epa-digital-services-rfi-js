@@ -22,7 +22,7 @@ export default class USMap extends Component {
             zoom: this.props.facilities.length > 0 ? 10 : 4,
         };
 
-        console.log('Constructor:',this.state.lat,this.state.lng)
+        // console.log('Constructor:',this.state.lat,this.state.lng)
     }
 
     componentDidMount(){
@@ -35,7 +35,7 @@ export default class USMap extends Component {
 
     _onChange(e){
         this.setState(getStateFromStores());
-        console.warn('USMap -- _onChange', this.state.lat,this.state.lng);
+        // console.warn('USMap -- _onChange', this.state.lat,this.state.lng);
     }
 
     _handleMoveEnd(e) {

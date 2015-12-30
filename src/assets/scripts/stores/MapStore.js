@@ -38,7 +38,7 @@ AppDispatcher.register((payload) => {
 
     switch(action.type) {
         case AppConstants.FOCUS_COORDINATES:
-            console.warn('MapStore -- Focusing on these coordinates:', action.lat,action.lng)
+            // console.warn('MapStore -- Focusing on these coordinates:', action.lat,action.lng)
             _store.focused = {lat: action.lat, lng: action.lng};
             MapStore.emit(CHANGE_EVENT);
             break;
