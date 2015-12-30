@@ -11,12 +11,54 @@
     #ambient-emissions__graph-container {
         // background-color: $primary-darkest;
         // @include outer-container(70%);
-        @include span-columns(6)
-        @include shift(2)
+        // @include span-columns(6);
+        // @include shift(3);
+        @include span-columns(6);
+        @include shift(3);
 
         .ambient-emissions__graph-bounding-box {
             width:100%;
         }
+
+        %ambient-emissions__axis-label {
+            font-size:.8em;
+        }
+
+        .ambient-emissions__axis-label--x {
+            @extend %ambient-emissions__axis-label;
+            @include shift(6);
+            display:none;
+        }
+
+        .ambient-emissions__axis-label--y {
+            @extend %ambient-emissions__axis-label;
+            display:none;
+        }
+    }
+
+    .ambient-emissions__legend {
+        @include span-columns(2);
+
+        .ambient-emissions__legend-row {
+            
+            %ambient-emissions__legend-line {
+                width:1em;
+                height:0.5em;
+                display:inline-block;
+                margin-right:0.5em;
+                border:1px solid #eee;
+            }
+            
+            .ambient-emissions__legend-line--blue {
+                @extend %ambient-emissions__legend-line;
+                background-color:blue;
+            }
+
+            .ambient-emissions__legend-line--red {
+                @extend %ambient-emissions__legend-line;
+                background-color:red;
+            }
+        }         
     }
 }
 

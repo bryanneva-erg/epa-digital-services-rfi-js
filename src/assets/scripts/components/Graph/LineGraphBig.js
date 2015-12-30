@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import d3 from 'd3';
 
-const margin = {top:20,right:40,bottom:20,left:40};
+// const margin = {top:20,right:40,bottom:20,left:40};
+const margin = {top:20,right:40,bottom:20,left:150};
 const fullWidth = 900;
 const fullHeight = 200;
 const width = fullWidth - margin.left - margin.right;
 const height = fullHeight - margin.top - margin.bottom;
 const xScale = d3.scale.linear().range([margin.left, width - margin.right]),
     yScale = d3.scale.linear().range([height - margin.top, margin.bottom]),
+    yScale2 = d3.scale.linear().range([height - margin.top, margin.bottom]),
     xAxis = d3.svg.axis()
                 .scale(xScale)
                 .tickFormat(d3.format("d")),
     yAxis = d3.svg.axis()
                 .scale(yScale)
-                .orient("left");
+                .orient("left"),
+    yAxis2 = d3.svg.axis()
+                .scale(yScale2)
+                .orient("right");
 const ANIM_SPEED = 250;
 
 export class LineGraphBig extends Component {
@@ -22,6 +27,8 @@ export class LineGraphBig extends Component {
         xScale.domain(d3.extent(data.reduce(function(a,b) { 
                         return a.concat(b.year)},[])));
         yScale.domain(d3.extent(data.reduce(function(a,b) { 
+                        return a.concat(b.cumulative_so2)},[])));
+        yScale2.domain(d3.extent(data2.reduce(function(a,b) { 
                         return a.concat(b.cumulative_so2)},[])));
         
         var svg = d3.select(this.refs.chart)
@@ -43,6 +50,10 @@ export class LineGraphBig extends Component {
                 .duration(ANIM_SPEED)
                 .call(yAxis)
 
+        svg.select(".y.axis")
+                .duration(ANIM_SPEED)
+                .call(yAxis2)
+
         var lineGen = d3.svg.line()
             .x(function(d) {
                 return xScale(d.year);
@@ -51,11 +62,27 @@ export class LineGraphBig extends Component {
                 return yScale(d.cumulative_so2);
             })
             .interpolate("basis");
+
+        var lineGen2 = d3.svg.line()
+            .x(function(d) {
+                return xScale(d.year);
+            })
+            .y(function(d) {
+                return yScale2(d.cumulative_so2);
+            })
+            .interpolate("basis");
         
         svg.select('.line')
             .duration(ANIM_SPEED)
             .attr('d',lineGen(data))
-            .attr('stroke', 'white')
+            .attr('stroke', 'red')
+            .attr('stroke-width', 2)
+            .attr('fill', 'none');
+
+        svg.select('.line')
+            .duration(ANIM_SPEED)
+            .attr('d',lineGen(data2))
+            .attr('stroke', 'blue')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
@@ -65,7 +92,6 @@ export class LineGraphBig extends Component {
     componentDidMount() {        
         var data = this.props.data;
         var data2 = this.props.data2;
-        // console.log(data2);
 
         var svg = d3.select(this.refs.chart)
                         .attr('width','100%')
@@ -78,6 +104,9 @@ export class LineGraphBig extends Component {
                         return a.concat(b.year)},[])));
         yScale.domain(d3.extent(data.reduce(function(a,b) { 
                         return a.concat(b.cumulative_so2)},[])));
+
+        yScale2.domain(d3.extent(data2.reduce(function(a,b) {
+                        return a.concat(b.cumulative_so2)}, [])));
                 
         svg.append("svg:g")
             .attr("class", "x axis")
@@ -86,12 +115,20 @@ export class LineGraphBig extends Component {
             .attr('stroke','white')
             .attr("transform", "translate(0," + (height - margin.bottom) + ")")
             .call(xAxis);
+
         svg.append("svg:g")
             .attr("class", "y axis")
             .attr('fill','white')
             .attr('stroke','white')
             .attr("transform", "translate(" + (margin.left) + ",0)")
             .call(yAxis);
+
+        svg.append("svg:g")
+            .attr("class", "y axis")
+            .attr('fill','white')
+            .attr('stroke','white')
+            .attr("transform", "translate(" + (width) + ",0)")
+            .call(yAxis2);
         
         var lineGen = d3.svg.line()
             .x(function(d) {
@@ -105,16 +142,52 @@ export class LineGraphBig extends Component {
         svg.append('svg:path')
             .attr('class','line')
             .attr('d', lineGen(data))
-            .attr('stroke', 'white')
+            .attr('stroke', 'red')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
+
+        var lineGen2 = d3.svg.line()
+            .x(function(d) {
+                return xScale(d.year);
+            })
+            .y(function(d) {
+                return yScale2(d.cumulative_so2);
+            })
+            .interpolate("basis");
+
         svg.append('svg:path')
             .attr('class','line')
-            .attr('d', lineGen(data2))
-            .attr('stroke', 'white')
+            .attr('d', lineGen2(data2))
+            .attr('stroke', 'blue')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
+
+        svg.append("text")
+            .attr("class","y label")
+            .attr("text-anchor","middle")
+            .attr("transform","translate(" + (margin.left/2) + "," + (height/2) + ")rotate(-90)")
+            .attr("dy",".65em")
+            .attr("fill","white")
+            .text("Pounds / Year");
+
+        svg.append("text")
+            .attr("class","y label")
+            .attr("text-anchor","middle")
+            .attr("transform","translate(" + (width + margin.right) + "," + (height/2) + ")rotate(90)")
+            .attr("dy",".65em")
+            .attr("fill","white")
+            .text("Parts Per Billion");
+
+        svg.append("text")
+            .attr("text-anchor","middle")
+            .attr("transform","translate(" + (width/2) + "," + (height - (margin.bottom/3)) + ")")
+            .attr("dy",".65em")
+            .attr('y',15)
+            .attr("fill","white")
+            .text("Year");
+
+
 
     }
 
