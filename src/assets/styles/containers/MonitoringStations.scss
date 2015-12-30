@@ -20,7 +20,7 @@
 
 .icon__nc {
     @extend %icon;
-    background: url('../../images/icons.png') 0 100px;
+    background: url('../../images/icons.png') 0 106px;
 }
 
 .icon__down {
@@ -34,5 +34,6 @@
 }
 
 .monitoring-stations__list--focused {
-    background-color: $primary-alt-darkest !important;
+		background-color: $white;
+		color: $primary-darkest !important;
 }
