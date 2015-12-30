@@ -36,7 +36,7 @@
                 padding-top:1em;
                 
                 .monitoring-stations__list--top {
-                    border-top:1px solid $primary-alt-light;        
+                    border-top:1px solid $white;        
                 }
 								ul{
 									margin: 0;
@@ -45,10 +45,12 @@
                 li {
                     display: block;
                     width: 100%;
-                    padding: 0.7rem 0;
-                    border-bottom:1px solid $primary-alt-light;
+                    padding: 0.7rem;
+                    border-bottom:1px solid $white;
                     margin: 0;
                     font-weight: 700;
+										cursor: pointer;
+										color: $primary-alt;
                 }
                 li:before{
                     content: "";
@@ -56,6 +58,9 @@
                 li:after{
                     margin-bottom: 0;
                 }
+								li:hover{
+									background-color: $white;
+								}
             }
         }
     }
