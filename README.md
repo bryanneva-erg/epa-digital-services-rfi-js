@@ -3,11 +3,8 @@
 ## Prototype
 The publicly accessible prototype is hosted at https://epa-ds-rfi.herokuapp.com/
 
-Description
-
-## Demo
-
-Screenshots or animated GIFs
+## Project Brief
+The purpose of the application is to help industry participants in EPA’s Clean Air Markets programs, environmental researchers, and air quality advocacy groups see at-a-glance relationships between facility emissions of common air pollutants and ambient air quality. ERG’s resulting “airMonitr” prototype application is a mashup of EPA’s Air Markets Program data and EPA Air Trends data.
 
 ## Installation
 
@@ -26,16 +23,15 @@ ERG team is well-versed in a broad, modern web framework and stack, agile develo
 
 |Category	|Technology Stack|
 |---------|-----------------|
-|Frontend |	[U.S. GSA Web Design Standards (GSA/18F)](https://playbook.cio.gov/designstandards/), jQuery, [SuperAgent.js](https://github.com/visionmedia/superagent), [ReactJS](http://facebook.github.io/react/), Flux, [Babel](https://babeljs.io/), ECMAScript 6 (ES 6), [Webpack Module Bundler](http://webpack.github.io/)|
+|Frontend |	[U.S. GSA Web Design Standards (GSA/18F)](https://playbook.cio.gov/designstandards/),  [SuperAgent.js](https://github.com/visionmedia/superagent), [ReactJS](http://facebook.github.io/react/), Flux, [Babel](https://babeljs.io/), ECMAScript 6 (ES 6), [Webpack Module Bundler](http://webpack.github.io/)|
 |Backend	| [Node.js](https://nodejs.org/en/), [Express](http://expressjs.com/)
-|Data Set and API |	[EPA Enforcement Compliance History Online (ECHO) Air Facility System (AFS) and Clean Air Markets Division Business System (CAMDBS) API](http://echo.epa.gov/resources/echo-data/about-the-data#sources), JSON|
+|Data Set and API |	[EPA Enforcement Compliance History Online (ECHO) Air Facility System (AFS)](http://echo.epa.gov/resources/echo-data/about-the-data#sources) and [EPA Air Trends data API](http://aqsdr1.epa.gov/aqsweb/aqstmp/airdata/download_files.html)|
 |Data Visualization |	[D3.js (Charts)](http://d3js.org/), [Leaflet.js (Map)](http://leafletjs.com/)|
 |Full Stack PaaS	| [Heroku PaaS platform for deployment](https://www.heroku.com/), GitHub (Repository), [CircleCI (continuous rapid build, integration and deployment)](https://circleci.com/)|
 |Prototype airMonitr | https://epa-ds-rfi.herokuapp.com/|
 
-## Troubleshooting
+## ERG Agile Approach
 
-#### Problem 1
 
 Description
 
