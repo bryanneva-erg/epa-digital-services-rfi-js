@@ -10,6 +10,7 @@ import { Router, Route, Link } from 'react-router';
 import FacilityStore from './assets/scripts/stores/FacilityStore';
 import FacilityActionCreators from './assets/scripts/actions/FacilityActionCreators';
 import EchoServerActionCreators from './assets/scripts/actions/EchoServerActionCreators';
+import MonitoringStationActionCreators from './assets/scripts/actions/MonitoringStationActionCreators';
 
 function getStateFromStores(){
     
@@ -27,6 +28,10 @@ export class FacilityList extends Component {
             facilities: FacilityStore.getList(),
             selectedFacility: FacilityStore.getSelectedFacility()
         };
+
+        FacilityActionCreators.clearSelectedFacilities();
+        MonitoringStationActionCreators.clearMonitoringStations();
+        
     // console.warn(this.state.facilities.list);
         if(this.state.facilities.list.length === 0){
             EchoServerActionCreators.findFacilityByFrs(110000338821);
@@ -78,6 +83,8 @@ export class FacilityList extends Component {
 
     _onSubmit(e, key, payload) {
         e.preventDefault();
+
+        
 
         if(_.size(this.state.selectedFacility) === 0){
             FacilityActionCreators.selectFacility(this.state.facilities.list[0]);

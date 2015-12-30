@@ -12,6 +12,7 @@ import OptionStore from './assets/scripts/stores/OptionStore';
 import OptionActionCreators from './assets/scripts/actions/OptionActionCreators';
 import EchoServerActionCreators from './assets/scripts/actions/EchoServerActionCreators';
 import FacilityActionCreators from './assets/scripts/actions/FacilityActionCreators';
+import MonitoringStationActionCreators from './assets/scripts/actions/MonitoringStationActionCreators';
 
 function getStateFromStores(){
     return {
@@ -86,6 +87,7 @@ export class Splash extends Component {
         e.preventDefault();
 
         FacilityActionCreators.clearSelectedFacilities();
+        MonitoringStationActionCreators.clearMonitoringStations();
 
         let url = this.state.selectedFrs;
 
