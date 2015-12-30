@@ -33,29 +33,20 @@ export class App extends Component {
             selectedfacility: FacilityStore.getSelectedFacility()
         };
         
-        console.warn(this.state.facilities);
-        if(this.state.facilities.list.length === 0){
-            let frs = 110000338821;
+        // console.warn(this.state.facilities);
+        // if(this.state.facilities.list.length === 0){
+        //     let frs = 110000338821;
 
-            console.warn(frs);
-            if(_.size(this.props.params.id) !== 0 && this.props.params.id !== false){
-                
-                // let frsArray = this.props.params.id.split("+");
-                
-                // if(frsArray.length > 1){
-                //     _.forEach(frsArray, function(n,index) {
-                //         EchoServerActionCreators.findFacilityByFrs(n);            
-                //     });
-                // }
+        //     console.warn(frs);
+        //     if(_.size(this.props.params.id) !== 0 && this.props.params.id !== false){
+        //         frs = this.props.params.id;
+        //     }
 
-                frs = this.props.params.id;
-            }
+        //     EchoServerActionCreators.findFacilityByFrs(frs);
+        //     EchoServerActionCreators.getFacilityEmissions(frs);
+        // }
 
-            EchoServerActionCreators.findFacilityByFrs(frs);
-            EchoServerActionCreators.getFacilityEmissions(frs);
-        }
-
-        console.warn('App.js',this.state.selectedfacility,this.state.facilities.list.length)
+        // console.warn('App.js',this.state.selectedfacility,this.state.facilities.list.length)
         if(this.state.selectedfacility.length === 0 && this.state.facilities.list.length > 0){
             FacilityActionCreators.selectFacility(this.state.facilities.list[0]);
         }

@@ -113,7 +113,6 @@ export class FacilityInfo extends Component {
 						<span className="facilityinfo__desc"><label>ID:</label> { facility_id }</span>
 					</p>
                 </div>
-                ``
                 <div className="facilityinfo__graph">
                     <LineGraph data={ parsed_data } />
                 </div>
