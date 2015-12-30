@@ -95,11 +95,12 @@ export class MonitoringStations extends Component {
             if(firstClass !== '' || focusedClass !== ''){
                 classes = firstClass + " " + focusedClass;    
             }
-            
+            const county_name = item['County Name'].length > 6 ? item['County Name'].substr(0,6) : item['County Name'];
+            const station_name = county_name + "-" + item['State Code'] + "-" + item['County Code'] + "-" + item['Site Number']
 
             return (
                 <li key={index} className={classes}>
-                    {item['County Name']} &ndash; {item['State Code']}-{item['County Code']}-{item['Site Number']}
+                    <span className="station-list__label">{station_name}</span>
                     <span className="station-list__trend">{ trend_direction }</span>
                 </li>
             );

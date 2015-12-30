@@ -2,8 +2,20 @@
 @import '../../vendor/18f/_scss/lib/neat/neat';
 @import '../variables';
 
+
+.monitoring-stations__list{
+    li {
+        overflow-x: scroll;
+    }
+}
 .station-list__trend {
     float:right;
+    z-index: 100;
+}
+
+.station-list__labe {
+    float:left;
+    z-index: 50;
 }
 
 %icon {
