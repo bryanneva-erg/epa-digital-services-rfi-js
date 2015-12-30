@@ -30,6 +30,13 @@ class ActionCreators {
             data: data
         });   
     }
+
+    focusMonitoringStation(data){
+        AppDispatcher.dispatch({
+            type: AppConstants.FOCUS_MONITORINGSTATION,
+            data: data
+        });
+    }
 }
 
 const MonitoringStationActionCreators = new ActionCreators();

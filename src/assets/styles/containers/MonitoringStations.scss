@@ -25,3 +25,7 @@
     @extend %icon;
     background: url('../../images/icons.png') 0 25px;
 }
+
+.monitoring-stations__list--focused {
+    background-color: $primary-alt-darkest !important;
+}
