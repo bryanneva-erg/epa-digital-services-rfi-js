@@ -1,7 +1,7 @@
 export const APIUrls = {
     'CORS_PREFIX': {
-        // url: "https://cors-anywhere.herokuapp.com/"
-        url: "https://crossorigin.me/"
+        url: "https://cors-anywhere.herokuapp.com/"
+        // url: "https://crossorigin.me/"
     },
     'ECHO_PREFIX': {
         url: 'https://ofmpub.epa.gov/echo/'

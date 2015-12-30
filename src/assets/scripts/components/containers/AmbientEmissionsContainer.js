@@ -86,22 +86,12 @@ export class AmbientEmissionsContainer extends Component {
             { year: 2012, cumulative_so2: 0, n: 0 },
             { year: 2013, cumulative_so2: 0, n: 0 },
             { year: 2014, cumulative_so2: 0, n: 0 },
-        ]
+        ];
 
-        _.forEach(this.state.facilityemissions.CO2, function(item,index) {
-            _.forEach(item, function(inneritem,innerindex){
-                for (var i = 0; i <= 9; i++) {
-                    let yearnum = i + 1;
-                    if(inneritem["Year" + yearnum] !== undefined && inneritem["Year" + yearnum] !== null){
-                        facility_emissions_trend[i].cumulative_so2 += parseInt(inneritem["Year" + yearnum].replace(/,/g,''));
-                        facility_emissions_trend[i].n++;
-                    }
-                };
-            })
-            
-        });
+        let yUnit = "Parts Per Billion";
 
         _.forEach(this.state.facilityemissions.SO2, function(item,index) {
+            yUnit = item.UnitsOfMeasure;
             _.forEach(item, function(inneritem,innerindex){
                 for (var i = 0; i <= 9; i++) {
                     let yearnum = i + 1;
@@ -113,17 +103,30 @@ export class AmbientEmissionsContainer extends Component {
             })
         });
 
-        _.forEach(this.state.facilityemissions.NOx, function(item,index) {
-            _.forEach(item, function(inneritem,innerindex){
-                for (var i = 0; i <= 9; i++) {
-                    let yearnum = i + 1;
-                    if(inneritem["Year" + yearnum] !== undefined && inneritem["Year" + yearnum] !== null){
-                        facility_emissions_trend[i].cumulative_so2 += parseInt(inneritem["Year" + yearnum].replace(/,/g,''));
-                        facility_emissions_trend[i].n++;
-                    }
-                };
-            })
-        });
+        // _.forEach(this.state.facilityemissions.CO2, function(item,index) {
+        //     item.UnitsOfMeasure;
+        //     _.forEach(item, function(inneritem,innerindex){
+        //         for (var i = 0; i <= 9; i++) {
+        //             let yearnum = i + 1;
+        //             if(inneritem["Year" + yearnum] !== undefined && inneritem["Year" + yearnum] !== null){
+        //                 facility_emissions_trend[i].cumulative_so2 += parseInt(inneritem["Year" + yearnum].replace(/,/g,''));
+        //                 facility_emissions_trend[i].n++;
+        //             }
+        //         };
+        //     })
+        // });
+    
+        // _.forEach(this.state.facilityemissions.NOx[0], function(item,index) {
+        //     item.UnitsOfMeasure;
+        //     for (var i = 0; i <= 9; i++) {
+        //         let yearnum = i + 1;
+        //         if(item["Year" + yearnum] !== undefined && item["Year" + yearnum] !== null){
+        //             console.warn(parseInt(item["Year" + yearnum].replace(/,/g,'')));
+        //             facility_emissions_trend[i].cumulative_so2 = parseInt(item["Year" + yearnum].replace(/,/g,''));
+        //             facility_emissions_trend[i].n++;
+        //         }
+        //     };
+        // });
 
         let parsed_data = [];
         _.forEach(facility_emissions_trend, function(item, index) {
@@ -145,7 +148,21 @@ export class AmbientEmissionsContainer extends Component {
                     <div className="ambient-emissions__graph-bounding-box">
                         <LineGraphBig data={ parsed_data } data2={ monitoring_data }/>
                     </div>
+                    <div className="ambient-emissions__axis-label--x">Year</div>
+                    <div className="ambient-emissions__axis-label--y">{ yUnit }</div>
                 </div>
+
+                <div className="ambient-emissions__legend">
+                    <div className="ambient-emissions__legend-row">
+                        <div className="ambient-emissions__legend-line--blue"></div>
+                        Local Ambient
+                    </div>
+                    <div className="ambient-emissions__legend-row">
+                        <div className="ambient-emissions__legend-line--red"></div>
+                        Facility Emissions
+                    </div>
+                </div>
+
             </div>
         );
     }
