@@ -55,7 +55,7 @@ export class LineGraph extends Component {
         svg.select('.line')
             .duration(ANIM_SPEED)
             .attr('d',lineGen(data))
-            .attr('stroke', 'green')
+            .attr('stroke', '#0071bc')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
@@ -98,7 +98,7 @@ export class LineGraph extends Component {
         svg.append('svg:path')
             .attr('class','line')
             .attr('d', lineGen(data))
-            .attr('stroke', 'green')
+            .attr('stroke', '#0071bc')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
