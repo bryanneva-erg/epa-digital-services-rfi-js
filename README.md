@@ -28,7 +28,7 @@ ERG team is well-versed in a broad, modern web framework and stack, agile develo
 |Data Set and API |	[EPA Enforcement Compliance History Online (ECHO) Air Facility System (AFS)](http://echo.epa.gov/resources/echo-data/about-the-data#sources), [EPA Air Trends data API](http://aqsdr1.epa.gov/aqsweb/aqstmp/airdata/download_files.html)|
 |Data Visualization |	[D3.js (Charts)](http://d3js.org/), [Leaflet.js (Map)](http://leafletjs.com/)|
 |Full Stack PaaS	| [Heroku PaaS platform for deployment](https://www.heroku.com/), [GitHub](https://github.com/Eastern-Research-Group/epa-digital-services-rfi-js), [CircleCI (continuous rapid build, integration and deployment)](https://circleci.com/)|
-|Tools | [Trello board for managing agile process](https://trello.com/), [InVision cloud for collaboration design](http://www.invisionapp.com/),  Skype for Business, Office 365 cloud, Photoshop, Illustrator, Git, Vagrant, Sublime Text, Vim, LiveReload, Atom|
+|Tools | [Trello board](https://trello.com/), [InVision cloud](http://www.invisionapp.com/),  Skype for Business, Office 365 cloud, Photoshop, Illustrator, Git, Vagrant, Sublime Text, Vim, LiveReload, Atom|
 |DevOps |[Trello board](https://trello.com/b/qOqfT4hH/epa-digital-services-rfi), [InVision cloud](https://invis.io/YK5CFVC5D), Git for version control, GitHub for repository hosting, CircleCI and Asset Pipeline integrated with Github.com for continuous rapid build and integration, [Heroku auto-deployment with integration of Github.com for the final production deployment](https://epa-ds-rfi.herokuapp.com/). Also: [User personas](https://trello.com/c/0VgCKmiy), [Initial design wireframes](https://trello.com/c/vRYly6qV)|
 
 ## ERG Agile Approach
