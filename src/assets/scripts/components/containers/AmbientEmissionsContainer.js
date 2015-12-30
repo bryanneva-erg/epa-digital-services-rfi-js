@@ -179,11 +179,11 @@ export class AmbientEmissionsContainer extends Component {
 
                 <div className="ambient-emissions__legend">
                     <div className="ambient-emissions__legend-row">
-                        <div className="ambient-emissions__legend-line--red"></div>
+                        <div className="ambient-emissions__legend-line--blue"></div>
                         Facility Emissions
                     </div>
                     <div className="ambient-emissions__legend-row">
-                        <div className="ambient-emissions__legend-line--blue"></div>
+                        <div className="ambient-emissions__legend-line--red"></div>
                         Local Ambient
                     </div>
                 </div>

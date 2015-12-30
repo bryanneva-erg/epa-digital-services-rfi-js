@@ -13,8 +13,8 @@
         // @include outer-container(70%);
         // @include span-columns(6);
         // @include shift(3);
-        @include span-columns(6);
-        @include shift(3);
+        @include span-columns(8);
+        @include shift(1);
 
         .ambient-emissions__graph-bounding-box {
             width:100%;
@@ -38,7 +38,7 @@
 
     .ambient-emissions__legend {
         @include span-columns(2);
-
+				margin-top: 4rem;
         .ambient-emissions__legend-row {
             
             %ambient-emissions__legend-line {
@@ -51,12 +51,12 @@
             
             .ambient-emissions__legend-line--blue {
                 @extend %ambient-emissions__legend-line;
-                background-color:blue;
+                background-color: #02bfe7;
             }
 
             .ambient-emissions__legend-line--red {
                 @extend %ambient-emissions__legend-line;
-                background-color:red;
+                background-color: #e31c3d;
             }
         }         
     }
