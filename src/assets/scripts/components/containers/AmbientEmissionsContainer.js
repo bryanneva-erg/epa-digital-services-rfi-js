@@ -119,7 +119,8 @@ export class AmbientEmissionsContainer extends Component {
             { year: 2014, cumulative_emission: 0, n: 0 },
         ];
 
-        let facilityUnits = "Pounds";
+        // let facilityUnits = "Pounds";
+        const facilityUnits = this.state.selectedemission === "CO2"? "MTCO2e" : "Pounds";
         const emission = this.state.selectedemission;
         let thing_to_parse = [];
         switch(emission){
@@ -136,7 +137,10 @@ export class AmbientEmissionsContainer extends Component {
 
         _.forEach(thing_to_parse, function(item,index) {
             _.forEach(item, function(inneritem,innerindex){
-                facilityUnits = inneritem.UnitsOfMeasure;
+                // facilityUnits = inneritem.UnitsOfMeasure;
+                console.warn(inneritem.Program);
+                if(inneritem.Program !== 'CAMD') return false;
+
                 for (var i = 0; i <= 9; i++) {
                     let yearnum = i + 1;
                     if(inneritem["Year" + yearnum] !== undefined && inneritem["Year" + yearnum] !== null){

@@ -29,6 +29,7 @@ export class Splash extends Component {
             selectedFrs: false,
         };
 
+        FacilityActionCreators.clearSelectedFacilities();
     }
 
     componentDidMount(){
@@ -84,7 +85,10 @@ export class Splash extends Component {
     _onSubmit(e) {
         e.preventDefault();
 
+        FacilityActionCreators.clearSelectedFacilities();
+
         let url = this.state.selectedFrs;
+
         
         if( ! url){
             // url = 110017805730;

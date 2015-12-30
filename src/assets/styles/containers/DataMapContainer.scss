@@ -36,21 +36,21 @@
                 padding-top:1em;
                 
                 .monitoring-stations__list--top {
-                    border-top:1px solid $white;        
+                    border-top:1px solid $white;
                 }
-								ul{
-									margin: 0;
-									display: block;
-								}
+				ul{
+					margin: 0;
+					display: block;
+				}
                 li {
                     display: block;
                     width: 100%;
                     padding: 0.7rem;
                     border-bottom:1px solid $white;
                     margin: 0;
-                    font-weight: 700;
-										cursor: pointer;
-										color: $primary-alt;
+                    font-weight: 600;
+					cursor: pointer;
+					color: $primary-darker;
                 }
                 li:before{
                     content: "";
@@ -58,9 +58,9 @@
                 li:after{
                     margin-bottom: 0;
                 }
-								li:hover{
-									background-color: $white;
-								}
+				li:hover{
+					background-color: $white;
+				}
             }
         }
     }
@@ -70,7 +70,8 @@
 		border-right: 1px solid $primary;
 		color: $white !important;
 		font-family: $primary-font !important;
-		font-size: 1.8rem !important;
+        font-size: 1.8rem !important;
+		font-weight: 700 !important;
 	}
 	.tab--active {
     color:#000000 !important;

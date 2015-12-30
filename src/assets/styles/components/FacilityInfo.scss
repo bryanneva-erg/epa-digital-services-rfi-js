@@ -10,7 +10,13 @@
 }
 .facilityinfo__desc-container {
     h2.facilityinfo__header {
-			margin-top: 1.5rem;
+		margin-top: 1.5rem;
+
+    }
+    h2.facilityinfo__header:hover {
+        cursor:pointer;
+        color: $primary-darkest;
+        text-decoration: underline;
     }
     .facilityinfo__desc {
         font-weight: 400;
@@ -19,8 +25,8 @@
         label {
             font-weight:bold;
         }
-				margin: 0;
-    }    
+		margin: 0;
+    }       
 }
 
 .facilityinfo__graph {
@@ -28,9 +34,9 @@
 }
 
 .facilityinfo__resources {
-		.usa-heading-alt {
-				border-bottom: 1px solid #5b616b;
-		}
+	.usa-heading-alt {
+		border-bottom: 1px solid #5b616b;
+	}
     ul {
         padding-top:0;
         margin:0;

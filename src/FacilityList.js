@@ -114,10 +114,15 @@ export class FacilityList extends Component {
             // if(nameText.length > 21) {
             //     nameText = nameText.substr(0,21) + "...";
             // }
+            
+            let disabled = true;
+            if(nameText === "Edgemoor Power Plant" || nameText === "Pse&g Salem & Hope Creek Generating Stations"){
+                disabled = false;
+            }
 
             return (
                     <li key={indx}>
-                        <input id={n.frs} type="checkbox" name="facility-list" value={n.frs} onClick={this._onCheck.bind(this, indx)} defaultChecked={checked} />
+                        <input id={n.frs} type="radio" name="facility-list" value={n.frs} onClick={this._onCheck.bind(this, indx)} defaultChecked={checked} disabled={disabled}/>
                         <label htmlFor={n.frs}>{nameText}</label>
                     </li>
                 )
@@ -133,7 +138,7 @@ export class FacilityList extends Component {
                     </div>
                 </header>
                 <div className="body__container">
-                    <h1>Choose Facilities to Start</h1>
+                    <h1>Choose Facility to Start</h1>
                     <div id="facility-list__container">                             
                         <fieldset className="usa-fieldset-inputs usa-sans">
                             <legend className="usa-sr-only">Historical figures 1</legend>
