@@ -3,11 +3,8 @@
 ## Prototype
 The publicly accessible prototype is hosted at https://epa-ds-rfi.herokuapp.com/
 
-Description
-
-## Demo
-
-Screenshots or animated GIFs
+## Project Brief
+The purpose of the application is to help industry participants in EPA’s Clean Air Markets programs, environmental researchers, and air quality advocacy groups see at-a-glance relationships between facility emissions of common air pollutants and ambient air quality. ERG’s resulting “airMonitr” prototype application is a mashup of EPA’s Air Markets Program data and EPA Air Trends data.
 
 ## Installation
 
@@ -33,9 +30,8 @@ ERG team is well-versed in a broad, modern web framework and stack, agile develo
 |Full Stack PaaS	| [Heroku PaaS platform for deployment](https://www.heroku.com/), GitHub (Repository), [CircleCI (continuous rapid build, integration and deployment)](https://circleci.com/)|
 |Prototype airMonitr | https://epa-ds-rfi.herokuapp.com/|
 
-## Troubleshooting
+## ERG Agile Approach
 
-#### Problem 1
 
 Description
 
