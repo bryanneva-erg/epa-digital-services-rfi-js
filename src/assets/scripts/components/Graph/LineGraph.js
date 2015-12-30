@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import d3 from 'd3';
 
-const margin = {top:20,right:40,bottom:20,left:40};
+const margin = {top:20,right:40,bottom:20,left:60};
 const fullWidth = 450;
 const fullHeight = 200;
 const width = fullWidth - margin.left - margin.right;
@@ -101,6 +101,23 @@ export class LineGraph extends Component {
             .attr('stroke', '#0071bc')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
+
+        svg.append("text")
+            .attr("class","y label")
+            .attr("text-anchor","middle")
+            .attr("transform","translate(" + (-(margin.left) + 10) + "," + (height/2) + ")rotate(-90)")
+            .attr("dy",".65em")
+            // .attr("fill","black")
+            .text("Pounds" + " / Year");
+            
+        svg.append("text")
+            .attr('class','x label')
+            .attr("text-anchor","middle")
+            .attr("transform","translate(" + ((width + margin.left)/2) + "," + (height - (margin.bottom/3)) + ")")
+            .attr("dy",".65em")
+            .attr('y',15)
+            // .attr("fill","black")
+            .text("Year");
 
     }
 

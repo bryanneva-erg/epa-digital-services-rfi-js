@@ -63,6 +63,7 @@ export class MonitoringStations extends Component {
         // console.warn('Clicked on this station',selected_station[0].Latitude,selected_station[0].Longitude, selected_station)
 
         MapActionCreators.focusCoordinates(parseFloat(selected_station[0].Latitude),parseFloat(selected_station[0].Longitude));
+        MonitoringStationActionCreators.focusMonitoringStation(selected_station[0]);
     }
 
     render() {
@@ -126,6 +127,7 @@ export class MonitoringStations extends Component {
                         {station_list}
                     </ul>
                 </div>
+                <span className="monitoring-stations__legend">Note: Symbols indicate changes in ambient air concentration.</span>
             </div>                
         );
     }
