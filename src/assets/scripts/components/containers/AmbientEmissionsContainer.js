@@ -184,7 +184,7 @@ export class AmbientEmissionsContainer extends Component {
                     </div>
                     <div className="ambient-emissions__legend-row">
                         <div className="ambient-emissions__legend-line--blue"></div>
-                        Local Ambient
+                        Local Ambient (Average across local Monitoring Stations)
                     </div>
                 </div>
 

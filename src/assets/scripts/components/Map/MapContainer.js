@@ -72,7 +72,7 @@ export class MapContainer extends Component {
         const lat = this.state.selectedFacility[0] !== undefined ? this.state.selectedFacility[0].lat : 39.50;
         const lng = this.state.selectedFacility[0] !== undefined ? this.state.selectedFacility[0].lng : -98.35;
 
-        MapActionCreators.focusCoordinates(lat,lng);
+        // MapActionCreators.focusCoordinates(lat,lng);
 
         return (
             <div className="usa-width-one-half" id="map">

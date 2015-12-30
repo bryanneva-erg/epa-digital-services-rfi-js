@@ -29,6 +29,10 @@ export class FacilityList extends Component {
         };
 
         if(this.state.facilities.list.length === 0){
+            EchoServerActionCreators.findFacilityByFrs(110000338821);
+            EchoServerActionCreators.findFacilityByFrs(110000603142);
+            
+            
             EchoServerActionCreators.findFacilityByFrs(110017805730);
             EchoServerActionCreators.findFacilityByFrs(110004060417);
             EchoServerActionCreators.findFacilityByFrs(110010681707);

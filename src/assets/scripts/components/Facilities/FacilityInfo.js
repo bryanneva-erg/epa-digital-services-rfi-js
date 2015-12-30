@@ -113,7 +113,7 @@ export class FacilityInfo extends Component {
 						<span className="facilityinfo__desc"><label>ID:</label> { facility_id }</span>
 					</p>
                 </div>
-                
+                ``
                 <div className="facilityinfo__graph">
                     <LineGraph data={ parsed_data } />
                 </div>
@@ -121,8 +121,8 @@ export class FacilityInfo extends Component {
                 <div className="facilityinfo__resources">
                     <h6 className="facilityinfo__resources-header usa-heading-alt">Resources</h6>
                     <ul>
-                        <li><a href="#">Item 1</a></li>
-                        <li><a href="#">Item 2</a></li>
+                        <li><a href="https://echo.epa.gov/resources/echo-data/about-the-data">EPA Air Markets Program data</a></li>
+                        <li><a href="http://aqsdr1.epa.gov/aqsweb/aqstmp/airdata/download_files.html">EPA Air Trends data</a></li>
                     </ul>
                 </div>
             </div>

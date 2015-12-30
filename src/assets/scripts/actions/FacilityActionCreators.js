@@ -23,6 +23,8 @@ class ActionCreators {
             type: AppConstants.SELECT_FACILITY,
             facility: facility
         });
+
+        MonitoringStationActionCreators.getAroundPoint(facility);
     }
 
     focusFacility(index) {

@@ -35,7 +35,7 @@ export class App extends Component {
         
         console.warn(this.state.facilities);
         if(this.state.facilities.list.length === 0){
-            let frs = 110017805730;
+            let frs = 110000338821;
 
             console.warn(frs);
             if(_.size(this.props.params.id) !== 0 && this.props.params.id !== false){
@@ -53,6 +53,11 @@ export class App extends Component {
 
             EchoServerActionCreators.findFacilityByFrs(frs);
             EchoServerActionCreators.getFacilityEmissions(frs);
+        }
+
+        console.warn('App.js',this.state.selectedfacility,this.state.facilities.list.length)
+        if(this.state.selectedfacility.length === 0 && this.state.facilities.list.length > 0){
+            FacilityActionCreators.selectFacility(this.state.facilities.list[0]);
         }
 // console.warn(this.state.selectedFacility.length === 0)
     }
@@ -73,7 +78,7 @@ export class App extends Component {
 
         if(this.state.selectedfacility.length === 0) {
             console.warn('Filling out selected facility',this.state.facilities)
-            FacilityActionCreators.selectFacility(this.state.facilities.list[0]);
+            // FacilityActionCreators.selectFacility(this.state.facilities.list[0]);
         }
 
         return (

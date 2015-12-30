@@ -87,12 +87,13 @@ export class Splash extends Component {
         let url = this.state.selectedFrs;
         
         if( ! url){
-            url = 110017805730;
+            // url = 110017805730;
+            url = 110000338821
         }
 
         EchoServerActionCreators.findFacilityByFrs(url);
         EchoServerActionCreators.getFacilityEmissions(url);
-        FacilityActionCreators.selectFacility(url);
+        // FacilityActionCreators.selectFacility(url);
 
         this.props.history.pushState(null, '/facility/' + url);
     }
