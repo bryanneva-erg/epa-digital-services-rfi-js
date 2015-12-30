@@ -11,8 +11,7 @@ import { Link } from 'react-router';
 import OptionStore from './assets/scripts/stores/OptionStore';
 import OptionActionCreators from './assets/scripts/actions/OptionActionCreators';
 import EchoServerActionCreators from './assets/scripts/actions/EchoServerActionCreators';
-
-
+import FacilityActionCreators from './assets/scripts/actions/FacilityActionCreators';
 
 function getStateFromStores(){
     return {
@@ -86,9 +85,15 @@ export class Splash extends Component {
         e.preventDefault();
 
         let url = this.state.selectedFrs;
-                
-        EchoServerActionCreators.findFacilityByFrs(this.state.selectedFrs);
-        EchoServerActionCreators.getFacilityEmissions(this.state.selectedFrs);
+        
+        if( ! url){
+            // url = 110017805730;
+            url = 110000338821
+        }
+
+        EchoServerActionCreators.findFacilityByFrs(url);
+        EchoServerActionCreators.getFacilityEmissions(url);
+        // FacilityActionCreators.selectFacility(url);
 
         this.props.history.pushState(null, '/facility/' + url);
     }

@@ -135,7 +135,7 @@ export class LineGraphBig extends Component {
             .attr("class", "y2 axis")
             .attr('fill','white')
             .attr('stroke','white')
-            .attr("transform", "translate(" + (width) + ",0)")
+            .attr("transform", "translate(" + (width - margin.right) + ",0)")
             .call(yAxis2);
         
         var lineGen = d3.svg.line()
@@ -182,7 +182,7 @@ export class LineGraphBig extends Component {
         svg.append("text")
             .attr("class","y2 label")
             .attr("text-anchor","middle")
-            .attr("transform","translate(" + (width + margin.right) + "," + (height/2) + ")rotate(90)")
+            .attr("transform","translate(" + (width) + "," + (height/2) + ")rotate(90)")
             .attr("dy",".65em")
             .attr("fill","white")
             .text(y2Unit);

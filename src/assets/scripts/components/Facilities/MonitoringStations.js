@@ -10,6 +10,7 @@ import '../../../styles/containers/MonitoringStations.scss';
 import MonitoringStationStore from '../../stores/MonitoringStationStore';
 import MonitoringStationActionCreators from '../../actions/MonitoringStationActionCreators';
 import AmbientEmissionStore from '../../stores/AmbientEmissionStore';
+import MapActionCreators from '../../actions/MapActionCreators';
 
 function getStateFromStores(){
     
@@ -54,6 +55,16 @@ export class MonitoringStations extends Component {
         }
     }
 
+    _onClickStation(index, e){
+        var selected_station = this.state.monitoringstations.list.filter(function(item, i) {
+            return index === i;
+        });
+
+        // console.warn('Clicked on this station',selected_station[0].Latitude,selected_station[0].Longitude, selected_station)
+
+        MapActionCreators.focusCoordinates(parseFloat(selected_station[0].Latitude),parseFloat(selected_station[0].Longitude));
+    }
+
     render() {
         
         let numFacilities = 0;
@@ -95,11 +106,12 @@ export class MonitoringStations extends Component {
             if(firstClass !== '' || focusedClass !== ''){
                 classes = firstClass + " " + focusedClass;    
             }
-            const county_name = item['County Name'].length > 6 ? item['County Name'].substr(0,6) : item['County Name'];
-            const station_name = county_name + "-" + item['State Code'] + "-" + item['County Code'] + "-" + item['Site Number']
+            // const county_name = item['County Name'].length > 6 ? item['County Name'].substr(0,6) : item['County Name'];
+            const county_name = item['County Name'];
+            const station_name = county_name + " - " + item['State Code'] + "-" + item['County Code'] + "-" + item['Site Number']
 
             return (
-                <li key={index} className={classes}>
+                <li key={index} className={classes} onClick={this._onClickStation.bind(this, index)}>
                     <span className="station-list__label">{station_name}</span>
                     <span className="station-list__trend">{ trend_direction }</span>
                 </li>

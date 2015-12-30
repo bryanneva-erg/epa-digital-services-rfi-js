@@ -54,8 +54,18 @@ AppDispatcher.register((payload) => {
             FacilityStore.emit(CHANGE_EVENT);
             break;
         case AppConstants.SELECT_FACILITY:
-            _store.selectedFacility.push(action.facility);
-            FacilityStore.emit(CHANGE_EVENT);
+            if(typeof(action.facility) === 'object'){
+                _store.selectedFacility.push(action.facility);
+                FacilityStore.emit(CHANGE_EVENT);
+            } else if(typeof(action.facility) === 'number'){
+                console.warn('Integer filled');
+                _.find(_store.list,function(chr){
+                console.warn('Finding:',chr);
+                    // return chr
+                })
+            }
+            
+            
             break;
         case AppConstants.FOCUS_FACILITY:
             _store.focusedFacility = _store.selectedFacility[action.index];
