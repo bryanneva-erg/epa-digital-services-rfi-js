@@ -15,6 +15,7 @@ class APIUtils {
     findFacilityByFRS(frsId){
         
         FacilityActionCreators.newFacility();
+        FacilityActionCreators.loadFacility();
 
         request.get(APIUrls.CORS_PREFIX.url + APIUrls.ECHO_PREFIX.url + APIUrls.DFR.url)
                 .query({[APIUrls.DFR.id]: frsId})

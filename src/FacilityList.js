@@ -27,12 +27,18 @@ export class FacilityList extends Component {
             facilities: FacilityStore.getList(),
             selectedFacility: FacilityStore.getSelectedFacility()
         };
-
+    // console.warn(this.state.facilities.list);
         if(this.state.facilities.list.length === 0){
             EchoServerActionCreators.findFacilityByFrs(110000338821);
             EchoServerActionCreators.findFacilityByFrs(110000603142);
-            
-            
+            EchoServerActionCreators.findFacilityByFrs(110017805730);
+            EchoServerActionCreators.findFacilityByFrs(110004060417);
+            EchoServerActionCreators.findFacilityByFrs(110010681707);
+            EchoServerActionCreators.findFacilityByFrs(110000753319);
+        }
+
+        if(this.state.facilities.list.length === 1){
+            EchoServerActionCreators.findFacilityByFrs(110000603142);
             EchoServerActionCreators.findFacilityByFrs(110017805730);
             EchoServerActionCreators.findFacilityByFrs(110004060417);
             EchoServerActionCreators.findFacilityByFrs(110010681707);
@@ -132,10 +138,6 @@ export class FacilityList extends Component {
                         <fieldset className="usa-fieldset-inputs usa-sans">
                             <legend className="usa-sr-only">Historical figures 1</legend>
                             <ul className="usa-unstyled-list">
-                                <li>
-                                    <input id="all" type="checkbox" name="facility-list" value="all" />
-                                    <label htmlFor="all">All</label>
-                                </li>
                                 { menuItems.slice(0,Math.ceil(menuItems.length / 2)) }
                             </ul>
                             <ul className="usa-unstyled-list">

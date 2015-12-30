@@ -12,6 +12,7 @@ let _store = {
     selectedFacility: [],
     focusedFacility: {},
     editing: false,
+    loading: false,
 };
 
 class FacilityStoreClass extends EventEmitter {
@@ -51,21 +52,12 @@ AppDispatcher.register((payload) => {
         case AppConstants.SAVE_FACILITY:
             _store.list.push(action.facility);
             _store.editing = false;
+            _store.loading = false;
             FacilityStore.emit(CHANGE_EVENT);
             break;
         case AppConstants.SELECT_FACILITY:
-            if(typeof(action.facility) === 'object'){
-                _store.selectedFacility.push(action.facility);
-                FacilityStore.emit(CHANGE_EVENT);
-            } else if(typeof(action.facility) === 'number'){
-                console.warn('Integer filled');
-                _.find(_store.list,function(chr){
-                console.warn('Finding:',chr);
-                    // return chr
-                })
-            }
-            
-            
+            _store.selectedFacility.push(action.facility);
+            FacilityStore.emit(CHANGE_EVENT);            
             break;
         case AppConstants.FOCUS_FACILITY:
             _store.focusedFacility = _store.selectedFacility[action.index];
@@ -82,8 +74,11 @@ AppDispatcher.register((payload) => {
             });
             FacilityStore.emit(CHANGE_EVENT);
             break;
-        default:
-            return true;
+        case AppConstants.LOAD_FACILITY:
+            _store.loading = true;
+            FacilityStore.emit(CHANGE_EVENT);
+            break;
+
     }
 });
 

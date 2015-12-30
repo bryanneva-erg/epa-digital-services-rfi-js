@@ -54,7 +54,7 @@ export class Splash extends Component {
     _handleChange(e){
         const value = e.target.value
         this.setState({inputValue: value});
-        this._getOptions(value);
+        // this._getOptions(value);
     }
 
     _getOptions(inputValue) {
@@ -93,7 +93,18 @@ export class Splash extends Component {
 
         EchoServerActionCreators.findFacilityByFrs(url);
         EchoServerActionCreators.getFacilityEmissions(url);
-        // FacilityActionCreators.selectFacility(url);
+
+        const defaultFacility = {
+            city: "Wilmington",
+            frs: "110000338821",
+            lat: "39.738399",
+            lng: "-75.503827",
+            name: "Edgemoor Power Plant",
+            state: "DE",
+            zip: "19809"
+        }
+
+        FacilityActionCreators.selectFacility(defaultFacility);
 
         this.props.history.pushState(null, '/facility/' + url);
     }
@@ -131,7 +142,7 @@ export class Splash extends Component {
 								<input id="input-type-text" 
                                        name="input-type-text" 
                                        type="text" 
-                                       placeholder='Type "Duke"' 
+                                       placeholder='Type "Edgemoor"' 
                                        className="typeahead__input"
                                        onChange={this._handleChange.bind(this)}
                                        value={this.state.inputValue} />

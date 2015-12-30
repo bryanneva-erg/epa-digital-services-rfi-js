@@ -31,6 +31,10 @@ export class MapContainer extends Component {
         if(_.size(this.state.selectedFacility) === 0 && _.size(this.state.facilities.list) > 0){
             FacilityActionCreators.selectFacility(this.state.facilities.list[0]);
         }
+
+        const lat = this.state.selectedFacility[0] !== undefined ? this.state.selectedFacility[0].lat : 39.50;
+        const lng = this.state.selectedFacility[0] !== undefined ? this.state.selectedFacility[0].lng : -98.35;
+        MapActionCreators.focusCoordinates(lat,lng);
     }
 
     componentDidMount(){
@@ -62,7 +66,7 @@ export class MapContainer extends Component {
     // }
 
     render() {        
-        console.warn(this.state.selectedFacility)
+        // console.warn(this.state.selectedFacility)
 
         const facilities = []
         _.forEach(this.state.selectedFacility, function(n, index) {
@@ -70,9 +74,7 @@ export class MapContainer extends Component {
         });
 
         const lat = this.state.selectedFacility[0] !== undefined ? this.state.selectedFacility[0].lat : 39.50;
-        const lng = this.state.selectedFacility[0] !== undefined ? this.state.selectedFacility[0].lng : -98.35;
-
-        // MapActionCreators.focusCoordinates(lat,lng);
+        const lng = this.state.selectedFacility[0] !== undefined ? this.state.selectedFacility[0].lng : -98.35;        
 
         return (
             <div className="usa-width-one-half" id="map">

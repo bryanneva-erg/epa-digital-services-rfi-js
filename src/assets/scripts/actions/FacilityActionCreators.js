@@ -47,6 +47,12 @@ class ActionCreators {
             index: data
         });    
     }
+
+    loadFacility(){
+        AppDispatcher.dispatch({
+            type: AppConstants.LOAD_FACILITY
+        });
+    }
 }
 
 const FacilityActionCreators = new ActionCreators();
