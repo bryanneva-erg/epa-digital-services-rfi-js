@@ -47,6 +47,17 @@ export class AmbientEmissionsContainer extends Component {
         this.setState(getStateFromStores());
     }
 
+    _getEmissionName(emission_acronym) {
+        switch(emission_acronym){
+            case 'SO2':
+                return "Sulfur dioxide";
+            case 'CO2':
+                return "Carbon dioxide"
+            case 'NOx':
+                return "Nitrous oxide";
+        }
+    }
+
     render() {
         let monitoring_station_emissions_trend = [
             { year: 2005, cumulative_emission: 0, n: 0 },
@@ -68,7 +79,10 @@ export class AmbientEmissionsContainer extends Component {
                 _.forEach(item.data, function(n) {
                     monitoringStationUnits = n["Units of Measure"];
                     if(n.Year === undefined) return false;
-                    
+                    if(n['Pollutant'] !== this._getEmissionName(this.state.selectedemission)) {
+                        console.warn(n['Pollutant'])
+                        return false;
+                    }
                     let position = false;
                     let existing_year = _.find(monitoring_station_emissions_trend,function(chr, index) {
                         if(chr.year == n.Year){
@@ -79,9 +93,9 @@ export class AmbientEmissionsContainer extends Component {
 
                     monitoring_station_emissions_trend[position].cumulative_emission += parseFloat(n['Pollutant Concentration']);
                     monitoring_station_emissions_trend[position].n++
-                });
+                }.bind(this));
             }
-        });
+        }.bind(this));
 
         let facility_emissions_trend = [
             { year: 2005, cumulative_emission: 0, n: 0 },
@@ -137,6 +151,7 @@ export class AmbientEmissionsContainer extends Component {
             
         });
 
+        console.warn('Monitoring Station Emissions Trend:',monitoring_station_emissions_trend);
         let monitoring_data = [];
         _.forEach(monitoring_station_emissions_trend, function(item, index) {
             let calculated_emissions = item.cumulative_emission;

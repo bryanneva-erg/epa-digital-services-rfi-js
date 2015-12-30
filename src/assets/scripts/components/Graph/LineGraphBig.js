@@ -23,17 +23,14 @@ const ANIM_SPEED = 250;
 
 export class LineGraphBig extends Component {
 
-    shouldComponentUpdate({data}) {
-        // This only has the facility emission data;
-        console.warn('shouldComponentUpdate:',data);
-
+    shouldComponentUpdate({data, data2, yUnit, y2Unit}) {
 
         xScale.domain(d3.extent(data.reduce(function(a,b) { 
                         return a.concat(b.year)},[])));
         yScale.domain(d3.extent(data.reduce(function(a,b) { 
                         return a.concat(b.cumulative_emission)},[])));
-        // yScale2.domain(d3.extent(data2.reduce(function(a,b) { 
-        //                 return a.concat(b.cumulative_emission)},[])));
+        yScale2.domain(d3.extent(data2.reduce(function(a,b) { 
+                        return a.concat(b.cumulative_emission)},[])));
         
         var svg = d3.select(this.refs.chart)
                         .select("g")
@@ -51,9 +48,9 @@ export class LineGraphBig extends Component {
                 .duration(ANIM_SPEED)
                 .call(yAxis)
 
-        // svg.select(".y.axis")
-        //         .duration(ANIM_SPEED)
-        //         .call(yAxis2)
+        svg.select(".y2.axis")
+                .duration(ANIM_SPEED)
+                .call(yAxis2)
 
         var lineGen = d3.svg.line()
             .x(function(d) {
@@ -80,12 +77,20 @@ export class LineGraphBig extends Component {
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
-        // svg.select('.line')
-        //     .duration(ANIM_SPEED)
-        //     .attr('d',lineGen(data2))
-        //     .attr('stroke', 'blue')
-        //     .attr('stroke-width', 2)
-        //     .attr('fill', 'none');
+        svg.select('.line2')
+            .duration(ANIM_SPEED)
+            .attr('d',lineGen2(data2))
+            .attr('stroke', 'blue')
+            .attr('stroke-width', 2)
+            .attr('fill', 'none');
+
+        svg.select('.y.label')
+            .duration(ANIM_SPEED)
+            .text(yUnit + " / year");
+
+        svg.select('.y2.label')
+            .duration(ANIM_SPEED)
+            .text(y2Unit);
 
         return false;
     }
@@ -127,7 +132,7 @@ export class LineGraphBig extends Component {
             .call(yAxis);
 
         svg.append("svg:g")
-            .attr("class", "y axis")
+            .attr("class", "y2 axis")
             .attr('fill','white')
             .attr('stroke','white')
             .attr("transform", "translate(" + (width) + ",0)")
@@ -160,7 +165,7 @@ export class LineGraphBig extends Component {
             .interpolate("basis");
 
         svg.append('svg:path')
-            .attr('class','line')
+            .attr('class','line2')
             .attr('d', lineGen2(data2))
             .attr('stroke', 'blue')
             .attr('stroke-width', 2)
@@ -175,7 +180,7 @@ export class LineGraphBig extends Component {
             .text(yUnit + " / Year");
 
         svg.append("text")
-            .attr("class","y label")
+            .attr("class","y2 label")
             .attr("text-anchor","middle")
             .attr("transform","translate(" + (width + margin.right) + "," + (height/2) + ")rotate(90)")
             .attr("dy",".65em")
@@ -183,6 +188,7 @@ export class LineGraphBig extends Component {
             .text(y2Unit);
 
         svg.append("text")
+            .attr('class','x label')
             .attr("text-anchor","middle")
             .attr("transform","translate(" + ((width + margin.left)/2) + "," + (height - (margin.bottom/3)) + ")")
             .attr("dy",".65em")
