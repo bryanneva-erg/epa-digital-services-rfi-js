@@ -51,12 +51,12 @@
             
             .ambient-emissions__legend-line--blue {
                 @extend %ambient-emissions__legend-line;
-                background-color: #02bfe7;
+                background-color: #0071bc;
             }
 
             .ambient-emissions__legend-line--red {
                 @extend %ambient-emissions__legend-line;
-                background-color: #e31c3d;
+                background-color: #fdb81e;
             }
         }         
     }

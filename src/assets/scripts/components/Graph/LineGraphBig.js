@@ -80,7 +80,7 @@ export class LineGraphBig extends Component {
         svg.select('.line2')
             .duration(ANIM_SPEED)
             .attr('d',lineGen2(data2))
-            .attr('stroke', '#e31c3d')
+            .attr('stroke', '#fdb81e')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
@@ -167,7 +167,7 @@ export class LineGraphBig extends Component {
         svg.append('svg:path')
             .attr('class','line2')
             .attr('d', lineGen2(data2))
-            .attr('stroke', '#e31c3d')
+            .attr('stroke', '#fdb81e')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
