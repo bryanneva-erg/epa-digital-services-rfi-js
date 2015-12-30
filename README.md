@@ -23,11 +23,11 @@ ERG team is well-versed in a broad, modern web framework and stack, agile develo
 
 |Category	|Technology Stack|
 |---------|-----------------|
-|Frontend |	[U.S. GSA Web Design Standards (GSA/18F)](https://playbook.cio.gov/designstandards/),  [SuperAgent.js](https://github.com/visionmedia/superagent), [ReactJS](http://facebook.github.io/react/), Flux, [Babel](https://babeljs.io/), ECMAScript 6 (ES 6), [Webpack Module Bundler](http://webpack.github.io/)|
+|Frontend |	[U.S. GSA Web Design Standards (GSA/18F)](https://playbook.cio.gov/designstandards/),  [SuperAgent.js](https://github.com/visionmedia/superagent), [ReactJS](http://facebook.github.io/react/), [Flux](https://facebook.github.io/flux/), [Babel](https://babeljs.io/), [ECMAScript 6](http://www.ecma-international.org/ecma-262/6.0/index.html), [Webpack Module Bundler](http://webpack.github.io/)|
 |Backend	| [Node.js](https://nodejs.org/en/), [Express](http://expressjs.com/)
-|Data Set and API |	[EPA Enforcement Compliance History Online (ECHO) Air Facility System (AFS)](http://echo.epa.gov/resources/echo-data/about-the-data#sources) and [EPA Air Trends data API](http://aqsdr1.epa.gov/aqsweb/aqstmp/airdata/download_files.html)|
+|Data Set and API |	[EPA Enforcement Compliance History Online (ECHO) Air Facility System (AFS)](http://echo.epa.gov/resources/echo-data/about-the-data#sources), [EPA Air Trends data API](http://aqsdr1.epa.gov/aqsweb/aqstmp/airdata/download_files.html)|
 |Data Visualization |	[D3.js (Charts)](http://d3js.org/), [Leaflet.js (Map)](http://leafletjs.com/)|
-|Full Stack PaaS	| [Heroku PaaS platform for deployment](https://www.heroku.com/), GitHub (Repository), [CircleCI (continuous rapid build, integration and deployment)](https://circleci.com/)|
+|Full Stack PaaS	| [Heroku PaaS platform for deployment](https://www.heroku.com/), [GitHub](https://github.com/Eastern-Research-Group/epa-digital-services-rfi-js), [CircleCI (continuous rapid build, integration and deployment)](https://circleci.com/)|
 |DevOps |[User personas](https://trello.com/c/0VgCKmiy), [Initial design wireframes](https://trello.com/c/vRYly6qV), [Interactive design mockups](https://projects.invisionapp.com/share/YK5CFVC5D#/screens)|
 |Prototype airMonitr | https://epa-ds-rfi.herokuapp.com/|
 
