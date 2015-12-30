@@ -31,6 +31,12 @@ class ActionCreators {
         });   
     }
 
+    clearMonitoringStations(){
+        AppDispatcher.dispatch({
+            type: AppConstants.CLEAR_MONITORINGSTATIONS
+        });
+    }
+
     focusMonitoringStation(data){
         AppDispatcher.dispatch({
             type: AppConstants.FOCUS_MONITORINGSTATION,

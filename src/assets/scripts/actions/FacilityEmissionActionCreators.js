@@ -24,13 +24,13 @@ class ActionCreators {
             return n.Pollutant === "Nitrous oxide";
         });
 
-
+        console.warn(report)
         AppDispatcher.dispatch({
             type: AppConstants.SAVE_FACILITYEMISSION,
             SO2: SO2,
             CO2: CO2,
             NOx: NOx,
-            years: years
+            years: years,
         });
     }
 

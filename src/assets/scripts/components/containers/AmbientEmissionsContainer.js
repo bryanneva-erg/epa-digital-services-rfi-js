@@ -123,6 +123,7 @@ export class AmbientEmissionsContainer extends Component {
         const facilityUnits = this.state.selectedemission === "CO2"? "MTCO2e" : "Pounds";
         const emission = this.state.selectedemission;
         let thing_to_parse = [];
+        console.warn(this.state.facilityemissions);
         switch(emission){
             case "SO2":
                 thing_to_parse = this.state.facilityemissions.SO2;
@@ -138,8 +139,9 @@ export class AmbientEmissionsContainer extends Component {
         _.forEach(thing_to_parse, function(item,index) {
             _.forEach(item, function(inneritem,innerindex){
                 // facilityUnits = inneritem.UnitsOfMeasure;
-                console.warn(inneritem.Program);
-                if(inneritem.Program !== 'CAMD') return false;
+                console.warn('Currently looking at emission:',this.state.selectedemission,inneritem.Program);
+                if(inneritem.Program !== 'CAMD' && this.state.selectedemission !== 'NOx') return false;
+                if(inneritem.Program !== 'GHG' && this.state.selectedemission === 'NOx') return false;
 
                 for (var i = 0; i <= 9; i++) {
                     let yearnum = i + 1;
@@ -148,8 +150,8 @@ export class AmbientEmissionsContainer extends Component {
                         facility_emissions_trend[i].n++;
                     }
                 };
-            })
-        });
+            }.bind(this))
+        }.bind(this));
 
         let parsed_data = [];
         _.forEach(facility_emissions_trend, function(item, index) {

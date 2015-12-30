@@ -58,8 +58,12 @@ AppDispatcher.register((payload) => {
             _store.focusedStation = action.data;        
             MonitoringStationStore.emit(CHANGE_EVENT);
             break;
-        default:
-            return true;
+        case AppConstants.CLEAR_MONITORINGSTATIONS:
+            _store.list = [];
+            _store.listData = [];
+            MonitoringStationStore.emit(CHANGE_EVENT);
+            break;
+        
     }
 });
 
