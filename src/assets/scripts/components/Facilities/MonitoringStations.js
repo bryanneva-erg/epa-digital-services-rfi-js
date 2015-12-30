@@ -52,7 +52,7 @@ export class MonitoringStations extends Component {
                 });
             }
             
-            let trend_direction = '--';
+            let trend_direction = <div className="icon__nc"></div>;
             if(trend > 0){
                 trend_direction = <div className="icon__up"></div>;
             } else if (trend < 0) {

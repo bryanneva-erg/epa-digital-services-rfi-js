@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import d3 from 'd3';
 
 // const margin = {top:20,right:40,bottom:20,left:40};
-const margin = {top:20,right:40,bottom:20,left:150};
+const margin = {top:20,right:60,bottom:20,left:150};
 const fullWidth = 900;
 const fullHeight = 200;
 const width = fullWidth - margin.left - margin.right;
@@ -23,13 +23,14 @@ const ANIM_SPEED = 250;
 
 export class LineGraphBig extends Component {
 
-    shouldComponentUpdate({data}) {
+    shouldComponentUpdate({data, data2, yUnit, y2Unit}) {
+
         xScale.domain(d3.extent(data.reduce(function(a,b) { 
                         return a.concat(b.year)},[])));
         yScale.domain(d3.extent(data.reduce(function(a,b) { 
-                        return a.concat(b.cumulative_so2)},[])));
+                        return a.concat(b.cumulative_emission)},[])));
         yScale2.domain(d3.extent(data2.reduce(function(a,b) { 
-                        return a.concat(b.cumulative_so2)},[])));
+                        return a.concat(b.cumulative_emission)},[])));
         
         var svg = d3.select(this.refs.chart)
                         .select("g")
@@ -38,9 +39,6 @@ export class LineGraphBig extends Component {
         svg.select(".overpayline")
                 .duration(ANIM_SPEED)
                 .attr("d",d3.svg.line(data));
-        // svg.select(".baseline")
-        //         .duration(ANIM_SPEED)
-        //         .attr("d",baseline(data))
 
         svg.select(".x.axis")
                 .duration(ANIM_SPEED)
@@ -50,7 +48,7 @@ export class LineGraphBig extends Component {
                 .duration(ANIM_SPEED)
                 .call(yAxis)
 
-        svg.select(".y.axis")
+        svg.select(".y2.axis")
                 .duration(ANIM_SPEED)
                 .call(yAxis2)
 
@@ -59,7 +57,7 @@ export class LineGraphBig extends Component {
                 return xScale(d.year);
             })
             .y(function(d) {
-                return yScale(d.cumulative_so2);
+                return yScale(d.cumulative_emission);
             })
             .interpolate("basis");
 
@@ -68,7 +66,7 @@ export class LineGraphBig extends Component {
                 return xScale(d.year);
             })
             .y(function(d) {
-                return yScale2(d.cumulative_so2);
+                return yScale2(d.cumulative_emission);
             })
             .interpolate("basis");
         
@@ -79,12 +77,20 @@ export class LineGraphBig extends Component {
             .attr('stroke-width', 2)
             .attr('fill', 'none');
 
-        svg.select('.line')
+        svg.select('.line2')
             .duration(ANIM_SPEED)
-            .attr('d',lineGen(data2))
+            .attr('d',lineGen2(data2))
             .attr('stroke', 'blue')
             .attr('stroke-width', 2)
             .attr('fill', 'none');
+
+        svg.select('.y.label')
+            .duration(ANIM_SPEED)
+            .text(yUnit + " / year");
+
+        svg.select('.y2.label')
+            .duration(ANIM_SPEED)
+            .text(y2Unit);
 
         return false;
     }
@@ -92,6 +98,8 @@ export class LineGraphBig extends Component {
     componentDidMount() {        
         var data = this.props.data;
         var data2 = this.props.data2;
+        var yUnit = this.props.yUnit;
+        var y2Unit = this.props.y2Unit;
 
         var svg = d3.select(this.refs.chart)
                         .attr('width','100%')
@@ -103,10 +111,10 @@ export class LineGraphBig extends Component {
         xScale.domain(d3.extent(data.reduce(function(a,b) { 
                         return a.concat(b.year)},[])));
         yScale.domain(d3.extent(data.reduce(function(a,b) { 
-                        return a.concat(b.cumulative_so2)},[])));
+                        return a.concat(b.cumulative_emission)},[])));
 
         yScale2.domain(d3.extent(data2.reduce(function(a,b) {
-                        return a.concat(b.cumulative_so2)}, [])));
+                        return a.concat(b.cumulative_emission)}, [])));
                 
         svg.append("svg:g")
             .attr("class", "x axis")
@@ -124,7 +132,7 @@ export class LineGraphBig extends Component {
             .call(yAxis);
 
         svg.append("svg:g")
-            .attr("class", "y axis")
+            .attr("class", "y2 axis")
             .attr('fill','white')
             .attr('stroke','white')
             .attr("transform", "translate(" + (width) + ",0)")
@@ -135,7 +143,7 @@ export class LineGraphBig extends Component {
                 return xScale(d.year);
             })
             .y(function(d) {
-                return yScale(d.cumulative_so2);
+                return yScale(d.cumulative_emission);
             })
             .interpolate("basis");
         
@@ -152,12 +160,12 @@ export class LineGraphBig extends Component {
                 return xScale(d.year);
             })
             .y(function(d) {
-                return yScale2(d.cumulative_so2);
+                return yScale2(d.cumulative_emission);
             })
             .interpolate("basis");
 
         svg.append('svg:path')
-            .attr('class','line')
+            .attr('class','line2')
             .attr('d', lineGen2(data2))
             .attr('stroke', 'blue')
             .attr('stroke-width', 2)
@@ -166,29 +174,27 @@ export class LineGraphBig extends Component {
         svg.append("text")
             .attr("class","y label")
             .attr("text-anchor","middle")
-            .attr("transform","translate(" + (margin.left/2) + "," + (height/2) + ")rotate(-90)")
+            .attr("transform","translate(" + (margin.left/4) + "," + (height/2) + ")rotate(-90)")
             .attr("dy",".65em")
             .attr("fill","white")
-            .text("Pounds / Year");
+            .text(yUnit + " / Year");
 
         svg.append("text")
-            .attr("class","y label")
+            .attr("class","y2 label")
             .attr("text-anchor","middle")
             .attr("transform","translate(" + (width + margin.right) + "," + (height/2) + ")rotate(90)")
             .attr("dy",".65em")
             .attr("fill","white")
-            .text("Parts Per Billion");
+            .text(y2Unit);
 
         svg.append("text")
+            .attr('class','x label')
             .attr("text-anchor","middle")
-            .attr("transform","translate(" + (width/2) + "," + (height - (margin.bottom/3)) + ")")
+            .attr("transform","translate(" + ((width + margin.left)/2) + "," + (height - (margin.bottom/3)) + ")")
             .attr("dy",".65em")
             .attr('y',15)
             .attr("fill","white")
             .text("Year");
-
-
-
     }
 
     render() {

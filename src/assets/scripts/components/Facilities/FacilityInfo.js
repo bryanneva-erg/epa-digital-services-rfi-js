@@ -118,10 +118,10 @@ export class FacilityInfo extends Component {
             <div className="facilityinfo__container">
                 <div className="facilityinfo__desc-container">
                     <h2 className="facilityinfo__header">{ facility_name }</h2>
-										<p>
-											<span className="facilityinfo__desc"><label>Location:</label> { facility_location }</span><br />
-											<span className="facilityinfo__desc"><label>ID:</label> { facility_id }</span>
-										</p>
+					<p>
+						<span className="facilityinfo__desc"><label>Location:</label> { facility_location }</span><br />
+						<span className="facilityinfo__desc"><label>ID:</label> { facility_id }</span>
+					</p>
                 </div>
                 
                 <div className="facilityinfo__graph">

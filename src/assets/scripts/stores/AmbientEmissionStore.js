@@ -7,6 +7,7 @@ const CHANGE_EVENT = 'change';
 
 let _store = {
     list: [],
+    selected: 'SO2',
     editing: false,
 };
 
@@ -21,17 +22,17 @@ class AmbientEmissionStoreClass extends EventEmitter {
     }
 
     getList() {
-        // _.sortBy(_store.list, function(item) {
-        //     return item.year;
-        // });
         return _store;
+    }
+
+    getSelected() {
+        return _store.selected;
     }
 }
 
 const AmbientEmissionStore = new AmbientEmissionStoreClass();
 
 AppDispatcher.register((payload) => {
-
     const action = payload;
 
     switch(action.type) {
@@ -48,6 +49,10 @@ AppDispatcher.register((payload) => {
             _store.list = _store.list.filter((item,index) => {
                 return index !== action.index;
             });
+            AmbientEmissionStore.emit(CHANGE_EVENT);
+            break;
+        case AppConstants.SELECT_AMBIENTEMISSION:
+            _store.selected = payload.emission;
             AmbientEmissionStore.emit(CHANGE_EVENT);
             break;
         default:

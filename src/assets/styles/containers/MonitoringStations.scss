@@ -6,20 +6,22 @@
     float:right;
 }
 
-.icon__down {
-    background: url('../../images/icons.png') 0 75px;
+%icon {
     height:25px;
     width:25px;
+}
+
+.icon__nc {
+    @extend %icon;
+    background: url('../../images/icons.png') 0 100px;
+}
+
+.icon__down {
+    @extend %icon;
+    background: url('../../images/icons.png') 0 75px;
 }
 
 .icon__up {
+    @extend %icon;
     background: url('../../images/icons.png') 0 25px;
-    height:25px;
-    width:25px;
 }
-
-// .icon__down {
-//     background: url('../../images/icons.png') 0 25px;
-//     height:25px;
-//     width:25px;
-// }
