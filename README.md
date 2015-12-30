@@ -1,4 +1,4 @@
-# EPA - Digital Services RFI - ERG Response - airMonitr
+# EPA Digital Services RFI - ERG airMonitr
 
 ## Prototype
 The publicly accessible prototype is hosted at https://epa-ds-rfi.herokuapp.com/
