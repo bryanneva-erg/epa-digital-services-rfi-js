@@ -65,6 +65,8 @@ export class LineGraph extends Component {
     componentDidMount() {        
         var data = this.props.data;
 
+        console.warn(data);
+
         var svg = d3.select(this.refs.chart)
                         .attr('width','100%')
                         .attr('height','100%')

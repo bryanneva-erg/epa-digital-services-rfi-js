@@ -107,16 +107,16 @@ export class AmbientEmissionsContainer extends Component {
         }.bind(this));
 
         let facility_emissions_trend = [
-            { year: 2005, cumulative_emission: 0, n: 0 },
-            { year: 2006, cumulative_emission: 0, n: 0 },
-            { year: 2007, cumulative_emission: 0, n: 0 },
-            { year: 2008, cumulative_emission: 0, n: 0 },
-            { year: 2009, cumulative_emission: 0, n: 0 },
-            { year: 2010, cumulative_emission: 0, n: 0 },
-            { year: 2011, cumulative_emission: 0, n: 0 },
-            { year: 2012, cumulative_emission: 0, n: 0 },
-            { year: 2013, cumulative_emission: 0, n: 0 },
-            { year: 2014, cumulative_emission: 0, n: 0 },
+            { year: 2005, cumulative_emission: null, n: 0 },
+            { year: 2006, cumulative_emission: null, n: 0 },
+            { year: 2007, cumulative_emission: null, n: 0 },
+            { year: 2008, cumulative_emission: null, n: 0 },
+            { year: 2009, cumulative_emission: null, n: 0 },
+            { year: 2010, cumulative_emission: null, n: 0 },
+            { year: 2011, cumulative_emission: null, n: 0 },
+            { year: 2012, cumulative_emission: null, n: 0 },
+            { year: 2013, cumulative_emission: null, n: 0 },
+            { year: 2014, cumulative_emission: null, n: 0 },
         ];
 
         // let facilityUnits = "Pounds";
@@ -140,8 +140,8 @@ export class AmbientEmissionsContainer extends Component {
             _.forEach(item, function(inneritem,innerindex){
                 // facilityUnits = inneritem.UnitsOfMeasure;
                 console.warn('Currently looking at emission:',this.state.selectedemission,inneritem.Program);
-                if(inneritem.Program !== 'CAMD' && this.state.selectedemission !== 'NOx') return false;
-                if(inneritem.Program !== 'GHG' && this.state.selectedemission === 'NOx') return false;
+                if(inneritem.Program !== 'CAMD') return false;
+                // if(inneritem.Program !== 'GHG' && this.state.selectedemission === 'NOx') return false;
 
                 for (var i = 0; i <= 9; i++) {
                     let yearnum = i + 1;
@@ -159,6 +159,9 @@ export class AmbientEmissionsContainer extends Component {
             if(item.n > 1){
                 Math.ceil(item.cumulative_emission/item.n)
             }
+
+            // if(item.cumulative_emission === null) return false
+
             parsed_data.push({
                 year: item.year, 
                 cumulative_emission: calculated_emissions
