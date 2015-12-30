@@ -14,17 +14,12 @@ import { Tabs, Tab, LeftNav, MenuItem } from 'material-ui';
 // Flux
 import EchoServerActionCreators from './assets/scripts/actions/EchoServerActionCreators';
 import FacilityStore from './assets/scripts/stores/FacilityStore';
-
-EchoServerActionCreators.findFacilityByFrs(110017805730);
-EchoServerActionCreators.getFacilityEmissions(110017805730);
-
-// EchoServerActionCreators.findFacilityByFrs(110004060417);
-// EchoServerActionCreators.findFacilityByFrs(110010681707);
-// EchoServerActionCreators.findFacilityByFrs(110000753319);
+import FacilityActionCreators from './assets/scripts/actions/FacilityActionCreators';
 
 function getStateFromStores(){
     
     return {
+        facilities: FacilityStore.getList(),
         selectedfacility: FacilityStore.getSelectedFacility()
     };
 }
@@ -34,8 +29,32 @@ export class App extends Component {
         super(props);
         this._onChange = this._onChange.bind(this);
         this.state = {
+            facilities: FacilityStore.getList(),
             selectedfacility: FacilityStore.getSelectedFacility()
         };
+        
+        console.warn(this.state.facilities);
+        if(this.state.facilities.list.length === 0){
+            let frs = 110017805730;
+
+            console.warn(frs);
+            if(_.size(this.props.params.id) !== 0 && this.props.params.id !== false){
+                
+                // let frsArray = this.props.params.id.split("+");
+                
+                // if(frsArray.length > 1){
+                //     _.forEach(frsArray, function(n,index) {
+                //         EchoServerActionCreators.findFacilityByFrs(n);            
+                //     });
+                // }
+
+                frs = this.props.params.id;
+            }
+
+            EchoServerActionCreators.findFacilityByFrs(frs);
+            EchoServerActionCreators.getFacilityEmissions(frs);
+        }
+// console.warn(this.state.selectedFacility.length === 0)
     }
 
     componentDidMount(){
@@ -50,7 +69,13 @@ export class App extends Component {
         this.setState(getStateFromStores());
     }    
 
-    render() {       
+    render() {
+
+        if(this.state.selectedfacility.length === 0) {
+            console.warn('Filling out selected facility',this.state.facilities)
+            FacilityActionCreators.selectFacility(this.state.facilities.list[0]);
+        }
+
         return (
             <div id="app__container">
                 

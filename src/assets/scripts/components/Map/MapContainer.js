@@ -4,6 +4,7 @@ import EchoServerActionCreators from '../../actions/EchoServerActionCreators';
 import FacilityActionCreators from '../../actions/FacilityActionCreators';
 import FacilityStore from '../../stores/FacilityStore';
 import MonitoringStationStore from '../../stores/MonitoringStationStore';
+import MapActionCreators from '../../actions/MapActionCreators';
 import _ from 'lodash';
 
 function getStateFromStores(){
@@ -61,6 +62,7 @@ export class MapContainer extends Component {
     // }
 
     render() {        
+        console.warn(this.state.selectedFacility)
 
         const facilities = []
         _.forEach(this.state.selectedFacility, function(n, index) {
@@ -69,7 +71,9 @@ export class MapContainer extends Component {
 
         const lat = this.state.selectedFacility[0] !== undefined ? this.state.selectedFacility[0].lat : 39.50;
         const lng = this.state.selectedFacility[0] !== undefined ? this.state.selectedFacility[0].lng : -98.35;
-        
+
+        MapActionCreators.focusCoordinates(lat,lng);
+
         return (
             <div className="usa-width-one-half" id="map">
                 <FacilityMap lat={ lat } 

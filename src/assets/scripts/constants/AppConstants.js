@@ -21,6 +21,8 @@ const AppConstants = {
 
     GET_OPTIONS_SUCCESS:'GET_OPTIONS_SUCCESS',
     CLEAR_OPTIONS:'CLEAR_OPTIONS',
+
+    FOCUS_COORDINATES:'FOCUS_COORDINATES',
 }
 
 export default AppConstants;

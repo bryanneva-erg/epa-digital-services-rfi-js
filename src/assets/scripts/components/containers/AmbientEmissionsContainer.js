@@ -70,7 +70,7 @@ export class AmbientEmissionsContainer extends Component {
             { year: 2012, cumulative_emission: 0, n: 0 },
             { year: 2013, cumulative_emission: 0, n: 0 },
             { year: 2014, cumulative_emission: 0, n: 0 },
-            { year: 2015, cumulative_emission: 0, n: 0 },
+            // { year: 2015, cumulative_emission: 0, n: 0 },
         ];
 
         let monitoringStationUnits = "Parts Per Billion";
@@ -78,7 +78,7 @@ export class AmbientEmissionsContainer extends Component {
             if (item.data.length > 0) {
                 _.forEach(item.data, function(n) {
                     monitoringStationUnits = n["Units of Measure"];
-                    if(n.Year === undefined) return false;
+                    if(n.Year === undefined || n.Year > 2014) return false;
                     if(n['Pollutant'] !== this._getEmissionName(this.state.selectedemission)) {
                         // console.warn(n['Pollutant'])
                         return false;

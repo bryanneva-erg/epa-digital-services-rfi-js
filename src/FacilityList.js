@@ -28,9 +28,12 @@ export class FacilityList extends Component {
             selectedFacility: FacilityStore.getSelectedFacility()
         };
 
-        if(_.size(this.state.selectedFacility) === 0 && _.size(this.state.facilities.list) > 0){
-            FacilityActionCreators.selectFacility(this.state.facilities.list[0]);
-        }    
+        if(this.state.facilities.list.length === 0){
+            EchoServerActionCreators.findFacilityByFrs(110017805730);
+            EchoServerActionCreators.findFacilityByFrs(110004060417);
+            EchoServerActionCreators.findFacilityByFrs(110010681707);
+            EchoServerActionCreators.findFacilityByFrs(110000753319);
+        }
     }
 
     componentDidMount(){
@@ -65,6 +68,11 @@ export class FacilityList extends Component {
 
     _onSubmit(e, key, payload) {
         e.preventDefault();
+
+        if(_.size(this.state.selectedFacility) === 0){
+            FacilityActionCreators.selectFacility(this.state.facilities.list[0]);
+            EchoServerActionCreators.getFacilityEmissions(this.state.facilities.list[0].frs)
+        }
 
         let url = '';
         _.forEach(this.state.selectedFacility,function(n,key) {
