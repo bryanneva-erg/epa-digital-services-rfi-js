@@ -108,7 +108,7 @@ export class LineGraph extends Component {
             .attr("transform","translate(" + (-(margin.left) + 10) + "," + (height/2) + ")rotate(-90)")
             .attr("dy",".65em")
             // .attr("fill","black")
-            .text("Pounds" + " / Year");
+            .text(this.props.yUnit + " / year");
             
         svg.append("text")
             .attr('class','x label')

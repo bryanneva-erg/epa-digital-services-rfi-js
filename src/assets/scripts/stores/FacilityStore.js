@@ -78,6 +78,10 @@ AppDispatcher.register((payload) => {
             _store.loading = true;
             FacilityStore.emit(CHANGE_EVENT);
             break;
+        case AppConstants.CLEAR_FACILITIES:
+            _store.selectedFacility = [];
+            FacilityStore.emit(CHANGE_EVENT);
+            break;
 
     }
 });

@@ -41,6 +41,12 @@ class ActionCreators {
         });
     }
 
+    clearSelectedFacilities(){
+        AppDispatcher.dispatch({
+            type: AppConstants.CLEAR_FACILITIES,
+        });
+    }
+
     removeFacility(data) {
         AppDispatcher.dispatch({
             type: AppConstants.REMOVE_FACILITY,

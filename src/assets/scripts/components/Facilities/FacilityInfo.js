@@ -60,7 +60,7 @@ export class FacilityInfo extends Component {
         const facility_name = available_facility ? this.state.selectedfacility[0].name : '';
         const facility_location = available_facility ? this.state.selectedfacility[0].city + ", " + this.state.selectedfacility[0].state : ''; 
         const facility_id = available_facility ? this.state.selectedfacility[0].frs : '';
-        
+        let facility_unit = this.props.type === "CO2"? "MTCO2e" : "Pounds";
         // const isEditing = this.state.ambientemissions.editing ? '(Adding...)' : '';
         
         const parsed_data = [];
@@ -114,14 +114,14 @@ export class FacilityInfo extends Component {
 					</p>
                 </div>
                 <div className="facilityinfo__graph">
-                    <LineGraph data={ parsed_data } />
+                    <LineGraph data={ parsed_data } yUnit={facility_unit} />
                 </div>
 
                 <div className="facilityinfo__resources">
                     <h6 className="facilityinfo__resources-header usa-heading-alt">Resources</h6>
                     <ul>
-                        <li><a href="https://echo.epa.gov/resources/echo-data/about-the-data">EPA Air Markets Program data</a></li>
-                        <li><a href="http://aqsdr1.epa.gov/aqsweb/aqstmp/airdata/download_files.html">EPA Air Trends data</a></li>
+                        <li><a href="https://echo.epa.gov/resources/echo-data/about-the-data" target="_blank">EPA Air Markets Program data</a></li>
+                        <li><a href="http://aqsdr1.epa.gov/aqsweb/aqstmp/airdata/download_files.html" target="_blank">EPA Air Trends data</a></li>
                     </ul>
                 </div>
             </div>

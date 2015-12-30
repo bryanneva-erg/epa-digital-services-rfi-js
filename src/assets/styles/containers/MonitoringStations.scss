@@ -8,10 +8,10 @@
     z-index: 100;
 }
 
-.station-list__labe {
-    float:left;
-    z-index: 50;
-}
+// .station-list__label {
+//     float:left;
+//     z-index: 50;
+// }
 
 %icon {
     height:25px;
@@ -34,6 +34,13 @@
 }
 
 .monitoring-stations__list--focused {
-		background-color: $white;
-		color: $primary-darkest !important;
+    background-color: $white !important;
+    color: $primary-darkest !important;
+}
+
+.monitoring-stations__legend {
+    font-size: 1.2rem;
+    display:block;
+    line-height:1.2;
+    padding: 1.5rem 1rem;
 }
