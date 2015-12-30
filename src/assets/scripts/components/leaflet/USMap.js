@@ -94,6 +94,8 @@ export default class USMap extends Component {
                     <CircleMarker center={[coords.Latitude,coords.Longitude]}
                                   key={i} 
                                   itemNumber={i}
+                                  fillColor='#fdb81e'
+                                  color="#333"
                                   onClick={this._onClickStation.bind(this,i)}>
                         <Popup>
                             <span>
