@@ -23,6 +23,13 @@ class ActionCreators {
             index: data
         });    
     }
+
+    selectAmbientEmission(emission) {
+        AppDispatcher.dispatch({
+            type: AppConstants.SELECT_AMBIENTEMISSION,
+            emission:emission
+        });
+    }
 }
 
 const AmbientEmissionActionCreators = new ActionCreators();
