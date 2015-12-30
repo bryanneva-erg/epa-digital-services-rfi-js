@@ -11,8 +11,6 @@
 .facilityinfo__desc-container {
     h2.facilityinfo__header {
 			margin-top: 1.5rem;
-			
-			cursor: pointer;
     }
     .facilityinfo__desc {
         font-weight: 400;
@@ -23,10 +21,6 @@
         }
 				margin: 0;
     }    
-		h2.facilityinfo__header:hover{
-			color: $primary-darkest;
-			text-decoration: underline;
-		}
 }
 
 .facilityinfo__graph {
