@@ -39,3 +39,5 @@ ERG team is well-versed in a broad, modern web framework and stack, agile develo
 *	Utilized user-centered design keyed to iterative development of user personas (i.e., user stories/use cases) based on the refined product vision and informed by interviews with subject-matter experts. Used InVision cloud  for interactive design collaboration.
 *	Iterated initial interface mockup to simplify design and increase flexibility as user stories grew more focused during interviews and testing. Adhered to U.S. Web Design Standards.  
 *	Developed product using sprint-based iterations of prototype, each ‘released’ for usability testing against user stories/use cases and then refined in later sprints.
+
+![alt text](https://github.com/Eastern-Research-Group/epa-digital-services-rfi-js/blob/master/progression.png "ERG Agile Process and Methodology")
